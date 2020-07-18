@@ -1,7 +1,22 @@
 ---
-title: "Resources"
+title: ""
 output: html_document
 ---
+
+### R-Studio
+
+[R-studio](http://www.rstudio.com) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, application and lots of other stuff.
+
+### My Contact Information
+
+Please do not hesitate to contact me.\
+Follow me in [linkedin](https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/) and see my other [github repositories](https://github.com/seymakalay).
+
+
+
+
+
+<!--\1   
 
 ### R and R-Studio
 
@@ -16,4 +31,4 @@ output: html_document
 5. Daniell Navarro recently made this website for introducing R, it's great, check it out (also made using this R markdown process): [http://compcogscisydney.org/psyr/](http://compcogscisydney.org/psyr/)
 6. Check out my slightly older programming book that also introduces R [https://crumplab.github.io/programmingforpsych/](https://crumplab.github.io/programmingforpsych/)
 7. This is the definitive guide for all things R Markdown (you will find this very useful as you get better at this skill): [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
-
+\1-->
