@@ -19,7 +19,7 @@ output: html_document
 
 # **About Me**
 
-I am from Istanbul, Turkeyand a current PhD student in Applied Economics and Management (AEM) at the UNIBG & UNIPV in Italy.
+I am from Istanbul, Turkey and a current PhD student in Applied Economics and Management (AEM) at the UNIBG & UNIPV in Italy.
 I like to do web applications, biking, cooking for family & friend, wood work, and gardening the most.
 
 ## My Tutors
