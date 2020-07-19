@@ -59,30 +59,31 @@ University of Istanbul (Turkey), Fall 2016 - Spring 2010.
 
 **Researcher** - Statistics,\
 University of Bergamo & Pavia (Italy), Sept 2017- Current.\
-- What is my research?\
+- Applying machine learning technique to find out the probability of credit default and implementing 
+some application^[Please see at: https://github.com/seymakalay].\
 
 **Intern** - Portfolio,\
 Ziraat Portfolio (Turkey), Jan 2016 - Sept 2016.\
 - Observed equity and bond market, familiar with the behavioral finance, created a statistical model to maximize the portfolio’s return and proved the model efficiency by tracing the data.\
 
 **Intern** - Portfolio,\
-Invest-AZ (Turkey), Nov 2015 - Dec.\
+Invest-AZ (Turkey), Nov 2015 - Dec 2015.\
 - To analyze the companies by looking at their income statements 
 and balance sheets to make sure it is beneficial to invest in those companies.
 
 **Intern** - Accounted,\
-Varkan Group (Turkey), Sept 2012 - Dec.\
+Varkan Group (Turkey), Sept 2012 - Dec 2012.\
 - Have been effectively responsible of recording accounting cycle 
 and kept tracking consistence balances on both suppliers and purchasers on the company’s system.\
 
 **Part time** - Real Estate\
-Emlak Ada (Turkey), 2007 - 2010.\
+Emlak Ada (Turkey), Jun 2007 - Jan 2010.\
 - Was actively involved in the marketing and communications of the firm. Drafted contracts, scheduled meetings, handled negotiations, updated company website, collaborated with other real estate agencies, generated new solutions
 and conducted research on customer needs and preferences.
 
 
 # Skills and Competencies 
-**Languages:** Mother tongue in Turkish, Advance in English, Intermediate in Italian.\
+**Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
 **Computer Skills:**  Latex, Microsoft Office, Rstudio, Shiny Application, Stata.\
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
@@ -90,11 +91,11 @@ and conducted research on customer needs and preferences.
 
 # Awards and Honors 
 
-PhD Fund, 2017 - Current\
-DSU - Toscana, 2013 - 2016\
-TPV (Turkish Gas Foundation Scholarship), 2007 - 2010\
-Turkish Women Community Scholarship, 2007 - 2010\
-Yapi Kredi Bank Scholarship, 2006 - 2010
+PhD Fund, 2017 - Current.\
+DSU - Toscana, 2013 - 2016.\
+TPV (Turkish Gas Foundation Scholarship), 2007 - 2010.\
+Turkish Women Community Scholarship, 2007 - 2010.\
+Yapi Kredi Bank Scholarship, 2006 - 2010.
 
 
 # References

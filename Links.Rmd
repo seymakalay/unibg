@@ -3,9 +3,10 @@ title: ""
 output: html_document
 ---
 
+<!--\1  
 ### R-Studio
-
-[R-studio](http://www.rstudio.com) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, application and lots of other stuff.
+[R-studio](http://www.rstudio.com) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, application and lots of other fun stuff.
+\1-->
 
 ### My Contact Information
 
