@@ -84,7 +84,7 @@ and conducted research on customer needs and preferences.
 
 # Skills and Competencies 
 **Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
-**Computer Skills:**  Latex, Microsoft Office, Rstudio, Shiny Application, Stata.\
+**Computer Skills:**  Html, Latex, Microsoft Office, Rstudio, Shiny Application, Stata.\
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 <!--\1  \( \LaTeX \)  \1--> 
