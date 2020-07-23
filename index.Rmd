@@ -20,7 +20,7 @@ output: html_document
 # **About Me**
 
 I am from Istanbul, Turkey and a current PhD student in Applied Economics and Management (AEM) at the UNIBG & UNIPV in Italy.
-I like to do web applications, biking, cooking for family & friends, woodworking, and gardening the most.
+I like to do [applications](https://github.com/seymakalay), biking, cooking for family & friends, woodworking, and gardening the most.
 
 ## My Tutors
 
