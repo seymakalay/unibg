@@ -91,7 +91,6 @@ and conducted research on customer needs and preferences.
 **Computer Skills:** 
 *Competitive in:* Latex, Microsoft Office, R, Shiny Application.
 *New in:* Html, Python, SQL.\
-
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 <!--\1  \( \LaTeX \)  \1--> 
@@ -109,7 +108,7 @@ Yapi Kredi Bank Scholarship, 2006 - 2010.
 
 **Asst. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Assistant Professor; dfkahey@hotmail.com\
 **Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr\
-**Prof.:** Claudio Pacati; University of Siena; Department of Economics and Statistics; claudio.pacati@unisi.it
+**Prof.:** Claudio Pacati; University of Siena; Department of Economics and Statistics; claudio.pacati@unisi.it\
 
 
 
