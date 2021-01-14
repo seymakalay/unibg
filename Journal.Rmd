@@ -1,6 +1,6 @@
   
 ---
-title: "Seyma Kalay"
+title: ""
 output:
   html_document:
     toc: yes
