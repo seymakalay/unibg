@@ -33,16 +33,16 @@ and my supervisors
 
 ## My Research Interest
 
-Implementing Machine Learning to understand access to credit in China. And the name of the chapters of my dissertation as follows,
+Implementing Machine Learning to understand access to credit. And the name of the chapters of my dissertation as follows,
 
-1. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
-2. Determinants of Access to Finance: A Bibliometric Literature Review.
-3. To be announced.
+1. Determinants of Access to Finance: A Bibliometric Literature Review. 
+2. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
+3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
 
 
 ---
 
-This web page was built with [RStudio](https://www.rstudio.com), hosted by [github](https://docs.github.com/en/github/working-with-github-pages/about-github-pages), and last compiled `r Sys.Date()`.
+This web page was built with [RStudio](https://www.rstudio.com), hosted by [Github](https://docs.github.com/en/github/working-with-github-pages/about-github-pages), and last compiled `r Sys.Date()`.
 
 <!--\1 
 fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)

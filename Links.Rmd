@@ -8,8 +8,6 @@ output: html_document
 [R-studio](http://www.rstudio.com) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, application and lots of other fun stuff.
 
 <a href="C:/Users/seyma/resume/SK.pdf" download> Download the Curriculum Vitae </a>
-
-
 \1-->
 
 ### My Contact Information
@@ -17,7 +15,7 @@ output: html_document
 Please do not hesitate to contact me.\
 Follow me in [linkedin](https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/) and see my other [github repositories](https://github.com/seymakalay).
 
-<a href="./SK.pdf" download>Download the Curriculum Vitae </a>
+<a href="./SK&Cover.pdf" download>Download the Curriculum Vitae </a>
 
 
 

@@ -44,6 +44,7 @@ To work for the organization to the best of my knowledge and ability from where 
      
 **Joint PhD in Applied Economics and Management (AEM),**\
 University of Bergamo & Pavia (Italy), Sept 2017 - Current.
+*(Expected graduate by April 2021)*
 
 
 **Master in Finance,**\
@@ -84,14 +85,17 @@ and conducted research on customer needs and preferences.
 
 # Skills and Competencies 
 **Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
-**Computer Skills:**  Html, Latex, Microsoft Office, Rstudio, Shiny Application, Stata.\
+**Computer Skills:** 
+*Competitive in:* Latex, Microsoft Office, R, Shiny Application.
+*New in:* Html, Python, SQL.\
+
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 <!--\1  \( \LaTeX \)  \1--> 
 
 # Awards and Honors 
 
-PhD Fund, 2017 - Current.\
+2017- Present, UNIBG PhD Fund.\
 DSU - Toscana, 2013 - 2016.\
 TPV (Turkish Gas Foundation Scholarship), 2007 - 2010.\
 Turkish Women Community Scholarship, 2007 - 2010.\
@@ -100,11 +104,9 @@ Yapi Kredi Bank Scholarship, 2006 - 2010.
 
 # References
 
-**Mr. Birkan Karataş:** Ziraat Portfolio; Fund Manager; Mobile: +90 532 5111997; bkaratas@ziraatportfoy.com.tr\
-**Prof. Zikri Altun:** Marmara University; Head of the department of Physic; zikalt@marmara.edu.tr\
-**Prof. Claudio Pacati:** Department of Economics and Statistics; claudio.pacati@unisi.it\
- 
-
+**Asst. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Assistant Professor; dfkahey@hotmail.com
+**Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr
+**Prof.:** Claudio Pacati; University of Siena; Department of Economics and Statistics; claudio.pacati@unisi.it
 
 
 
