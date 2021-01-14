@@ -1,5 +1,6 @@
+  
 ---
-title: ""
+title: "Seyma Kalay"
 output:
   html_document:
     toc: yes
@@ -11,6 +12,8 @@ output:
     toc: yes
     toc_depth: '1'
 ---
+
+
 <!--\1   title: "Journal" \1-->
 
 ```{r setup, include=FALSE}
@@ -104,8 +107,8 @@ Yapi Kredi Bank Scholarship, 2006 - 2010.
 
 # References
 
-**Asst. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Assistant Professor; dfkahey@hotmail.com
-**Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr
+**Asst. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Assistant Professor; dfkahey@hotmail.com\
+**Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr\
 **Prof.:** Claudio Pacati; University of Siena; Department of Economics and Statistics; claudio.pacati@unisi.it
 
 
