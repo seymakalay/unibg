@@ -13,7 +13,7 @@
 
 <title>Seyma Kalay</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,6 +25,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -70,6 +79,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -276,21 +286,21 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
     Home
   </a>
 </li>
 <li>
   <a href="Journal.html">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
     CV
   </a>
 </li>
 <li>
   <a href="Links.html">
-    <span class="fa fa-address-book"></span>
+    <span class="fas fa-address-book"></span>
      
     Contacts &amp; Links
   </a>
@@ -339,7 +349,7 @@ $(document).ready(function () {
 <li>Predicting Financial Health of the Households Using Machine Learning Algorithms.</li>
 </ol>
 <hr />
-<p>This web page was built with <a href="https://www.rstudio.com">RStudio</a>, hosted by <a href="https://docs.github.com/en/github/working-with-github-pages/about-github-pages">Github</a>, and last compiled 2021-01-14.</p>
+<p>This web page was built with <a href="https://www.rstudio.com">RStudio</a>, hosted by <a href="https://docs.github.com/en/github/working-with-github-pages/about-github-pages">Github</a>, and last compiled 2021-02-21.</p>
 <!--\1 
 fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
 2. Blog/journal what you are doing in R, by editing the Journal.Rmd. See the [Journal page](https://crumplab.github.io/LabJournalWebsite/Journal.html) for an example of what to do to get started learning R.
@@ -365,7 +375,7 @@ fork the repo for this website and follow instructions on read me to get set up.
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
