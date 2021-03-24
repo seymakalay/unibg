@@ -13,7 +13,7 @@
 
 <title>Links.utf8</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,6 +25,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -70,6 +79,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -276,21 +286,21 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
     Home
   </a>
 </li>
 <li>
   <a href="Journal.html">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
     CV
   </a>
 </li>
 <li>
   <a href="Links.html">
-    <span class="fa fa-address-book"></span>
+    <span class="fas fa-address-book"></span>
      
     Contacts &amp; Links
   </a>
@@ -322,6 +332,7 @@ $(document).ready(function () {
 <p>Please do not hesitate to contact me.<br />
 Follow me in <a href="https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/">linkedin</a> and see my other <a href="https://github.com/seymakalay">github repositories</a>.</p>
 <p><a href="./SK&Cover.pdf" download>Download the Curriculum Vitae </a></p>
+<p><a href="./Kalay_PHD_Presantation.pdf" target="_blank">PDF.</a></p>
 <!--\1   
 
 ### R and R-Studio
@@ -349,7 +360,7 @@ Follow me in <a href="https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/">li
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

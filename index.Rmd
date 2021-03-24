@@ -39,6 +39,8 @@ Implementing Machine Learning to understand access to credit. And the name of th
 2. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
 3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
 
+Check out my <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> presentation.
+
 
 ---
 
