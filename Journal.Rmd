@@ -93,6 +93,11 @@ and conducted research on customer needs and preferences.
 *New in:* Html, Python, SQL.\
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
+# Software
+**R Package** *Pomodoro:* Comparison of predictive power models. This package is intended to make
+modeling and comparing the predictive powers easier based on the data-splits and all data set.\
+**R Package** *Pepe:* Is intended to make descriptive statistics easier, expected release late 2022.
+
 <!--\1  \( \LaTeX \)  \1--> 
 
 # Awards and Honors 
