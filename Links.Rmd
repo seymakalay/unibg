@@ -10,6 +10,13 @@ output: html_document
 <a href="C:/Users/seyma/resume/SK.pdf" download> Download the Curriculum Vitae </a>
 \1-->
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
+```
+
+
+
+
 ### My Contact Information
 
 Please do not hesitate to contact me.\
@@ -17,10 +24,24 @@ Follow me in [linkedin](https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/) 
 
 <a href="./SK&Cover.pdf" download>Download the Curriculum Vitae </a>
 
+<!--\1   
+### My Packages
 
+[Pomodoro CRAN](https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf){target="_blank"}
 
+\1-->
 
+```{r }
+library(Rd2md)
+rdfile = "C:/Users/seyma/Docs/Kalay.Package/pomodoro/man/RF_Model.Rd"
+outfile = "./md/myfun2.md"
+rd = tools::parse_Rd(rdfile)
+parseRd(rd)
+rd
 
+Rd2markdown(rdfile = rdfile, outfile = outfile)
+
+```
 
 
 

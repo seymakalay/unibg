@@ -26,10 +26,10 @@ I like doing [applications](https://github.com/seymakalay), biking, cooking for 
 
 During my PhD, I have been thankful for each of my companions and professors whom I learn and improve a lot. 
 Especially, I am personally thankful to the head of the department 
-[Prof. Gianmaria Martini](http://www00.unibg.it/struttura/strutturasmst.asp?rubrica=1&persona=418&nome=Gianmaria&cognome=Martini&titolo=Prof.), 
+[Prof. Gianmaria Martini](https://didattica-rubrica.unibg.it/ugov/person/2189), 
 and my supervisors 
-[Prof. Michela Cameletti](http://www00.unibg.it/struttura/strutturasmst.asp?rubrica=1&persona=2109&nome=Michela&cognome=Cameletti&titolo=Prof.ssaand) and
-[Prof. Federica Maria Orgio](http://www00.unibg.it/struttura/strutturasmst.asp?rubrica=1&persona=1955&nome=Federica%20Maria&cognome=Origo&titolo=Prof.ssa).
+[Prof. Michela Cameletti](https://didattica-rubrica.unibg.it/ugov/person/2441) and
+[Prof. Federica Maria Orgio](https://didattica-rubrica.unibg.it/ugov/person/3333).
 
 ## My Research Interest
 
@@ -42,9 +42,32 @@ Implementing Machine Learning to understand access to credit. And the name of th
 Check out my <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> presentation.
 
 
+
+
+  
+  
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+```                     
+
+
+
 ---
 
+This web page was built with [`r fa("r-project", fill = "steelblue")`](https://www.rstudio.com), 
+hosted by [`r fa("github", fill = "purple")`](https://docs.github.com/en/github/working-with-github-pages/about-github-pages), and last compiled `r Sys.Date()`.
+
+
+
+
+
+<!--\1 
 This web page was built with [RStudio](https://www.rstudio.com), hosted by [Github](https://docs.github.com/en/github/working-with-github-pages/about-github-pages), and last compiled `r Sys.Date()`.
+#### `r fa("github", fill = "steelblue")` H4 Heading      
+[`r fa("r-project", fill = "steelblue")`](https://www.rstudio.com)
+\1-->
+
+
 
 <!--\1 
 fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
