@@ -1,18 +1,40 @@
 ---
-title: "Title"
-author: "Author"
-output: html_document
+title: "Just say hello!"
+author: "My Friend"
+header-includes: |
+  \usepackage{tikz,pgfplots}
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[CO,CE]{This is fancy}
+  \fancyfoot[CO,CE]{So is this}
+  \fancyfoot[LE,RO]{\thepage}
+abstract: This is a pandoc test with Markdown + inline LaTeX
 ---
 
-
-```{r, echo=FALSE}
-htmltools::img(src = knitr::image_uri(file.path(R.home("doc"), "html", "logo.jpg")), 
-               alt = 'logo', 
-               style = 'position:absolute; top:0; right:0; padding:10px;')
+```{r}
+library(pandocfilters)
 ```
 
----
 
-# 1. Header
+Just say hello!
+===============
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+This could be a good example or inlined \LaTeX:
+
+ Let $\boldsymbol{y}$ be a vector of response variable of accessing credit for each applicant $n$, such that $y_{i} =  1$ if the applicant-$i$ has access to credit, and zero otherwise. Furthermore, let $\boldsymbol{x} = \{x_{i,j}\}$, where $i = 1, \ldots, n$ and $j = 1, \ldots, p$ be a matrix of $n$ observations with $p$ characteristics of the applicants. The log-odds can be define as
+	     
+\begin{align}
+log(\frac{\pi_{i}}{1-\pi_{i}}) ~=~ \beta_{0}+\boldsymbol{x}_{\boldsymbol{i}}\beta~=~%\beta_{0}+\text{\ensuremath{\beta}}_{1}\boldsymbol{x}_{1}+...+\beta_{p}\boldsymbol{X}_{p} = 
+	     \beta_{0}+\sum_{i=1}^{p}\beta_{i}\boldsymbol{x}_{i} 
+	     \label{log.formula}
+	     \end{align}
+	     
+where $\pi_{i} = P(y_{i}=1|\boldsymbol{x}_{\boldsymbol{i}})$, 
+$\beta_{0}$ is the intercept, $\beta = ( \beta_{1},\ldots, \beta_{p})'$ is
+a $p \times 1$ vector of coefficients and %$x_{i}$ 
+$\boldsymbol{x_{i}}$  is the $i$-th row of $\boldsymbol{x}$.
+	     
+
+And now, just a few words to terminate:
+
+> Goodbye folks!
