@@ -14,11 +14,12 @@ output:
 ---
 
 
-<!--\1   title: "Journal" \1-->
-
+<!--\1   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
 ```
+ \1-->
+
 
 <!--\1   \1-->
 
@@ -37,7 +38,7 @@ Mobile         : +39 338 9628589\
 Email & Skype  : seymakalay@hotmail.com\
 Marital Status : Single\ 
 Day of Birth   : 16.05.1987\ 
-Place of Birth : Turkey-Istanbul\
+<!--\1 Place of Birth : Turkey-Istanbul\ \1-->
 
 # Objectives
 

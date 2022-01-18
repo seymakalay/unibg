@@ -14,12 +14,11 @@ navbar:
   right:
     - text: CV 
       icon: fa-download
-      href: ./SK_Cover.pdf
+      href: ./SKCover.pdf
     - icon: fa-github 
       href: https://github.com/seymakalay
     - icon: fab fa-linkedin fa-lg
       href: https://www.linkedin.com/in/seyma-kalay-3315345b/
-      
 output_dir: "docs"
 
 

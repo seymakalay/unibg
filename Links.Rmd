@@ -10,11 +10,10 @@ output: html_document
 <a href="C:/Users/seyma/resume/SK.pdf" download> Download the Curriculum Vitae </a>
 \1-->
 
+<!--\1  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
 ```
-
-
 
 ### My Contact Information
 
@@ -22,6 +21,8 @@ Please do not hesitate to contact me.\
 Follow me in [linkedin](https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/) and see my other [github repositories](https://github.com/seymakalay).
 
 <a href="./SK&Cover.pdf" download>Download the Curriculum Vitae </a>
+\1-->
+
 
 <!--\1   
 ### My Packages

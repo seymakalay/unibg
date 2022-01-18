@@ -31,6 +31,11 @@ and my supervisors
 [Prof. Michela Cameletti](https://didattica-rubrica.unibg.it/ugov/person/2441) and
 [Prof. Federica Maria Orgio](https://didattica-rubrica.unibg.it/ugov/person/3333).
 
+<!--\1  <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>. \1-->
+
+
+
+
 ## My Research Interest
 
 Implementing Machine Learning to understand access to credit. And the name of the chapters of my dissertation as follows,
