@@ -14,7 +14,7 @@ navbar:
   right:
     - text: CV 
       icon: fa-download
-      href: ./SKCover.pdf
+      href: ./SK_Cover.pdf
     - icon: fa-github 
       href: https://github.com/seymakalay
     - icon: fab fa-linkedin fa-lg
