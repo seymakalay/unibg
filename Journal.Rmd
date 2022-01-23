@@ -65,7 +65,8 @@ University of Istanbul (Turkey), Fall 2006 - Spring 2010.
 **Researcher** - Statistics,\
 University of Bergamo & Pavia (Italy), Sept 2017- Current.\
 - Applying machine learning technique to find out the probability of credit default and implementing 
-some application^[Please see at: https://github.com/seymakalay].\
+some application^[Please see at: <a href="https://github.com/seymakalay" target="_blank">https://github.com/seymakalay</a> ]
+ <!--\1 application^[Please see at: https://github.com/seymakalay].\ \1-->
 
 **Intern** - Portfolio,\
 Ziraat Portfolio (Turkey), Jan 2016 - Sept 2016.\
@@ -95,7 +96,8 @@ and conducted research on customer needs and preferences.
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 # Software Packages 
-**CRAN** *Pomodoro:*^[Please see at: https://cloud.r-project.org/web/packages/pomodoro/index.html] Comparison of predictive power models. This package is intended to make
+**CRAN** *Pomodoro:*^[Please see at: <a href="https://cloud.r-project.org/web/packages/pomodoro/index.html" target="_blank">https://cloud.r-project.org/web/packages/pomodoro/index.html</a> ]
+Comparison of predictive power models. This package is intended to make
 modeling and comparing the predictive powers easier based on the data-splits and all data set.\
 **CRAN** *Pepe:* Is intended to make descriptive statistics easier, expected release late 2022.\
 **CRAN** *Oregano:* Is intended to create Shiny Modules to make the visualization easier,

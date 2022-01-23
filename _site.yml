@@ -9,7 +9,7 @@ navbar:
       href: Journal.html
       icon: fa-book
     - text: "Package"
-      href:  https://seymakalay.github.io/pomodoro/index.html
+      href: https://seymakalay.github.io/pomodoro/index.html 
       icon: fa-box
   right:
     - text: CV 
