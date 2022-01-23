@@ -19,22 +19,30 @@ output: html_document
 
 # **About Me**
 
-I am a current PhD student in Applied Economics and Management (AEM) at the [UNIBG](https://www.unibg.it/node/9405en/people/phd-students) & [UNIPV](https://sites.google.com/unipv.it/phd-aem/home-page/people/students) in Italy.
-I like doing [applications](https://github.com/seymakalay), biking, cooking for family & friends, woodworking, and gardening the most.
+I am a current PhD student in Applied Economics and Management (AEM) at the 
+<a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
+<a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>
+in Italy.
+I like doing <a href="https://github.com/seymakalay" target="_blank">applications</a>, biking, cooking for family & friends, woodworking, and gardening the most.
 
 ## My Tutors
 
 During my PhD, I have been thankful for each of my companions and professors whom I learn and improve a lot. 
 Especially, I am personally thankful to the head of the department 
-[Prof. Gianmaria Martini](https://didattica-rubrica.unibg.it/ugov/person/2189), 
+<a href="https://didattica-rubrica.unibg.it/ugov/person/2189" target="_blank">Prof. Gianmaria Martini</a>,
 and my supervisors 
+<a href="https://didattica-rubrica.unibg.it/ugov/person/2441">Prof. Michela Cameletti</a> and
+<a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>.
+
+
+ <!--\1 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>. 
+[UNIBG](https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management) 
+& [UNIPV](https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni)
+[applications](https://github.com/seymakalay)
+[Prof. Gianmaria Martini](https://didattica-rubrica.unibg.it/ugov/person/2189),
 [Prof. Michela Cameletti](https://didattica-rubrica.unibg.it/ugov/person/2441) and
 [Prof. Federica Maria Orgio](https://didattica-rubrica.unibg.it/ugov/person/3333).
-
-<!--\1  <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>. \1-->
-
-
-
+\1-->
 
 ## My Research Interest
 
