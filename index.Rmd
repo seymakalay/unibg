@@ -42,15 +42,20 @@ and my supervisors
 [Prof. Gianmaria Martini](https://didattica-rubrica.unibg.it/ugov/person/2189),
 [Prof. Michela Cameletti](https://didattica-rubrica.unibg.it/ugov/person/2441) and
 [Prof. Federica Maria Orgio](https://didattica-rubrica.unibg.it/ugov/person/3333).
+
+
+1. Determinants of Access to Finance: A Bibliometric Literature Review. 
+2. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
+3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
 \1-->
 
 ## My Research Interest
 
 Implementing Machine Learning to understand access to credit. And the name of the chapters of my dissertation as follows,
 
-1. Determinants of Access to Finance: A Bibliometric Literature Review. 
-2. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
-3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
+1. Determinants of Access to Credit: A Bibliometric Literature Review. 
+2. Access to Credit: Using Machine Learning Algorithms
+3. Predicting Financial Health: Using Machine Learning Algorithms.
 
 Check out my <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> presentation.
 
