@@ -9,17 +9,22 @@ navbar:
       href: Journal.html
       icon: fa-book
     - text: "Package"
-      href: https://seymakalay.github.io/pomodoro/index.html 
+      href: https://seymakalay.github.io/pomodoro/index.html
       icon: fa-box
   right:
-    - text: CV 
+    - text: "CV"
       icon: fa-download
-      href: ./SK_Cover.pdf
-    - icon: fa-github 
-      href: https://github.com/seymakalay
-    - icon: fab fa-linkedin fa-lg
-      href: https://www.linkedin.com/in/seyma-kalay-3315345b/
+      menu:
+      - text: "English CV"
+        href: ./SK_Cover.pdf
+      - text: "Italian CV"
+        href: ./SK_Cover_it.pdf
+    - href: https://github.com/seymakalay
+      icon: fa-github 
+    - href: https://www.linkedin.com/in/seyma-kalay-3315345b/
+      icon: fab fa-linkedin fa-lg
 output_dir: "docs"
+
 
 
 
