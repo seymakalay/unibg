@@ -8,9 +8,17 @@ navbar:
     - text: "CV"
       href: Journal.html
       icon: fa-book
-    - text: "Package"
-      href: https://seymakalay.github.io/pomodoro/index.html
+    - text: "Packages"
       icon: fa-box
+      menu:
+      - text: "pomodoro"
+        #icon: fa-tomato
+        href: https://seymakalay.github.io/pomodoro/index.html
+        #icon: fa-tomato
+      - text: "pepe"
+        #icon: <i class="fa-solid fa-pepper-hot"></i>
+        href: https://github.com/seymakalay/pepe
+        #
   right:
     - text: "CV"
       icon: fa-download
@@ -24,6 +32,7 @@ navbar:
     - href: https://www.linkedin.com/in/seyma-kalay-3315345b/
       icon: fab fa-linkedin fa-lg
 output_dir: "docs"
+
 
 
 
