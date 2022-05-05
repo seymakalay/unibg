@@ -13,9 +13,8 @@ navbar:
       menu:
       - text: "pomodoro"
         #icon: fa-tomato
-        href: https://seymakalay.github.io/pomodoro/index.html
-        #icon: fa-tomato
-      - text: "pepe"
+        href: https://github.com/seymakalay/pomodoro
+      - text: "pepe" 
         #icon: <i class="fa-solid fa-pepper-hot"></i>
         href: https://github.com/seymakalay/pepe
         #

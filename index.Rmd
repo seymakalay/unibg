@@ -1,12 +1,17 @@
 ---
 title: "Seyma Kalay"
-output: html_document
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
 ---
+<!--\1   \1-->
 
 <style type="text/css">
 .title {
   display: none;
 }
+
 
 #getting-started img {
   margin-right: 10px;
@@ -23,7 +28,7 @@ I have a  PhD student in Applied Economics and Management (AEM) at the
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
 <a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>
 in Italy.
-I like doing <a href="https://github.com/seymakalay" target="_blank">applications</a>, biking, cooking for family & friends, woodworking, and gardening the most.
+I like doing <u> <a href="https://github.com/seymakalay" target="_blank">applications</a> </u>,  biking, cooking for family & friends, woodworking, and gardening the most.
 
 ## My Tutors
 
@@ -57,7 +62,7 @@ Implementing Machine Learning to understand access to credit. And the name of th
 2. Access to Credit: Using Machine Learning Algorithms
 3. Predicting Financial Health: Using Machine Learning Algorithms.
 
-Check out my <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> presentation.
+Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> </u>  presentation.
 
 
 

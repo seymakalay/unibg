@@ -2,6 +2,8 @@
 title: ""
 output:
   html_document:
+    theme: flatly
+    highlight: tango
     toc: yes
     toc_float: yes
     collapsed: no
@@ -79,17 +81,28 @@ and conducted research on customer needs and preferences.
 # Skills and Competencies 
 **Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
 **Computer Skills:** 
-*Competitive in:* Latex, Microsoft Office, R, Shiny Application.
-*New in:* Html, Python, SQL.\
+<u>*Competitive in:* </u> Latex, Microsoft Office, R, Shiny Application.
+<u>*New in:* </u> Html, Python, SQL.\
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 # Software Packages 
+<!--\1   
 **CRAN** *Pomodoro:*^[Please see at: <a href="https://cloud.r-project.org/web/packages/pomodoro/index.html" target="_blank">https://cloud.r-project.org/web/packages/pomodoro/index.html</a> ]
 Comparison of predictive power models. This package is intended to make
 modeling and comparing the predictive powers easier based on the data-splits and all data set.\
 **CRAN** *Pepe:* Is intended to make descriptive statistics easier, expected release late 2022.\
 **CRAN** *Oregano:* Is intended to create Shiny Modules to make the visualization easier,
 expected release late 2023.
+\1-->
+<u> <a href="https://github.com/seymakalay/pomodoro" target="_blank"> **CRAN** *Pomodoro:* </a> </u>
+Comparison of predictive power models. This package is intended to make
+modeling and comparing the predictive powers easier based on the data-splits and all data set.\
+<u> <a href="https://github.com/seymakalay/pepe" target="_blank"> **CRAN** *Pepe:* </a>  </u>
+Is intended to make descriptive statistics easier, expected release late 2022.\
+**CRAN** *Oregano:* 
+Is intended to create Shiny Modules to make the visualization easier,
+expected release late 2023.
+
 
 
 <!--\1  \( \LaTeX \)  \1--> 
