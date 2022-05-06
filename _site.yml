@@ -9,7 +9,7 @@ navbar:
       href: Journal.html
       icon: fa-book
     - text: "Packages"
-      #icon: fa-box
+      icon: fa-box
       menu:
       - text: "pomodoro"
         #icon: fa-tomato
@@ -19,7 +19,7 @@ navbar:
         href: https://github.com/seymakalay/pepe
     - text: "Tutorials"
       href: tutorials.html
-      #icon:  fa-rocket
+      icon:  fa-rocket
   right:
     - text: "CV"
       icon: fa-download
