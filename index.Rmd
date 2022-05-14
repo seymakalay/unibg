@@ -60,7 +60,7 @@ Implementing Machine Learning to understand access to credit. And the name of th
 
 1. Determinants of Access to Credit: A Bibliometric Literature Review. 
 2. Access to Credit: Using Machine Learning Algorithms
-3. Predicting Financial Health: Using Machine Learning Algorithms.
+3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms.
 
 Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> </u>  presentation.
 

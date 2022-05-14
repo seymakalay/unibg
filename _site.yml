@@ -18,8 +18,12 @@ navbar:
         #icon: <i class="fa-solid fa-pepper-hot"></i>
         href: https://github.com/seymakalay/pepe
     - text: "Tutorials"
-      href: tutorials.html
       icon:  fa-rocket
+      menu:
+      - text: "pomodoro"
+        href: pomodoro.tutorial.html
+      - text: "pepe"
+        href: pepe.tutorial.html
   right:
     - text: "CV"
       icon: fa-download

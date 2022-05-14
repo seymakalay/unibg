@@ -11,7 +11,7 @@
 
 
 
-<title>tutorials.knit</title>
+<title>pomodoro.tutorial.knit</title>
 
 <script src="site_libs/header-attrs-2.13.3/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -446,7 +446,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="tutorials.html">pomodoro</a>
+      <a href="pomodoro.tutorial.html">pomodoro</a>
+    </li>
+    <li>
+      <a href="pepe.tutorial.html">pepe</a>
     </li>
   </ul>
 </li>
@@ -496,16 +499,16 @@ div.tocify {
 
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
-<div id="objectives" class="section level1">
-<h1>Objectives</h1>
+<div id="objectives" class="section level2">
+<h2>Objectives</h2>
 <blockquote>
 <p>This tutorial is meant to introduce <a
 href="https://github.com/seymakalay/pomodoro">pomodoro</a> package only,
 using a case study. The purpose of this package is modelling and
 reporting the predictive modelling with ease.</p>
 </blockquote>
-<div id="dataset" class="section level2">
-<h2>Dataset</h2>
+<div id="dataset" class="section level3">
+<h3>Dataset</h3>
 <p>After cleaning the data set for this case study, we can visualize the
 summary statistics of the given data.</p>
 <center>
@@ -519,8 +522,8 @@ home equity. All the asset variables (e.g. income, net-worth, NW-HE, and
 liquid assets are in Chinese renminbi (CNY).</p>
 </div>
 </div>
-<div id="overview" class="section level1">
-<h1>Overview</h1>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
 <p>Package <code>pomodoro</code> runs bagging (<code>BAG_Model</code>),
 boosting (<code>GBM_Model</code>), random forest
 (<code>RF_Model</code>), multinominal logistic (<code>MLM_Model</code>),
@@ -529,43 +532,43 @@ when you need the compare the predictive modeling using the different
 data splits or/and adding exogenous variables into the equation. And it
 implements stratified random sampling to divide the data set into 80/20
 train/test set, using 10 cross validation.</p>
-<div id="installation" class="section level2">
-<h2>Installation</h2>
+<div id="installation" class="section level3">
+<h3>Installation</h3>
 <p>You can install <code>pomodoro</code> from <a
 href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pomodoro&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pomodoro)</span></code></pre></div>
 </div>
 </div>
-<div id="building-a-selected-model" class="section level1">
-<h1>Building a Selected Model</h1>
+<div id="building-a-selected-model" class="section level2">
+<h2>Building a Selected Model</h2>
 <p>Let’s build <code>RF_Model</code> one of the models which is
 available for this package. In the <code>pomodoro</code> <a
 href="https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf">help
 field</a> we can see that <code>RF_Model</code> was defined as
 <code>RF_Model(Data, xvar, yvar)</code>.</p>
-<div id="selecting-dependent-variables" class="section level2">
-<h2>Selecting Dependent Variables</h2>
+<div id="selecting-dependent-variables" class="section level3">
+<h3>Selecting Dependent Variables</h3>
 <p>where <code>xvar</code> is a vector which is defined as below:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;married&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;havejob&quot;</span>, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;political.afl&quot;</span>,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> <span class="st">&quot;rural&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;fin.intermdiaries&quot;</span>, <span class="st">&quot;fin.knowldge&quot;</span>, <span class="st">&quot;income&quot;</span>)</span></code></pre></div>
 </div>
-<div id="selecting-independent-variables" class="section level2">
-<h2>Selecting Independent Variables</h2>
+<div id="selecting-independent-variables" class="section level3">
+<h3>Selecting Independent Variables</h3>
 <p>where <code>yvar</code> is a two or multilevel factor variable which
 is defined as below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Loan.Type&quot;</span>) </span></code></pre></div>
 <p>or</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multi.level&quot;</span>)</span></code></pre></div>
 </div>
-<div id="dataset-1" class="section level2">
-<h2>DataSet</h2>
+<div id="dataset-1" class="section level3">
+<h3>DataSet</h3>
 <p>For the computational purposes lets take the first 1000 rows of the
 <code>sample_data</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> sample_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>),]</span></code></pre></div>
 </div>
-<div id="implemantation" class="section level2">
-<h2>Implemantation</h2>
+<div id="implemantation" class="section level3">
+<h3>Implemantation</h3>
 <p>We can implement <code>RF_Model</code> for
 <code>yvar &lt;- c("multi.level")</code> as follows,</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a> yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multi.level&quot;</span>)</span>
@@ -574,8 +577,8 @@ is defined as below:</p>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># set.seed() for the reproducible outcome.</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> BchMk.RF <span class="ot">&lt;-</span> <span class="fu">RF_Model</span>(sample_data, xvar, yvar)</span></code></pre></div>
 </div>
-<div id="results-of-the-rf_model" class="section level2">
-<h2>Results of the <code>RF_Model</code></h2>
+<div id="results-of-the-rf_model" class="section level3">
+<h3>Results of the <code>RF_Model</code></h3>
 <p>Using <code>attributes(BchMk.RF)</code>, we can see the outcome
 options.</p>
 <p><code>BchMk.RF$results</code></p>
@@ -606,8 +609,8 @@ options.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.7437186</span></span></code></pre></div>
 </div>
 </div>
-<div id="building-an-estimated-models" class="section level1">
-<h1>Building an Estimated Models</h1>
+<div id="building-an-estimated-models" class="section level2">
+<h2>Building an Estimated Models</h2>
 <p>To model all the data set and its splits, interchangeably with 3
 assets owning variables
 (<code>networth, networth_homequity, and liquid.assets</code>) and given
@@ -620,45 +623,45 @@ field</a> we can see that <code>Estimate_Models</code> was defined as
 <code>Estimate_Models(DataSet = Data, yvar, exog = NULL, xvec = xvar, xadd, type, dnames)</code>.</p>
 <p>We have already defined <code>xvar</code>, <code>yvar</code> and
 <code>Data</code>.</p>
-<div id="selecting-exog-variable" class="section level2">
-<h2>Selecting <code>exog</code> Variable</h2>
+<div id="selecting-exog-variable" class="section level3">
+<h3>Selecting <code>exog</code> Variable</h3>
 <p><code>exog = "political.afl"</code> will define the data set based on
 the factor levels of the <code>"political.afl"</code> in this case “0”
 and “1”.</p>
 </div>
-<div id="selecting-xadd-variable" class="section level2">
-<h2>Selecting <code>xadd</code> Variable</h2>
+<div id="selecting-xadd-variable" class="section level3">
+<h3>Selecting <code>xadd</code> Variable</h3>
 <p><code>xadd</code> is a vector set which are not highly correlated
 with <code>"income"</code> but highly correlated between them. So we
 need to add each variable in
 <code>xadd = c("networth", "networth_homequity", "liquid.assets")</code>
 interchangeably.</p>
 </div>
-<div id="selecting-type-variable" class="section level2">
-<h2>Selecting <code>type</code> Variable</h2>
+<div id="selecting-type-variable" class="section level3">
+<h3>Selecting <code>type</code> Variable</h3>
 <p><code>type</code> can be on of the bagging (<code>BAG</code>),
 boosting (<code>GBM</code>), random forest (<code>RF</code>),
 multinominal logistic (<code>MLM</code>), and logistic models
 (<code>GLM</code>).</p>
 </div>
-<div id="selecting-dnames-variable" class="section level2">
-<h2>Selecting <code>dnames</code> Variable</h2>
+<div id="selecting-dnames-variable" class="section level3">
+<h3>Selecting <code>dnames</code> Variable</h3>
 <p><code>dnames</code> is the factor values of <code>exog</code>. For
 example <code>dnames = c("0","1")</code> since there are 2 levels in
 <code>exog = "political.afl"</code> which is “0” and “1”.
 <code>dnames</code> argument is important to avoid confusion when we
 print out the results.</p>
 </div>
-<div id="implemantation-1" class="section level2">
-<h2>Implemantation</h2>
+<div id="implemantation-1" class="section level3">
+<h3>Implemantation</h3>
 <p>We can implement <code>Estimate_Models</code> for
 <code>yvar &lt;- c("multi.level")</code> as follows,</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CCP.RF <span class="ot">&lt;-</span> <span class="fu">Estimate_Models</span>(sample_data, yvar, <span class="at">xvec =</span> xvar, <span class="at">exog =</span> <span class="st">&quot;political.afl&quot;</span>,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="at">xadd =</span> <span class="fu">c</span>(<span class="st">&quot;networth&quot;</span>, <span class="st">&quot;networth_homequity&quot;</span>, <span class="st">&quot;liquid.assets&quot;</span>) ,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="at">type =</span> <span class="st">&quot;RF&quot;</span>, <span class="at">dnames =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>))</span></code></pre></div>
 </div>
-<div id="results-of-the-estimate_models" class="section level2">
-<h2>Results of the <code>Estimate_Models</code></h2>
+<div id="results-of-the-estimate_models" class="section level3">
+<h3>Results of the <code>Estimate_Models</code></h3>
 <p>Using <code>CCP.RF</code>, we can see the outcomes of
 <code>BchMk+networth</code>, <code>BchMk+networth_homequity</code>,
 <code>BchMk+liquid.assets</code> <code>D.0+networth</code>,
@@ -709,8 +712,8 @@ follows,</p>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.8</span></span></code></pre></div>
 </div>
 </div>
-<div id="building-a-combined-performance" class="section level1">
-<h1>Building a Combined Performance</h1>
+<div id="building-a-combined-performance" class="section level2">
+<h2>Building a Combined Performance</h2>
 <p><code>Estimate_Models</code> reported predictive results for both
 <code>political.afl == 0</code> and <code>political.afl == 1</code>.
 What we need is to combine these split data set to calculate over all
@@ -721,14 +724,14 @@ field</a> we can see that <code>Combined_Performance</code> was defined
 as <code>Combined_Performance(Sub.Est.Mdls)</code>.</p>
 <p>We have already defined all we need in <code>Estimate_Models</code>
 let`s bring them together.</p>
-<div id="implemantation-2" class="section level2">
-<h2>Implemantation</h2>
+<div id="implemantation-2" class="section level3">
+<h3>Implemantation</h3>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Sub.CCP.RF <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Mdl.1 =</span> CCP.RF<span class="sc">$</span>EstMdl<span class="sc">$</span><span class="st">`</span><span class="at">D.1+networth</span><span class="st">`</span>,</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">Mdl.0 =</span> CCP.RF<span class="sc">$</span>EstMdl<span class="sc">$</span><span class="st">`</span><span class="at">D.0+networth</span><span class="st">`</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>CCP.NoCCP.RF <span class="ot">&lt;-</span> <span class="fu">Combined_Performance</span>(Sub.CCP.RF)</span></code></pre></div>
 </div>
-<div id="results-of-the-combined_performance" class="section level2">
-<h2>Results of the <code>Combined_Performance</code></h2>
+<div id="results-of-the-combined_performance" class="section level3">
+<h3>Results of the <code>Combined_Performance</code></h3>
 <p>Using <code>attributes(CCP.NoCCP.RF)</code> we can see the outcomes
 of <code>Combined_Performance</code></p>
 <p><code>head(CCP.NoCCP.RF$Pred_prob)</code></p>

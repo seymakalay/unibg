@@ -15,13 +15,13 @@ output:
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
   
-# Objectives
+## Objectives
 
 > This tutorial is meant to introduce [pomodoro](https://github.com/seymakalay/pomodoro)  package only, using a case study.
 The purpose of this package is modelling and reporting the predictive modelling with ease. 
 
 
-## Dataset
+### Dataset
 
 After cleaning the data set for this case study, 
 we can visualize the summary statistics of the given data.
@@ -35,7 +35,7 @@ Note: HR stands for Household Registration. NW-HE is net-worth minus home equity
 income, net-worth, NW-HE, and liquid assets are in Chinese renminbi (CNY).
 
 
-# Overview
+## Overview
 
 Package `pomodoro` runs bagging (`BAG_Model`), boosting (`GBM_Model`), random forest (`RF_Model`), 
 multinominal logistic (`MLM_Model`), and logistic models (`GLM_Model`).
@@ -46,7 +46,7 @@ And it implements stratified random sampling to divide the data set into
 
 
 
-## Installation
+### Installation
 
 You can install `pomodoro` from [CRAN](https://CRAN.R-project.org) with:
 
@@ -56,14 +56,14 @@ library(pomodoro)
 ```
 
 
-# Building a Selected Model
+## Building a Selected Model
 
 Let's build `RF_Model` one of the models which is available for this package.
 In the `pomodoro` [help field](https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf)
 we can see that `RF_Model`  was defined as  `RF_Model(Data, xvar, yvar)`.
 
   
-## Selecting Dependent Variables
+### Selecting Dependent Variables
 
 where `xvar` is a vector which is defined as below:  
 
@@ -72,7 +72,7 @@ xvar <- c("sex", "married", "age", "havejob", "educ", "political.afl",
  "rural", "region", "fin.intermdiaries", "fin.knowldge", "income")
 ``` 
 
-## Selecting Independent Variables
+### Selecting Independent Variables
 
 where `yvar` is a two or multilevel factor variable which  is defined as below: 
 
@@ -85,7 +85,7 @@ or
 yvar <- c("multi.level")
 ```
 
-## DataSet 
+### DataSet 
 
 For the computational purposes lets take the first 1000 rows of the `sample_data`.
 
@@ -93,7 +93,7 @@ For the computational purposes lets take the first 1000 rows of the `sample_data
 sample_data <- sample_data[c(1:1000),]
 ```
 
-## Implemantation 
+### Implemantation 
 
 We can implement `RF_Model` for `yvar <- c("multi.level")` as follows,
 
@@ -105,7 +105,7 @@ We can implement `RF_Model` for `yvar <- c("multi.level")` as follows,
  BchMk.RF <- RF_Model(sample_data, xvar, yvar)
 ```
 
-## Results of the `RF_Model`
+### Results of the `RF_Model`
 
 Using `attributes(BchMk.RF)`, we can see the outcome options.
 
@@ -152,7 +152,7 @@ Multi-class area under the curve: 0.7143
 ```
 
 
-# Building an Estimated Models
+## Building an Estimated Models
 
 To model all the data set and its splits, interchangeably with 
 3 assets owning variables (`networth, networth_homequity, and liquid.assets`)
@@ -166,31 +166,31 @@ we can see that `Estimate_Models`  was defined as
 We have already defined `xvar`, `yvar` and `Data`.
 
 
-## Selecting `exog` Variable
+### Selecting `exog` Variable
 
 `exog = "political.afl"` will define the data set based on the factor levels of the 
 `"political.afl"` in this case "0" and "1".  
 
-## Selecting `xadd` Variable
+### Selecting `xadd` Variable
 
 `xadd` is a vector set which are not highly correlated with `"income"` but highly correlated between them.
 So we need to add each variable in `xadd = c("networth", "networth_homequity", "liquid.assets")` interchangeably. 
 
 
-## Selecting `type` Variable
+### Selecting `type` Variable
 
 `type` can be on of the bagging (`BAG`), boosting (`GBM`), random forest (`RF`), 
 multinominal logistic (`MLM`), and logistic models (`GLM`). 
 
 
-## Selecting `dnames` Variable
+### Selecting `dnames` Variable
 
 `dnames` is the factor values of `exog`. For example `dnames = c("0","1")` since there are 
 2 levels in `exog = "political.afl"` which is "0" and "1".
 `dnames` argument is important to avoid confusion when we print out the results.
 
 
-## Implemantation 
+### Implemantation 
 
 We can implement `Estimate_Models` for `yvar <- c("multi.level")` as follows,
 
@@ -201,7 +201,7 @@ CCP.RF <- Estimate_Models(sample_data, yvar, xvec = xvar, exog = "political.afl"
 ``` 
 
 
-## Results of the `Estimate_Models`
+### Results of the `Estimate_Models`
 
 Using `CCP.RF`, we can see the outcomes of 
 `BchMk+networth`, `BchMk+networth_homequity`, `BchMk+liquid.assets`
@@ -276,7 +276,7 @@ Multi-class area under the curve: 0.8182
 
 
 
-# Building a Combined Performance
+## Building a Combined Performance
 
 `Estimate_Models` reported predictive results for both `political.afl == 0` and `political.afl == 1`.
 What we need is to combine these split data set to calculate over all the performance for the
@@ -289,7 +289,7 @@ we can see that `Combined_Performance`  was defined as
 
 We have already defined all we need in `Estimate_Models` let`s bring them together.
 
-## Implemantation 
+### Implemantation 
 
 ``` r
 Sub.CCP.RF <- list(Mdl.1 = CCP.RF$EstMdl$`D.1+networth`,
@@ -297,7 +297,7 @@ Mdl.0 = CCP.RF$EstMdl$`D.0+networth`)
 CCP.NoCCP.RF <- Combined_Performance(Sub.CCP.RF)
 ``` 
 
-## Results of the `Combined_Performance`
+### Results of the `Combined_Performance`
 
 Using  `attributes(CCP.NoCCP.RF)` we can see the outcomes of `Combined_Performance`
 
