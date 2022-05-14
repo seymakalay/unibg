@@ -67,7 +67,7 @@ Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Diss
 
 
 
-  
+
   
 ```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
 library(fontawesome)
