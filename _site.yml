@@ -24,6 +24,7 @@ navbar:
         href: pomodoro.tutorial.html
       - text: "pepe"
         href: pepe.tutorial.html
+        
   right:
     - text: "CV"
       icon: fa-download
