@@ -37,12 +37,12 @@ income, net-worth, NW-HE, and liquid assets are in Chinese renminbi (CNY).
 
 ## Overview
 
-Package `pomodoro` runs bagging (`BAG_Model`), boosting (`GBM_Model`), random forest (`RF_Model`), 
+Package `pomodoro` runs currently bagging (`BAG_Model`), boosting (`GBM_Model`), random forest (`RF_Model`), 
 multinominal logistic (`MLM_Model`), and logistic models (`GLM_Model`).
 This package is useful when you need the compare the predictive modeling using 
 the different data splits or/and adding exogenous variables into the equation.
-And it implements stratified random sampling to divide the data set into 
-80/20 train/test set, using 10 cross validation.
+And it divides the data set  into 80/20 train/test set, 
+using stratified random sampling and implements 10 cross validation to each model.
 
 
 
@@ -62,7 +62,14 @@ Let's build `RF_Model` one of the models which is available for this package.
 In the `pomodoro` [help field](https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf)
 we can see that `RF_Model`  was defined as  `RF_Model(Data, xvar, yvar)`.
 
-  
+### DataSet 
+
+For the computational purposes lets take the first 1000 rows of the `sample_data`.
+
+```r
+sample_data <- sample_data[c(1:1000),]
+```
+
 ### Selecting Dependent Variables
 
 where `xvar` is a vector which is defined as below:  
@@ -85,13 +92,7 @@ or
 yvar <- c("multi.level")
 ```
 
-### DataSet 
 
-For the computational purposes lets take the first 1000 rows of the `sample_data`.
-
-```r
-sample_data <- sample_data[c(1:1000),]
-```
 
 ### Implemantation 
 
