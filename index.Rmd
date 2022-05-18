@@ -32,7 +32,10 @@ I like doing <u> <a href="https://github.com/seymakalay" target="_blank">applica
 
 ## My Tutors
 
-During my PhD, I have been thankful for each of my companions and professors whom I learn and improve a lot. 
+During my PhD, I have been thankful to my seniors  
+<a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> and
+<a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
+whom I learn and improve a lot. 
 Especially, I am personally thankful to the head of the department 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2189" target="_blank">Prof. Gianmaria Martini</a>,
 and  my supervisors 
@@ -40,7 +43,10 @@ and  my supervisors
 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>.
 
 
- <!--\1 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>. 
+ <!--\1 
+ colleges for each of my companions and professors
+ 
+ <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>. 
 [UNIBG](https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management) 
 & [UNIPV](https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni)
 [applications](https://github.com/seymakalay)
