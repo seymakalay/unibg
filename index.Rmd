@@ -6,6 +6,11 @@ output:
     highlight: tango
 ---
 <!--\1   \1-->
+  
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+```                     
+
 
 <style type="text/css">
 .title {
@@ -28,18 +33,21 @@ I have a  PhD in Applied Economics and Management (AEM) at the
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
 <a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>
 in Italy.
-I like doing <u> <a href="https://github.com/seymakalay" target="_blank">applications</a> </u>,  biking, cooking for family & friends, woodworking, and gardening the most.
+I like data manipulations, coding, web applications ([`r fa("github", fill = "purple")`](https://github.com/seymakalay)),
+<!--\1    <u> <a href="https://github.com/seymakalay" target="_blank"> fa-github  </a> </u>,  \1-->
+biking, cooking for family & friends, woodworking, and gardening the most.
 
 ## My Tutors
 
 During my PhD, I have been thankful to my seniors  
-<a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> and
+<a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \&
 <a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
-whom I learn and improve a lot. 
-Especially, I am personally thankful to the head of the department 
+whom I learn and improve a lot
+<!--\1  Especially, I am personally thankful to  \1-->
+as well as the head of the department 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2189" target="_blank">Prof. Gianmaria Martini</a>,
 and  my supervisors 
-<a href="https://didattica-rubrica.unibg.it/ugov/person/2441" target="_blank">Prof. Michela Cameletti</a> and
+<a href="https://didattica-rubrica.unibg.it/ugov/person/2441" target="_blank">Prof. Michela Cameletti</a> \&
 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>.
 
 
@@ -62,7 +70,11 @@ and  my supervisors
 
 ## My Research Interest
 
-Implementing Machine Learning to understand access to credit. And the name of the chapters of my dissertation as follows,
+During my research, I
+have gained solid practical experience in data manipulation, analysis, visualization, mapping, implementing machine
+learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
+
+The name of the chapters of my dissertation as follows,
 
 1. Determinants of Access to Credit: A Bibliometric Literature Review. 
 2. Access to Credit: Using Machine Learning Algorithms
@@ -74,10 +86,6 @@ Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Diss
 
 
 
-  
-```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
-library(fontawesome)
-```                     
 
 
 
