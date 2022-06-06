@@ -27,7 +27,7 @@ library(fontawesome)
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **About Me**
+## **About Me**
 
 I have a  PhD in Applied Economics and Management (AEM) at the 
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
@@ -37,7 +37,7 @@ I like data manipulations, coding, web applications ([`r fa("github", fill = "pu
 <!--\1    <u> <a href="https://github.com/seymakalay" target="_blank"> fa-github  </a> </u>,  \1-->
 biking, cooking for family & friends, woodworking, and gardening the most.
 
-## My Tutors
+### My Tutors
 
 During my PhD, I have been thankful to my seniors  
 <a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \&
@@ -68,11 +68,17 @@ and  my supervisors
 3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
 \1-->
 
-## My Research Interest
+### My Research Interest
 
 During my research, I
 have gained solid practical experience in data manipulation, analysis, visualization, mapping, implementing machine
 learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
+
+__First Year:__ I conducted a study based on anti money laundering, using Unicredit data set.
+
+__Second Year:__ I conducted a study based on credit risk, using CHFS data set.
+
+__Third Year:__ I focused on my PhD dissertation. 
 
 The name of the chapters of my dissertation as follows,
 
@@ -82,8 +88,8 @@ The name of the chapters of my dissertation as follows,
 
 Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> </u>  presentation.
 
-
-
+__Fourth Year:__ I conducted  <a href="https://github.com/seymakalay/pomodoro" target="_blank">pomodoro</a> 
+and <a href="https://github.com/seymakalay/pepe" target="_blank">pepe</a> CRAN packages. 
 
 
 
