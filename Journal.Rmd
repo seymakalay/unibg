@@ -82,7 +82,7 @@ and conducted research on customer needs and preferences.
 **Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
 **Computer Skills:** 
 <u>*Competitive in:* </u> Latex, Microsoft Office, R, Shiny Application.
-<u>*New in:* </u> Html, Python, SQL.\
+<u>*New in:* </u> Html, Python, SQL, Java.\
 **Personal Strengths:**  Creative, analytic thinker, problem solver, good at teamwork, interpersonal skills, determined, disciplined, accountable, highly motivated, responsible, strong work ethics, positive mindset, adaptable, rapid learning capability.
 
 # Software Packages 

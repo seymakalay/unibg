@@ -524,14 +524,15 @@ liquid assets are in Chinese renminbi (CNY).</p>
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Package <code>pomodoro</code> runs bagging (<code>BAG_Model</code>),
-boosting (<code>GBM_Model</code>), random forest
-(<code>RF_Model</code>), multinominal logistic (<code>MLM_Model</code>),
-and logistic models (<code>GLM_Model</code>). This package is useful
-when you need the compare the predictive modeling using the different
-data splits or/and adding exogenous variables into the equation. And it
-implements stratified random sampling to divide the data set into 80/20
-train/test set, using 10 cross validation.</p>
+<p>Package <code>pomodoro</code> runs currently bagging
+(<code>BAG_Model</code>), boosting (<code>GBM_Model</code>), random
+forest (<code>RF_Model</code>), multinominal logistic
+(<code>MLM_Model</code>), and logistic models (<code>GLM_Model</code>).
+This package is useful when you need the compare the predictive modeling
+using the different data splits or/and adding exogenous variables into
+the equation. And it divides the data set into 80/20 train/test set,
+using stratified random sampling and implements 10 cross validation to
+each model.</p>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <p>You can install <code>pomodoro</code> from <a
@@ -547,25 +548,25 @@ available for this package. In the <code>pomodoro</code> <a
 href="https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf">help
 field</a> we can see that <code>RF_Model</code> was defined as
 <code>RF_Model(Data, xvar, yvar)</code>.</p>
+<div id="dataset-1" class="section level3">
+<h3>DataSet</h3>
+<p>For the computational purposes lets take the first 1000 rows of the
+<code>sample_data</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> sample_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>),]</span></code></pre></div>
+</div>
 <div id="selecting-dependent-variables" class="section level3">
 <h3>Selecting Dependent Variables</h3>
 <p>where <code>xvar</code> is a vector which is defined as below:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;married&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;havejob&quot;</span>, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;political.afl&quot;</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> <span class="st">&quot;rural&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;fin.intermdiaries&quot;</span>, <span class="st">&quot;fin.knowldge&quot;</span>, <span class="st">&quot;income&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>xvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;married&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;havejob&quot;</span>, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;political.afl&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="st">&quot;rural&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;fin.intermdiaries&quot;</span>, <span class="st">&quot;fin.knowldge&quot;</span>, <span class="st">&quot;income&quot;</span>)</span></code></pre></div>
 </div>
 <div id="selecting-independent-variables" class="section level3">
 <h3>Selecting Independent Variables</h3>
 <p>where <code>yvar</code> is a two or multilevel factor variable which
 is defined as below:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Loan.Type&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Loan.Type&quot;</span>) </span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multi.level&quot;</span>)</span></code></pre></div>
-</div>
-<div id="dataset-1" class="section level3">
-<h3>DataSet</h3>
-<p>For the computational purposes lets take the first 1000 rows of the
-<code>sample_data</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> sample_data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multi.level&quot;</span>)</span></code></pre></div>
 </div>
 <div id="implemantation" class="section level3">
 <h3>Implemantation</h3>
