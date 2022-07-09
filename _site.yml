@@ -1,6 +1,6 @@
-name: "Seyma Kalay"
+name: "Seyma Kalay, Ph.D."
 navbar:
-  title: "Seyma Kalay"
+  title: "Seyma Kalay, Ph.D."
   left:
     - text: "Home"
       href: index.html

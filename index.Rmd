@@ -1,17 +1,22 @@
 ---
-title: "Seyma Kalay"
+title: ""
 output:
   html_document:
     theme: flatly
     highlight: tango
 ---
 <!--\1   \1-->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
   
 ```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
 library(fontawesome)
 ```                     
 
-
+<!--\1  
 <style type="text/css">
 .title {
   display: none;
@@ -24,10 +29,36 @@ library(fontawesome)
 
 </style>
 
-<div class="row" style="padding-top: 30px;">
+<div class="row" style="padding-top: - 30px;">
 <div class="col-sm-6">
 
+\1-->
+
+```{css float-right-figure-caption, echo = FALSE}
+.my-right-figure {
+  display: table;
+  float: right;
+  padding-left: 30px;
+  padding-bottom: 10px;
+}
+.my-right-figure p {
+  display: table-caption;
+  caption-side: bottom;
+  padding-left: 30px
+}
+.figure {
+  display: contents;
+}
+```
+
+
 ## **About Me**
+
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='right'}
+knitr::include_graphics('images/logo.jpg')
+```
+</div>
 
 I have a  PhD in Applied Economics and Management (AEM) at the 
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
@@ -36,6 +67,8 @@ in Italy.
 I like data manipulations, coding, web applications ([`r fa("github", fill = "purple")`](https://github.com/seymakalay)),
 <!--\1    <u> <a href="https://github.com/seymakalay" target="_blank"> fa-github  </a> </u>,  \1-->
 biking, cooking for family & friends, woodworking, and gardening the most.
+
+
 
 ### My Tutors
 
@@ -86,11 +119,10 @@ The name of the chapters of my dissertation as follows,
 2. Access to Credit: Using Machine Learning Algorithms
 3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms.
 
-Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a> </u>  presentation.
+Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank"> Phd-Dissertation </a> </u>  presentation.
 
 __Fourth Year:__ I conducted  <a href="https://github.com/seymakalay/pomodoro" target="_blank">pomodoro</a> 
 and <a href="https://github.com/seymakalay/pepe" target="_blank">pepe</a> CRAN packages. 
-
 
 
 
@@ -120,19 +152,23 @@ fork the repo for this website and follow instructions on read me to get set up.
 
 
 
-<!--\1   \1-->
+<!--\1   
 </div>
 <div class="col-sm-6">
 
+\1-->
 <!--\1 
 ### [Crump Lab: Human Cognition and Performance](https://crumplab.github.io) 
 <a href = "https://crumplab.github.io">
 \1-->
 
-![](images/logo.jpg)
+<!--\1  
+![](images/logo.jpg) 
+\1-->
+
 <!--\1  ^[This web page was built with [RStudio](https://www.rstudio.com) and hosted by [github](https://docs.github.com/en/github/working-with-github-pages/about-github-pages).] </a> \1-->
+
+
+<!--\1  
 </div>
-
-
-
- 
+\1-->
