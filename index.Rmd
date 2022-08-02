@@ -72,18 +72,14 @@ biking, cooking for family & friends, woodworking, and gardening the most.
 
 ### My Tutors
 
-During my PhD, I have been thankful to my seniors  
-<a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \&
-<a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
-whom I learn and improve a lot
-<!--\1  Especially, I am personally thankful to  \1-->
-as well as the head of the department 
+During my PhD, I have been thankful to my seniors <a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \& <a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
+whom I learn and improve a lot as well as the head of the department 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2189" target="_blank">Prof. Gianmaria Martini</a>,
 and  my supervisors 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2441" target="_blank">Prof. Michela Cameletti</a> \&
 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>.
 
-
+<!--\1  Especially, I am personally thankful to  \1-->
  <!--\1 
  colleges for each of my companions and professors
  
@@ -107,22 +103,25 @@ During my research, I
 have gained solid practical experience in data manipulation, analysis, visualization, mapping, implementing machine
 learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
 
-__First Year:__ I conducted a study based on anti money laundering, using Unicredit data set.
+__First Year:__ I conducted an empirical study based on anti money laundering, implementing machine learning
+in a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank"> MappAPP </a>.
 
-__Second Year:__ I conducted a study based on credit risk, using CHFS data set.
+
+__Second Year:__ I conducted an empirical study based on credit risk, using CHFS data set.
 
 __Third Year:__ I focused on my PhD dissertation. 
 
 The name of the chapters of my dissertation as follows,
 
 1. Determinants of Access to Credit: A Bibliometric Literature Review. 
-2. Access to Credit: Using Machine Learning Algorithms
+2. Access to Credit: Using Machine Learning Algorithms.
 3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms.
 
-Check out my <u> <a href="./Kalay_PHD_Presantation.pdf" target="_blank"> Phd-Dissertation </a> </u>  presentation.
+Check out my <u><a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a></u>  presentation.
 
-__Fourth Year:__ I conducted  <a href="https://github.com/seymakalay/pomodoro" target="_blank">pomodoro</a> 
-and <a href="https://github.com/seymakalay/pepe" target="_blank">pepe</a> CRAN packages. 
+__Fourth Year:__ I developed and published two __CRAN PACKAGES__, namely: 
+**<a href="https://github.com/seymakalay/pomodoro" target="_blank"> pomodoro </a>** for machine learning
+and **<a href="https://github.com/seymakalay/pepe" target="_blank"> pepe </a>** for data visualization. 
 
 
 
