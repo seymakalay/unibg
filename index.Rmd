@@ -103,9 +103,8 @@ During my research, I
 have gained solid practical experience in data manipulation, analysis, visualization, mapping, implementing machine
 learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
 
-__First Year:__ I conducted an empirical study based on anti money laundering, implementing machine learning
-in a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank"> MappAPP </a>.
-
+__First Year:__  I conducted an empirical study based on anti money laundering, implementing machine learning
+using a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank"> MappAPP </a>.
 
 __Second Year:__ I conducted an empirical study based on credit risk, using CHFS data set.
 
@@ -113,11 +112,15 @@ __Third Year:__ I focused on my PhD dissertation.
 
 The name of the chapters of my dissertation as follows,
 
-1. Determinants of Access to Credit: A Bibliometric Literature Review. 
-2. Access to Credit: Using Machine Learning Algorithms.
-3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms.
+1. Determinants of Access to Credit: A Bibliometric Literature Review 
+(<a href="https://seymakalay87.shinyapps.io/biblio/" target="_blank"> biblio </a>). 
+2. Access to Credit: Using Machine Learning Algorithms 
+(<a href = "https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf" target="_blank"> pomodoro </a> \&
+<a href = "https://cran.r-project.org/web/packages/pepe/pepe.pdf" target="_blank"> pepe </a>).
+3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms 
+(<a href="https://github.com/seymakalay/tp3" target="_blank"> tp3^[runs only from console] </a>).
 
-Check out my <u><a href="./Kalay_PHD_Presantation.pdf" target="_blank">Phd-Dissertation</a></u>  presentation.
+Check out my <u><a href="./Kalay_PHD_Presantation.pdf" target="_blank"> Phd-Dissertation </a></u>  presentation.
 
 __Fourth Year:__ I developed and published two __CRAN PACKAGES__, namely: 
 **<a href="https://github.com/seymakalay/pomodoro" target="_blank"> pomodoro </a>** for machine learning

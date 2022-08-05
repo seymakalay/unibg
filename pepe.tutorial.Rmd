@@ -19,6 +19,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+```     
+
 
 
 <!--\1  <span style="color:red">pomodoro</span> \1-->
@@ -115,7 +119,10 @@ df <- sample_data[c("multi.level",
 ```
 
 
+> Have Fun!
 
+
+Back to top [`r fa("arrow-circle-up", height = "2em", width = "2em", fill = "steelblue")`](#)
 
 
 

@@ -11,6 +11,11 @@ output:
    #  - \usepackage{placeins}
 ---
 
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+```     
+
+
 # this page is under construction
 
 ## Objectives
@@ -75,5 +80,5 @@ leaflet() %>%
 </center>
 
 
-
+Back to top [`r fa("arrow-circle-up", height = "2em", width = "2em", fill = "steelblue")`](#)
 
