@@ -45,13 +45,16 @@ navbar:
       icon: fa-github 
     - href: https://stackoverflow.com/users/9209203/seyma-kalay?tab=profile
       icon: fa-stack-overflow
-    - text: "CV"
+    - text: ""
       icon: fa-download
       menu:
+      - text: "CVs"
       - text: "English CV"
         href: ./SK_Cover.pdf
       - text: "Italian CV"
         href: ./SK_Cover_it.pdf  
+      - text: "------------" 
+      - text: "Docs"
       - text: "Certificates"  
         href: ./images/Certificates.pdf  
       - text: "References"  
