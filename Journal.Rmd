@@ -122,9 +122,8 @@ Yapi Kredi Bank Scholarship, 2006 - 2010.
 # References
 
 **Asso. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Associate Professor; dfkahey@hotmail.com\
-**Asso. Prof.:** Michela Cameletti; University of Bergamo; Associate Professor; michela.cameletti@unibg.it\
-**Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr\
-**Prof.:** Claudio Pacati; University of Siena; Department of Economics and Statistics; claudio.pacati@unisi.it\
+**Trading Mgr:** Birkan Karatas; Ziraat Portfoy; Trading Manager; bkaratas@ziraatportfoy.com.tr\
+**Prof.:** Claudio Pacati; University of Siena; Full Professor; claudio.pacati@unisi.it\
 
 
 
@@ -136,7 +135,9 @@ Back to top [`r fa("arrow-circle-up", height = "2em", width = "2em", fill = "ste
 
 
 <!--\1   
+**Asso. Prof.:** Michela Cameletti; University of Bergamo; Associate Professor; michela.cameletti@unibg.it\
 
+**Prof.:** Zikri Altun; University of Marmara; Head of the department of Physic; zikalt@marmara.edu.tr\
 
 ### third level header
 
