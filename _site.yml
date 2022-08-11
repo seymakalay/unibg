@@ -59,7 +59,7 @@ navbar:
         href: ./images/Certificates.pdf  
       - text: '---------'
       - text: "Reference Letters" 
-      - text: Will be provided upon email request. 
+      - text: Reference.html
     - href: https://www.linkedin.com/in/seyma-kalay-3315345b/
       icon: fab fa-linkedin fa-lg  
 output_dir: "docs"

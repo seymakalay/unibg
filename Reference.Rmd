@@ -1,13 +1,16 @@
 ---
-title: "Untitled"
-output: html_document
+title: ""
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
 ---
+<!--\1   \1-->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+  
 
-Reference letters will be provided upon [email](seymakalay@hotmail.com) request.\
-
-
+Reference letters will be provided upon [email](mailto:seymakalay@hotmail.com) request.\
