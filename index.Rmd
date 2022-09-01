@@ -104,7 +104,7 @@ have gained solid practical experience in data manipulation, analysis, visualiza
 learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
 
 __First Year:__  I conducted an empirical study based on anti money laundering, implementing machine learning
-using a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank"> mappapp </a>.
+using a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank">mappapp</a>.
 
 __Second Year:__ I conducted an empirical study based on credit risk, using CHFS data set.
 

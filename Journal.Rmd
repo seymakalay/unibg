@@ -31,6 +31,7 @@ Mobile         : +39 338 9628589\
 Email & Skype  : seymakalay@hotmail.com\
 Marital Status : Single\ 
 Date of Birth   : 16.05.1987\
+Driving Licence : B 
 
 <!--\1 Place of Birth : Turkey-Istanbul\ \1-->
 
@@ -83,7 +84,7 @@ and conducted research on customer needs and preferences.
 
 
 # Skills and Competencies 
-**Languages:** Turkish mother tongue, advance in English, intermediate in Italian, beginner in Spanish.\
+**Languages:** Native in Turkish, advance in English, intermediate in Italian, beginner in Spanish.\
 **Computer Skills:** 
 <u>*Competitive in:* </u> Latex, Microsoft Office, R, Shiny Application.
 <u>*New in:* </u> Html, Python, SQL, Java.\
@@ -99,10 +100,10 @@ modeling and comparing the predictive powers easier based on the data-splits and
 expected release late 2023.
 \1-->
 <u> <a href="https://github.com/seymakalay/pomodoro" target="_blank"> **CRAN** *Pomodoro:* </a> </u>
-Comparison of predictive power models. This package is intended to make
+Comparison of predictive power. This package is intended to make
 modeling and comparing the predictive powers easier based on the data-splits and all data set.\
 <u> <a href="https://github.com/seymakalay/pepe" target="_blank"> **CRAN** *Pepe:* </a>  </u>
-Is intended to make descriptive statistics easier, expected release late 2022.\
+Is intended to make descriptive statistics easier.\
 **CRAN** *Oregano:* 
 Is intended to create Shiny Modules to make the visualization easier,
 expected release late 2023.
