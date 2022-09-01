@@ -24,7 +24,7 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
 ```
  \1-->
 
-# Personal Information
+# Personal Information 
 
 Address        : Via Caniana 2 Bergamo-Lombardia-Italy\
 Mobile         : +39 338 9628589\
