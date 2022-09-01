@@ -60,7 +60,7 @@ knitr::include_graphics('images/logo.jpg')
 ```
 </div>
 
-I have a  PhD in Applied Economics and Management (AEM) at the 
+I have  PhD in Applied Economics and Management (AEM) at the 
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
 <a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>
 in Italy.
