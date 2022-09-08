@@ -49,10 +49,16 @@ library(fontawesome)
 .figure {
   display: contents;
 }
+.ul {
+    content:attr(aria-label);
+    font-size:120%;
+    font-weight:bold;
+    margin-left:-1px;
+}
 ```
 
 
-## **About Me**
+## **Data Scientist**
 
 <div class="my-right-figure">
 ```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='right'}
@@ -60,16 +66,34 @@ knitr::include_graphics('images/logo.jpg')
 ```
 </div>
 
-I have a PhD in Applied Economics and Management (AEM) at the 
+__Background in:__   
+
+* PhD in Applied Economics and Management (AEM) at 
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
-<a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>
-in Italy.
+<a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>.
+
+__Main Area of Interest:__   
+
+* Data Manipulations
+* Interactive Data Visualization & Mapping 
+* Data Storytelling 
+* Implementing Machine Learning Algorithms  
+* Building Interactive User Interfaces ([`r fa("github", fill = "purple")`](https://github.com/seymakalay))
+
+
+     
+
+
+<!--\1 
 I like data manipulations, coding, web applications ([`r fa("github", fill = "purple")`](https://github.com/seymakalay)),
-<!--\1    <u> <a href="https://github.com/seymakalay" target="_blank"> fa-github  </a> </u>,  \1-->
 biking, cooking for family & friends, woodworking, and gardening the most.
+\1-->
 
 
+<!--\1    <u> <a href="https://github.com/seymakalay" target="_blank"> fa-github  </a> </u>,  \1-->
 
+
+<!--\1
 ### My Tutors
 
 During my PhD, I have been thankful to my mentors <a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \& <a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
@@ -78,7 +102,9 @@ whom I learn and improve a lot as well as the head of the department
 and  my supervisors 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2441" target="_blank">Prof. Michela Cameletti</a> \&
 <a href="https://didattica-rubrica.unibg.it/ugov/person/3333" target="_blank">Prof. Federica Maria Orgio</a>.
-
+ <!--\1 
+ 
+ 
 <!--\1  Especially, I am personally thankful to  \1-->
  <!--\1 
  colleges for each of my companions and professors
@@ -97,6 +123,9 @@ and  my supervisors
 3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
 \1-->
 
+
+
+<!--\1
 ### My Research Interest
 
 During my research, I
@@ -127,6 +156,7 @@ __Fourth Year:__ I developed and published two __CRAN PACKAGES__, namely:
 and **<a href="https://github.com/seymakalay/pepe" target="_blank"> pepe </a>** for data visualization. 
 
 
+\1-->
 
 
 ---

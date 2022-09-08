@@ -122,9 +122,7 @@ df <- sample_data[c("multi.level",
 > Have Fun!
 
 
-Back to top [`r fa("arrow-circle-up", height = "2em", width = "2em", fill = "steelblue")`](#)
-
-
-
+<!--\1  \( \LaTeX \)  Back to top [`r fa("arrow-up", height = "2em", width = "2em", fill = "steelblue")`](#) \1-->
+ <a href="#top" style="color:steelblue;" >Back to top</a> [`r fa("arrow-up", height = "2em", width = "1em", fill = "steelblue")`](#) 
 
 
