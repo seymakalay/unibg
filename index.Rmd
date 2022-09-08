@@ -74,9 +74,11 @@ __Background in:__
 
 __Main Area of Interest:__   
 
-* Data Manipulations
+* Data Manipulations 
+* Extract, Transform, and Load (ETL) 
 * Interactive Data Visualization & Mapping 
 * Data Storytelling 
+* Business Intelligence
 * Implementing Machine Learning Algorithms  
 * Building Interactive User Interfaces ([`r fa("github", fill = "purple")`](https://github.com/seymakalay))
 
