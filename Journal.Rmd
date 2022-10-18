@@ -187,10 +187,13 @@ Yapi Kredi Bank Scholarship, 2006 - 2010.
 
 # References
 
+Reference letters will be provided upon [request](mailto:seymakalay@hotmail.com).
+
+<!--\1
 **Asso. Prof.:** Daniel Felix Ahelegbey; University of Pavia; Associate Professor; dfkahey@hotmail.com\
 **Trading Mgr:** Birkan Karatas; Ziraat Portfoy; Trading Manager; bkaratas@ziraatportfoy.com.tr\
 **Prof.:** Claudio Pacati; University of Siena; Full Professor; claudio.pacati@unisi.it\
-
+\1--> 
 
 
 <!--\1   <a href="#top">Back to top</a> \1-->
