@@ -58,17 +58,17 @@ To work for the organization to the best of my knowledge and ability from where 
 
 # Education
      
-**Joint PhD in Applied Economics and Management (AEM),**\
-University of Bergamo & Pavia (Italy), Sept 2017 - Feb 2022.
+**Joint PhD in Applied Economics and Management (AEM)**\
+University of Bergamo & Pavia (Italy), Sept 2017 - Feb 2022
 
-**Master in Finance,**\
-University of Siena (Italy),  Nov 2013 - June 2016.
+**Master in Finance**\
+University of Siena (Italy),  Nov 2013 - June 2016
 
-**Certificate in Masters of Business Administration Program,**\
-University of Auburn (USA), Spring 2011 - Fall 2012.\
+**Certificate in Masters of Business Administration Program**\
+University of Auburn (USA), Spring 2011 - Fall 2012\
 
-**Bachelor in Astronomy and Space Science,**\
-University of Istanbul (Turkey), Fall 2006 - Spring 2010.                                                                              
+**Bachelor in Astronomy and Space Science**\
+University of Istanbul (Turkey), Fall 2006 - Spring 2010                                                                             
 
 # Experiences 
 
@@ -111,15 +111,18 @@ and conducted research on customer needs and preferences.
 <ul class="list-inline">
    <li> <u>**Computer Skills:** </u>  </li>
    <li> <u>*Competitive in:*</u>  </li>
-   <li>&bull;  LaTeX </li>
-   <li>&bull; Microsoft Office </li>
    <li>&bull; R </li>
    <li>&bull; Shiny Applications </li>
+   <li>&bull;  LaTeX </li>
+   <li>&bull; Microsoft Office </li>
    <li> <u>*New in:*</u>  </li>
-      <li>&bull; HTML </li>
    <li>&bull; Python </li>
+   <li>&bull; HTML </li>
+   <li>&bull; VBA </li>
    <li>&bull; SQL </li>
    <li>&bull; Java </li>
+   <li>&bull; Power BI </li>
+   <li>&bull; Tableau </li>
 </ul>
 <!--\1 Latex, Microsoft Office, R, Shiny Application. \1-->
 <!--\1   <u>*New in:* </u> Html, Python, SQL, Java.\1-->
