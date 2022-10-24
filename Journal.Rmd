@@ -156,6 +156,10 @@ Reproducible bibliometric literature review.</li>
 **Tp3:**</a></u>
 Conducting unsupervised machine learning algorithms (Tp3: runs from console). </li>
 
+<u>**Viz**</u>
+<li><u><a href="https://public.tableau.com/app/profile/seyma.kalay" target="_blank">**Tableau:**</a></u> 
+Conducting data visualization using Tableau Destop.</li>
+
 <u>**Software Packages**</u> 
 <li><u> <a href="https://github.com/seymakalay/pomodoro" target="_blank"> **CRAN** *Pomodoro:* </a></u>
 Comparison of predictive power. This package is intended to make
@@ -165,6 +169,10 @@ Is intended to make descriptive statistics easier. </li>
 <li> **CRAN** *Oregano:* 
 Is intended to create Shiny Modules to make the visualization easier,
 expected release late 2023. </li>
+
+<u>**GitHub**</u>
+<li><u><a href="https://github.com/seymakalay" target="_blank">**Repositories:**</a></u> 
+ Current Github repositories.</li>
 
 <u>**Publications**</u> 
 <li><u><a href="./pomodoro.pdf" target="_blank">  **Pomodoro:** </a></u> 

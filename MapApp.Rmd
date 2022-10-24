@@ -80,5 +80,5 @@ leaflet() %>%
 </center>
 
 
-Back to top [`r fa("arrow-circle-up", height = "2em", width = "2em", fill = "steelblue")`](#)
+ <a href="#top" style="color:steelblue;" >Back to top</a> [`r fa("arrow-up", height = "2em", width = "1em", fill = "steelblue")`](#) 
 
