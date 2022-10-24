@@ -42,7 +42,7 @@ li {
 Address        : Via Caniana 2 Bergamo-Lombardia-Italy\
 Mobile         : +39 338 9628589\
 Email & Skype  : seymakalay@hotmail.com\
-Marital Status : Single\ 
+Marital Status : Single, \ 
 Date of Birth   : 16.05.1987\
 Driving Licence : B 
 
@@ -181,7 +181,7 @@ Data Manipulation. </li>
 
 # Awards and Honors 
 
-2017- Present, UNIBG PhD Fund.\
+2017- 2022, UNIBG PhD Fund.\
 DSU - Toscana, 2013 - 2016.\
 TPV (Turkish Gas Foundation Scholarship), 2007 - 2010.\
 Turkish Women Community Scholarship, 2007 - 2010.\
