@@ -160,7 +160,7 @@ Conducting unsupervised machine learning algorithms (Tp3: runs from console). </
 <li><u><a href="https://public.tableau.com/app/profile/seyma.kalay" target="_blank">**Tableau:**</a></u> 
 Conducting data visualization using Tableau Destop.</li>
 
-<u>**Software Packages**</u> 
+<u>**R Software Packages**</u> 
 <li><u> <a href="https://github.com/seymakalay/pomodoro" target="_blank"> **CRAN** *Pomodoro:* </a></u>
 Comparison of predictive power. This package is intended to make
 modeling and comparing the predictive powers easier based on the data-splits and all data set.</li> 
