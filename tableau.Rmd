@@ -1,0 +1,90 @@
+---
+title: ""
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+#header-includes:
+#- \usepackage{caption}  
+   #  - \usepackage{placeins}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+library(knitr)
+```     
+
+<!--\1  <span style="color:red">pomodoro</span> \1-->
+<!--\1   \1-->
+  
+## Objectives
+
+
+> This tutorial provides a guideline to embed a [Tableau Viz](https://public.tableau.com/app/profile/seyma.kalay/viz/Destination_Map/Dsh1) into [HTML](https://seymakalay.github.io/TableauViz/index.html) using R Markdown.
+
+# R Markdown page
+
+The minimum requirements for an R Markdown website are:
+
+`index.Rmd:` contains the content for the website homepage, and
+`_site.yml:` contains metadata for the website. Please find out more about rmarkdown page in [rstudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/).
+
+## Embeded Tableau in R 
+<!--\1 ([`r fa("github", fill = "purple")`](https://github.com/seymakalay)) \1-->
+
+Let's find  the embeded code of the tableau viz under  the share icon ([`r fa("share-nodes", fill = "orange")`](https://public.tableau.com/app/profile/seyma.kalay/viz/Destination_Map/Dsh1)).
+
+# Embeded Code
+
+Let's copy and paste the embeded code in our `.Rmd` file.
+
+<div class='tableauPlaceholder' id='viz1676886276003' style='position: relative'><noscript><a href='#'><img alt='Dsh1' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Destination_Map&#47;Dsh1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Destination_Map&#47;Dsh1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Destination_Map&#47;Dsh1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1676886276003');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1200px';vizElement.style.height='1027px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+# Final step 
+
+Let's divide `<div...</div>` and `<script>...<\script>` part.
+
+```{html, echo = TRUE}
+<div class='tableauPlaceholder' id='viz1675351055624' style='position: relative'><noscript><a href='#'><img alt='Dsh1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Destination_Map&#47;Dsh1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Destination_Map&#47;Dsh1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Destination_Map&#47;Dsh1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>    
+```
+
+                 
+        
+```{js,embedcode, echo = TRUE}                    
+
+var divElement = document.getElementById('viz1675351055624');                    
+var vizElement = divElement.getElementsByTagName('object')[0];                    
+vizElement.style.width='1200px';vizElement.style.height='1027px';                    
+var scriptElement = document.createElement('script');                    
+scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+``` 
+
+
+
+# Outcome
+
+```{r echo=FALSE,fig.cap="**[TableauViz:](https://seymakalay.github.io/TableauViz/Map.html)** Click on TableauViz.", out.width='800px', out.lenght='800px', fig.align='left'}
+knitr::include_url("https://seymakalay.github.io/TableauViz/Map.html")
+```
+
+<!--\1  
+```{r echo=FALSE,fig.cap="**[TableauViz:](https://seymakalay.github.io/TableauViz/Map.html)** Click on TableauViz.", out.width='100px', fig.align='left'}
+knitr::include_url("https://seymakalay.github.io/TableauViz/Map.html")
+```
+\1-->
+                
+      
+
+
+
+

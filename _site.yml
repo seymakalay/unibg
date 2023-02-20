@@ -40,6 +40,9 @@ navbar:
       - text: "Visualization"
       - text: "Plot"
         href: VisualApp.html  
+    - text: "Tableau"
+      icon: fa-star
+      href: tableau.html
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 
