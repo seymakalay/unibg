@@ -27,7 +27,6 @@ library(knitr)
   
 ## Objectives
 
-
 > This tutorial provides a guideline to embed a [Tableau Viz](https://public.tableau.com/app/profile/seyma.kalay/viz/Destination_Map/Dsh1) into [HTML](https://seymakalay.github.io/TableauViz/index.html) using R Markdown.
 
 # R Markdown page
