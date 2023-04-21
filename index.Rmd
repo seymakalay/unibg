@@ -66,12 +66,13 @@ knitr::include_graphics('images/logo.jpg')
 
 __Background in:__   
 
-* PhD in Applied Economics and Management (AEM) presso * Data Manipulations
+* PhD in Applied Economics and Management (AEM) at
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
 <a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>.
 
 __Main Area of Interest:__   
 
+* Data Manipulations
 * Extract, Transform, and Load (ETL) 
 * Interactive Data Visualization & Mapping 
 * Data Storytelling 
