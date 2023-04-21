@@ -53,10 +53,15 @@ Driving Licence : B
 
 To work for the organization to the best of my knowledge and ability from where the organization could benefit from my programming, app building and machine learning skills. 
 
+FOR ICON ION!!!
+https://github.com/ionic-team/ionicons
+
 \1-->
 
 
-# Education
+
+
+# Education 
      
 **Joint PhD in Applied Economics and Management (AEM)**\
 University of Bergamo & Pavia (Italy), Sept 2017 - Feb 2022
@@ -84,7 +89,7 @@ interactive user faces^[Please see at: <a href="https://github.com/seymakalay" t
 Ziraat Portfolio (Turkey), Jan 2016 - Sept 2016.\
 - Observed equity and bond market, familiar with the behavioral finance, created a statistical model to maximize the portfolio’s return and proved the model efficiency by tracing the data.\
 
-**Intern** - Portfolio,\
+**Intern** - Portfolio,\ 
 Invest-AZ (Turkey), Nov 2015 - Dec 2015.\
 - To analyze the companies by looking at their income statements 
 and balance sheets to make sure it is beneficial to invest in those companies.
@@ -142,7 +147,6 @@ Creative, analytic thinker, problem solver, good at teamwork, interpersonal skil
 
 
 
-
 # Projects
 
 <u>**Interactive User Interfaces**</u>
@@ -165,6 +169,9 @@ Conducting data visualization using Tableau Destop.</li>
 <u>**HTML**</u>
 <li><u><a href="https://seymakalay.github.io/TableauViz/index.html" target="_blank">**TableauViz**</a></u> 
 Combining Tableau, Rshiny, and HTML.</li>
+
+
+
 
 
 <u>**R Software Packages**</u> 

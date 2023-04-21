@@ -13,7 +13,7 @@
 
 <title>VisualApp.knit</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -134,11 +134,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -375,13 +379,22 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Mapping</li>
-    <li class="divider"></li>
     <li>
       <a href="MapApp.html">Simple Map</a>
     </li>
-    <li class="dropdown-header">Visualization</li>
     <li class="divider"></li>
+    <li class="dropdown-header">Visualization</li>
+    <li>
+      <a href="VisualApp.html">Plot</a>
+    </li>
   </ul>
+</li>
+<li>
+  <a href="tableau.html">
+    <span class="fa fa-star"></span>
+     
+    Tableau
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -401,16 +414,22 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-download"></span>
      
-    CV
+    
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">CVs</li>
     <li>
       <a href="./SK_Cover.pdf">English CV</a>
     </li>
     <li>
       <a href="./SK_Cover_it.pdf">Italian CV</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Docs</li>
+    <li>
+      <a href="./images/Certificates.pdf">Certificates</a>
     </li>
   </ul>
 </li>

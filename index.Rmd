@@ -16,7 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(fontawesome)
 ```                     
 
-<!--\1  
+
+
+
+<!--\1 
 <style type="text/css">
 .title {
   display: none;
@@ -83,7 +86,9 @@ __Main Area of Interest:__
 * Building Interactive User Interfaces ([`r fa("github", fill = "purple")`](https://github.com/seymakalay))
 
 
-     
+
+
+
 
 
 <!--\1 
