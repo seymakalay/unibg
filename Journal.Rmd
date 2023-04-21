@@ -37,7 +37,7 @@ li {
 ``` 
 
 
-# Informazione personale
+# Personal Information 
 
 Address        : Via Caniana, Bergamo-Lombardia-Italy\
 Mobile         : +39 338 9628589\
