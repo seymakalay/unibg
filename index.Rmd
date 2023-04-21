@@ -24,17 +24,12 @@ library(fontawesome)
 .title {
   display: none;
 }
-
-
 #getting-started img {
   margin-right: 10px;
 }
-
 </style>
-
 <div class="row" style="padding-top: - 30px;">
 <div class="col-sm-6">
-
 \1-->
 
 ```{css float-right-figure-caption, echo = FALSE}
@@ -97,7 +92,6 @@ biking, cooking for family & friends, woodworking, and gardening the most.
 
 <!--\1
 ### My Tutors
-
 During my PhD, I have been thankful to my mentors <a href="https://sites.google.com/site/danielfelixahey/home" target="_blank">Daniel Felix Ahelegbey </a> \& <a  href= "https://oric.iba.edu.pk/profile.php?id=ashrafkhan" target="_blank"> Ashraf Khan </a>
 whom I learn and improve a lot as well as the head of the department 
 <a href="https://didattica-rubrica.unibg.it/ugov/person/2189" target="_blank">Prof. Gianmaria Martini</a>,
@@ -118,8 +112,6 @@ and  my supervisors
 [Prof. Gianmaria Martini](https://didattica-rubrica.unibg.it/ugov/person/2189),
 [Prof. Michela Cameletti](https://didattica-rubrica.unibg.it/ugov/person/2441) and
 [Prof. Federica Maria Orgio](https://didattica-rubrica.unibg.it/ugov/person/3333).
-
-
 1. Determinants of Access to Finance: A Bibliometric Literature Review. 
 2. Access to Credit: The Self-Employment Case in the Chinese Labor Market.
 3. Predicting Financial Health of the Households Using Machine Learning Algorithms.
@@ -129,20 +121,14 @@ and  my supervisors
 
 <!--\1
 ### My Research Interest
-
 During my research, I
 have gained solid practical experience in data manipulation, analysis, visualization, mapping, implementing machine
 learning (both supervised & unsupervised) algorithms, and building interactive user-faces. 
-
 __First Year:__  I conducted an empirical study based on anti money laundering, implementing machine learning
 using a bank data set and I created  <a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank">mappapp</a>.
-
 __Second Year:__ I conducted an empirical study based on credit risk, using CHFS data set.
-
 __Third Year:__ I focused on my PhD dissertation. 
-
 The name of the chapters of my dissertation as follows,
-
 1. Determinants of Access to Credit: A Bibliometric Literature Review 
 (<a href="https://seymakalay87.shinyapps.io/biblio/" target="_blank"> biblio </a>). 
 2. Access to Credit: Using Machine Learning Algorithms 
@@ -150,14 +136,10 @@ The name of the chapters of my dissertation as follows,
 <a href = "https://cran.r-project.org/web/packages/pepe/pepe.pdf" target="_blank"> pepe </a>).
 3. Predicting Financial Health and Mapping: Using Machine Learning Algorithms 
 (<a href="https://github.com/seymakalay/tp3" target="_blank"> tp3^[runs only from console] </a>).
-
 Check out my <u><a href="./Kalay_PHD_Presantation.pdf" target="_blank"> Phd-Dissertation </a></u>  presentation.
-
 __Fourth Year:__ I developed and published two __CRAN PACKAGES__, namely: 
 **<a href="https://github.com/seymakalay/pomodoro" target="_blank"> pomodoro </a>** for machine learning
 and **<a href="https://github.com/seymakalay/pepe" target="_blank"> pepe </a>** for data visualization. 
-
-
 \1-->
 
 
@@ -189,7 +171,6 @@ fork the repo for this website and follow instructions on read me to get set up.
 <!--\1   
 </div>
 <div class="col-sm-6">
-
 \1-->
 <!--\1 
 ### [Crump Lab: Human Cognition and Performance](https://crumplab.github.io) 

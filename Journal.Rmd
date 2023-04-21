@@ -27,13 +27,11 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
 font-weight:bold; \1-->
  
 ```{css bullet-margin, echo = FALSE}
-
 li {
     content:attr(aria-label);
     font-size:100%;
     margin-right:-10px;
 }
-
 ``` 
 
 
@@ -50,12 +48,9 @@ Driving Licence : B
 
 <!--\1
 # Objectives
-
 To work for the organization to the best of my knowledge and ability from where the organization could benefit from my programming, app building and machine learning skills. 
-
 FOR ICON ION!!!
 https://github.com/ionic-team/ionicons
-
 \1-->
 
 
