@@ -71,22 +71,18 @@ knitr::include_graphics('images/logo.jpg')
 
 __Background in:__   
 
-* PhD in Economia Applicata e Management (AEM) presso
+* PhD in Applied Economics and Management (AEM) presso * Data Manipulations
 <a href="https://www.unibg.it/ricerca/lavorare-ricerca/dottorati-ricerca/dottorati-ricerca/applied-economics-and-management" target="_blank">UNIBG</a> & 
 <a href="https://sites.google.com/unipv.it/phd-aem/home-page/people/alumni" target="_blank">UNIPV</a>.
 
 __Main Area of Interest:__   
 
-* Estrai, trasforma e carica (ETL)
-* Visualizzazione e mappatura interattiva dei dati
-* Narrazione dei dati
-* Intelligenza aziendale
-* Implementazione di algoritmi di apprendimento automatico
-* Costruire interfacce utente interattive ([`r fa("github", fill = "purple")`](https://github.com/seymakalay))
-
-
-
-
+* Extract, Transform, and Load (ETL) 
+* Interactive Data Visualization & Mapping 
+* Data Storytelling 
+* Business Intelligence
+* Implementing Machine Learning Algorithms  
+* Building Interactive User Interfaces
 
 
 
