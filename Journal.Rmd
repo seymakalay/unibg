@@ -37,15 +37,14 @@ li {
 ``` 
 
 
-# Personal Information 
+# Informazione personale
 
-Address        : Via Caniana, Bergamo-Lombardia-Italy\
-Mobile         : +39 338 9628589\
-Email & Skype  : seymakalay@hotmail.com\
-Marital Status : Single, \ 
-Date of Birth   : 16.05.1987\
-Driving Licence : B 
-
+Indirizzo : Via Caniana, Bergamo-Lombardia-Italia\
+Cellulare : +39 338 9628589\
+E-mail e Skype: seymakalay@hotmail.com\
+Stato civile : Celibe, \
+Data di nascita : 16.05.1987\
+Patente di guida: B
 <!--\1 Place of Birth : Turkey-Istanbul\ \1-->
 
 <!--\1
