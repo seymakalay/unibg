@@ -31,7 +31,7 @@ library(fontawesome)
 ## Objectives
 
 > This tutorial is meant to introduce [pepe](https://github.com/seymakalay/pepe)  package only, using a case study.
-The purpose of this package is presanting the tables and plots with ease. 
+The purpose of this package is to present the tables and plots with ease. 
 
 
 ### Dataset
