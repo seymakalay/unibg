@@ -1,0 +1,38 @@
+---
+title: ""
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+#header-includes:
+#- \usepackage{caption}  
+   #  - \usepackage{placeins}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+library(knitr)
+```     
+
+<!--\1  <span style="color:red">pomodoro</span> \1-->
+<!--\1   \1-->
+  
+# this page is under construction
+
+## Objectives
+
+
+> This tutorial provides a guideline to embed a [Power BI](https://app.powerbi.com/reportEmbed?reportId=922be8bf-a36f-40ec-8e45-424c1acec091&autoAuth=true&ctid=2910c8d0-a9d7-4737-800d-125cbd9916bc) into HTML using R Markdown.
+
+
+
+
+

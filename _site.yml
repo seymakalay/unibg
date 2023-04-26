@@ -43,6 +43,9 @@ navbar:
     - text: "Tableau"
       href: tableau.html 
       icon: fa-star
+    - text: "Power BI" 
+      href: powerbi.html 
+      icon: fa-chart-bar
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 
