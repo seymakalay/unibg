@@ -83,9 +83,6 @@ vizElement.parentNode.insertBefore(scriptElement, vizElement);
 knitr::include_url("https://seymakalay.github.io/TableauViz/Map.html")
 ```
 
-```{r echo=FALSE,fig.cap="**[TableauViz:](https://seymakalay.github.io/TableauViz/Map.html)** Click on TableauViz.",  fig.align='left'}
-knitr::include_url("https://seymakalay.github.io/TableauViz/Map.html")
-```
 <!-- out.width='800px', out.lenght='800px', \1-->
 
 
