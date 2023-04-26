@@ -62,6 +62,8 @@ navbar:
         href: ./images/Certificates.pdf  
     - href: https://www.linkedin.com/in/seyma-kalay-3315345b/
       icon: fab fa-linkedin fa-lg  
+    - href: https://seymakalay.github.io/unibg.it/index.html
+      icon: fa-globe  
 output_dir: "docs"
 
 
