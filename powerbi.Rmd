@@ -25,7 +25,7 @@ library(knitr)
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
   
-# this page is under construction
+# this page is under construction.
 
 ## Objectives
 
