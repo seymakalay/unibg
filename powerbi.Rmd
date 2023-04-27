@@ -30,9 +30,10 @@ library(knitr)
 ## Objectives
 
 
-> This tutorial provides a guideline to embed a [Power BI](https://app.powerbi.com/reportEmbed?reportId=922be8bf-a36f-40ec-8e45-424c1acec091&autoAuth=true&ctid=2910c8d0-a9d7-4737-800d-125cbd9916bc) into HTML using R Markdown.
+> This tutorial provides a guideline to embed a 
+Power Bi into HTML using R Markdown.
 
-
+<iframe title="nycflights13" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=922be8bf-a36f-40ec-8e45-424c1acec091&autoAuth=true&ctid=2910c8d0-a9d7-4737-800d-125cbd9916bc" frameborder="0" allowFullScreen="true"></iframe>
 
 
 
