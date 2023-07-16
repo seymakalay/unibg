@@ -74,6 +74,11 @@ University of Istanbul (Turkey), Fall 2006 - Spring 2010
 
 # Experiences
 
+
+**Intern** - Market Research Assistant,\
+MPS - Evolving Marketing Research, Bergamo (Italia), April 2023- July 2023.\
+Analyzing market research outcomes by creating databases and descriptive statistics.
+
 **Researcher** - Statistics,\
 University of Bergamo & Pavia (Italy), Sept 2017- Feb 2022.\
 - Implementing data manipulations, applying machine learning algorithms, and creating
@@ -112,20 +117,22 @@ and conducted research on customer needs and preferences.
 </ul>
 <ul class="list-inline">
    <li> <u>**Computer Skills:** </u>  </li>
-   <li> <u>*Competitive in:*</u>  </li>
+   <li> <u>*Advance:*</u>  </li>
    <li>&bull; R </li>
    <li>&bull; Shiny Applications </li>
    <li>&bull;  LaTeX </li>
    <li>&bull; Microsoft Office </li>
-   <li> <u>*Intermediate in:*</u>  </li>
+   <li> <u>*Intermediate*</u>  </li>
     <li>&bull; HTML </li>
     <li>&bull; SQL </li>
-    <li>&bull; Tableau </li>
-   <li> <u>*New in:*</u>  </li>
+    <li>&bull; Power BI  </li>
+    <li>&bull; Tableau </li>  
+   <li> <u>*Beginner:*</u>  </li>
+   <li>&bull; Dax </li>
+   <li>&bull; Java </li>
    <li>&bull; Python </li>
    <li>&bull; VBA </li>
-   <li>&bull; Java </li>
-   <li>&bull; Power BI </li>
+   <li>&bull; Quantum </li>
 </ul>
 <!--\1 Latex, Microsoft Office, R, Shiny Application. \1-->
 <!--\1   <u>*New in:* </u> Html, Python, SQL, Java.\1-->
