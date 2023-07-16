@@ -62,7 +62,7 @@ navbar:
       - text: "------------" 
       - text: "Certificates"
       - text: "Auburn Business"  
-        href: ./images/AU_Business_pdf 
+        href: ./images/AU_Business.pdf 
       - text: "Python"  
         href: ./images/Python4_Data_Analysis.pdf
       - text: "Power Bi"
