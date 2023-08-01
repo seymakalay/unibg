@@ -176,6 +176,15 @@ We have already defined `xvar`, `yvar` and `Data`.
 `exog = "political.afl"` will define the data set based on the factor levels of the 
 `"political.afl"` in this case "0" and "1".  
 
+<center>
+![Summary Statistics](images/sum.stats.ccp.png){width=85%}
+
+Note: HR stands for Household Registration. NW-HE is net-worth minus home equity. All the asset variables (e.g.
+income, net-worth, NW-HE, and liquid assets are in Chinese renminbi (CNY).
+
+</center>
+
+
 ### Selecting `xadd` Variable
 
 `xadd` is a vector set which are not highly correlated with `"income"` but highly correlated between them.
