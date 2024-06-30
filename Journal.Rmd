@@ -53,6 +53,7 @@ Driving Licence : B
 To work for the organization to the best of my knowledge and ability from where the organization could benefit from my programming, app building and machine learning skills. 
 FOR ICON ION!!!
 https://github.com/ionic-team/ionicons
+Astronomy and Space Science
 \1-->
 
 
@@ -69,11 +70,14 @@ University of Siena (Italy),  Nov 2013 - June 2016
 **Certificate in Masters of Business Administration Program**\
 University of Auburn (USA), Spring 2011 - Fall 2012\
 
-**Bachelor in Astronomy and Space Science**\
+**Bachelor Degree in Physics**\
 University of Istanbul (Turkey), Fall 2006 - Spring 2010                                                                             
 
 # Experiences
 
+**Associate Advanced Analytics Analyst** - Power BI Developer,\
+Mozarc Medical, Milan (Italia), Sep 2023- Current.\
+Data Analysis and Visualization: Assist in collecting, cleaning, and analyzing large datasets to identify trends, patterns, and insights. Develop visually appealing dashboards and reports using Power BI to effectively communicate findings to stakeholders.
 
 **Intern** - Market Research Assistant,\
 MPS - Evolving Marketing Research, Bergamo (Italia), April 2023- July 2023.\
@@ -118,21 +122,22 @@ and conducted research on customer needs and preferences.
 <ul class="list-inline">
    <li> <u>**Computer Skills:** </u>  </li>
    <li> <u>*Advance:*</u>  </li>
+   <li>&bull; DAX </li>
+   <li>&bull; Power BI/ Query/Pivot </li>
    <li>&bull; R </li>
-   <li>&bull; Shiny Applications </li>
+   <li>&bull; R Shiny Applications </li>
    <li>&bull;  LaTeX </li>
    <li>&bull; Microsoft Office </li>
    <li> <u>*Intermediate*</u>  </li>
     <li>&bull; HTML </li>
+    <li>&bull; Python </li>
     <li>&bull; SQL </li>
-    <li>&bull; Power BI  </li>
-    <li>&bull; Tableau </li>  
+    <li>&bull; Tableau </li>
    <li> <u>*Beginner:*</u>  </li>
-   <li>&bull; Dax </li>
-   <li>&bull; Java </li>
-   <li>&bull; Python </li>
    <li>&bull; VBA </li>
-   <li>&bull; Quantum </li>
+   <li>&bull; Java </li>
+   <li>&bull; Json </li>
+   <li>&bull; Snowflake</li>
 </ul>
 <!--\1 Latex, Microsoft Office, R, Shiny Application. \1-->
 <!--\1   <u>*New in:* </u> Html, Python, SQL, Java.\1-->
