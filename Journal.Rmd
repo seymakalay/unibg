@@ -78,11 +78,11 @@ University of Istanbul (Turkey), Fall 2006 - Spring 2010
 # Experiences
 
 **Associate Advanced Analytics Analyst** - Power BI Developer,\
-Mozarc Medical, Milan (Italia), Sep 2023- Current.\
+Mozarc Medical, Milan (Italy), Sep 2023- Current.\
 - Data Analysis and Visualization: Assist in collecting, cleaning, and analyzing large datasets to identify trends, patterns, and insights. Develop visually appealing dashboards and reports using Power BI to effectively communicate findings to stakeholders.
 
 **Intern** - Market Research Assistant,\
-MPS - Evolving Marketing Research, Bergamo (Italia), April 2023- July 2023.\
+MPS - Evolving Marketing Research, Bergamo (Italy), April 2023- July 2023.\
 - Analyzing market research outcomes by creating databases and descriptive statistics.
 
 **Researcher** - Statistics,\
