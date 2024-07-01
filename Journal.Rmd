@@ -161,7 +161,7 @@ Creative, analytic thinker, problem solver, good at teamwork, interpersonal skil
 # Projects
 
 <u>**Interactive User Interfaces**</u>
-<li><u><a href="https://seymakalay87.shinyapps.io/Mapapp/" target="_blank">**MappApp:**</a></u> 
+<li><u><a href="https://seymakalay87.shinyapps.io/MapApp/" target="_blank">**MapApp:**</a></u> 
 Conducting  an empirical study  <!--\1 based on anti money laundering, \1-->
 using both supervised and unsupervised machine learning algorithms.</li>
 
