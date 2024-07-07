@@ -69,8 +69,10 @@ University of Bergamo & Pavia (Italy), Sept 2017 - Feb 2022
 **Master in Finance**\
 University of Siena (Italy),  Nov 2013 - June 2016
 
+<!--\1
 **Certificate in Masters of Business Administration Program**\
 University of Auburn (USA), Spring 2011 - Fall 2012\
+\1-->
 
 **Bachelor Degree in Physics**\
 University of Istanbul (Turkey), Fall 2006 - Spring 2010                                                                             
@@ -78,10 +80,10 @@ University of Istanbul (Turkey), Fall 2006 - Spring 2010
 # Experiences
 
 **Associate Advanced Analytics Analyst** - Power BI Developer,\
-Mozarc Medical, Milan (Italy), Sep 2023- Current.\
+Mozarc Medical, Milan (Italy), Sep 2023 - Current.\
 - Data Analysis and Visualization: Assist in collecting, cleaning, and analyzing large datasets to identify trends, patterns, and insights. Develop visually appealing dashboards and reports using Power BI to effectively communicate findings to stakeholders.
 
-**Intern** - Market Research Assistant,\
+**Assistant** - Market Research,\
 MPS - Evolving Marketing Research, Bergamo (Italy), April 2023- July 2023.\
 - Analyzing market research outcomes by creating databases and descriptive statistics.
 
@@ -175,6 +177,9 @@ Conducting unsupervised machine learning algorithms (Tp3: runs from console). </
 <u>**Viz**</u>
 <li><u><a href="https://public.tableau.com/app/profile/seyma.kalay" target="_blank">**Tableau:**</a></u> 
 Conducting data visualization using Tableau Destop.</li>
+
+<li><u><a href="https://seymakalay.github.io/unibg/powerbi.html" target="_blank">**Power BI:**</a></u> 
+Projects that I have been working on.</li>
 
 
 <u>**HTML**</u>
