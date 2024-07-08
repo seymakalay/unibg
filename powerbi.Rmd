@@ -25,15 +25,439 @@ library(knitr)
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
   
-# this page is under construction.
+## Time Intelegence in DAX
 
+### Current Year
+
+```
+CY = SELECTEDMEASURE()
+```
+
+### Last Year
+
+```
+LY = 
+var _currOffset = MAX( 'Calendar'[Fiscal Month Offset] )
+var _offsetBegin = MIN( 'Calendar'[Fiscal Month Offset] ) - 12
+var _offsetEnd = _currOffset - 12 
+var _currYr = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Fiscal Month Offset] >= _offsetBegin &&
+        'Calendar'[Fiscal Month Offset] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    _rslt,
+    _currOffset <= 0 || _currYr <= 0
+)
+
+```
+
+
+### Current vs Last Year
+
+```
+CY vs LY = 
+var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _offsetBegin = MIN( 'Calendar'[Sequential Fiscal Month] ) - 12
+var _offsetEnd = _currOffset - 12
+var _cy = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Month] >= _offsetBegin &&
+        'Calendar'[Sequential Fiscal Month] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    SELECTEDMEASURE() - _rslt,
+    _cy <= 0 && _rslt
+)
+
+```
+
+
+
+### Current vs Last Year %
+
+```
+CY vs LY% = 
+var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _offsetBegin = MIN( 'Calendar'[Sequential Fiscal Month] ) - 12
+var _offsetEnd = _currOffset - 12
+var _cy = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Month] >= _offsetBegin &&
+        'Calendar'[Sequential Fiscal Month] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
+    _cy <= 0
+)
+
+```
+
+### Year to Day
+
+```
+YTD = 
+var _currFiscYr = MAX( 'Calendar'[FY] )
+var _currDay = MAX( 'Calendar'[Day of Fiscal Year] )
+RETURN 
+CALCULATE(
+    SELECTEDMEASURE()
+    , ALL( 'Calendar' )
+    , 'Calendar'[Day of Fiscal Year] <= _currDay
+    , 'Calendar'[FY] = _currFiscYr
+)
+
+```
+
+### Quarter to Day
+
+```
+QTD = 
+var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+var _currDay = MAX( 'Calendar'[Day of Fiscal Year] )
+RETURN 
+CALCULATE(
+    SELECTEDMEASURE()
+    , ALL( 'Calendar' )
+    , 'Calendar'[Day of Fiscal Year] <= _currDay
+    , 'Calendar'[Sequential Fiscal Quarter] = _currFiscQtr
+)
+
+```
+
+
+### Month to Day
+
+```
+MTD = 
+var _currFiscMth = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _currDay = MAX( 'Calendar'[Day of Fiscal Year] )
+RETURN 
+CALCULATE(
+    SELECTEDMEASURE()
+    , ALL( 'Calendar' )
+    , 'Calendar'[Day of Fiscal Year] <= _currDay
+    , 'Calendar'[Sequential Fiscal Month] = _currFiscMth
+)
+
+```
+
+
+### Previous Quarter to Day
+
+```
+PQTD = 
+var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+var _prevFiscQtr = _currFiscQtr - 1
+var _dayOfFiscalQtr = MAX( 'Calendar'[Day of Fiscal Quarter] )
+// likely need to errHndl cases where largest day in fiscal qtr doesn't line up right
+ 
+RETURN 
+CALCULATE(
+    SELECTEDMEASURE()
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Quarter] = _prevFiscQtr
+    , 'Calendar'[Day of Fiscal Quarter] <= _dayOfFiscalQtr
+)
+
+```
+
+### Quarter Over Quarter to Day
+```
+QOQTD = 
+var _cQTD =
+    var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+    var _currDay = MAX( 'Calendar'[Day of Fiscal Year] )
+    RETURN 
+    CALCULATE(
+        SELECTEDMEASURE()
+        , ALL( 'Calendar' )
+        , 'Calendar'[Day of Fiscal Year] <= _currDay
+        , 'Calendar'[Sequential Fiscal Quarter] = _currFiscQtr
+    )
+var _pQTD =
+    var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+    var _prevFiscQtr = _currFiscQtr - 1
+    var _dayOfFiscalQtr = MAX( 'Calendar'[Day of Fiscal Quarter] )
+    // likely need to errHndl cases where largest day in fiscal qtr doesn't line up right
+     
+    RETURN 
+    CALCULATE(
+        SELECTEDMEASURE()
+        , ALL( 'Calendar' )
+        , 'Calendar'[Sequential Fiscal Quarter] = _prevFiscQtr
+        , 'Calendar'[Day of Fiscal Quarter] <= _dayOfFiscalQtr
+    )
+RETURN
+    IF (
+        NOT ISBLANK ( _cQTD ) && NOT ISBLANK ( _pQTD ),
+        _cQTD - _pQTD
+    )
+
+```
+
+### Quarter Over Quarter to Day %
+
+```
+QOQTD % = 
+var _cQTD =
+    var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+    var _currDay = MAX( 'Calendar'[Day of Fiscal Year] )
+    RETURN 
+    CALCULATE(
+        SELECTEDMEASURE()
+        , ALL( 'Calendar' )
+        , 'Calendar'[Day of Fiscal Year] <= _currDay
+        , 'Calendar'[Sequential Fiscal Quarter] = _currFiscQtr
+    )
+var _pQTD =
+    var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
+    var _prevFiscQtr = _currFiscQtr - 1
+    var _dayOfFiscalQtr = MAX( 'Calendar'[Day of Fiscal Quarter] )
+    // likely need to errHndl cases where largest day in fiscal qtr doesn't line up right
+     
+    RETURN 
+    CALCULATE(
+        SELECTEDMEASURE()
+        , ALL( 'Calendar' )
+        , 'Calendar'[Sequential Fiscal Quarter] = _prevFiscQtr
+        , 'Calendar'[Day of Fiscal Quarter] <= _dayOfFiscalQtr
+    )
+RETURN
+    IF (
+        NOT ISBLANK ( _cQTD ) && NOT ISBLANK ( _pQTD ),
+        DIVIDE( _cQTD - _pQTD , _pQTD )
+    )
+
+```
+
+### Last Month
+
+```
+LM = var _currOffset = MAX('Calendar'[Fiscal Month Offset])
+var _offsetBegin = MIN('Calendar'[Fiscal Month Offset]) - 1
+var _offsetEnd = _currOffset - 1 
+var _currYr = MAX('Calendar'[Fiscal Year Offset])
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES('Calendar'[Date]),
+    ALL('Calendar'),
+    'Calendar'[Fiscal Month Offset] >= _offsetBegin &&
+    'Calendar'[Fiscal Month Offset] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    _rslt,
+    _currOffset <= 0
+)
+
+```
+
+
+### Previous Period
+
+```
+PP = 
+// dynamic to fiscal month, quarter, year
+var _monthsBack =
+SWITCH(
+    TRUE(),
+    HASONEVALUE('Calendar'[Fiscal Month Offset]), 1,
+    HASONEVALUE('Calendar'[Fiscal Quarter Offset]), 3,
+    12
+)
+var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _offsetBegin = MIN( 'Calendar'[Sequential Fiscal Month] ) - _monthsBack
+var _offsetEnd = _currOffset - _monthsBack
+var _currYr = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Month] >= _offsetBegin &&
+        'Calendar'[Sequential Fiscal Month] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    _rslt,
+    _currOffset <= 0 || _currYr <= 0
+)
+
+```
+
+### Current vs Previous Period
+
+```
+CP vs PP = 
+// dynamic to fiscal month, quarter, year
+var _monthsBack =
+SWITCH(
+    TRUE(),
+    HASONEVALUE('Calendar'[Fiscal Month Offset]), 1,
+    HASONEVALUE('Calendar'[Fiscal Quarter Offset]), 3,
+    12
+)
+var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _offsetBegin = MIN( 'Calendar'[Sequential Fiscal Month] ) - _monthsBack
+var _offsetEnd = _currOffset - _monthsBack
+var _cy = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Month] >= _offsetBegin &&
+        'Calendar'[Sequential Fiscal Month] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    SELECTEDMEASURE() - _rslt,
+    _cy <= 0 && _rslt
+)
+
+```
+
+### Current vs Previous Period %
+
+```
+CP vs PP % = 
+// dynamic to fiscal month, quarter, year
+var _monthsBack =
+SWITCH(
+    TRUE(),
+    HASONEVALUE('Calendar'[Fiscal Month Offset]), 1,
+    HASONEVALUE('Calendar'[Fiscal Quarter Offset]), 3,
+    12
+)
+var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
+var _offsetBegin = MIN( 'Calendar'[Sequential Fiscal Month] ) - _monthsBack
+var _offsetEnd = _currOffset - _monthsBack
+var _cy = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Sequential Fiscal Month] >= _offsetBegin &&
+        'Calendar'[Sequential Fiscal Month] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
+    _cy <= 0
+)
+
+```
+
+
+
+### Example
+
+```
+Amount QTD = 
+Calculate( [measure],
+KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
+//Where Time Intelligence Type is a calculated group in Model View
+```
+
+
+
+## Time Since Last Refresh
+
+### Example
+```
+
+```
+
+
+
+## The Last Date by Each Group
+
+### Example
+```
+
+```
+
+
+## Book Marks
+
+### Example
+```
+
+```
+
+
+## Tool Tips
+
+### Example
+```
+
+```
+
+
+
+## Viz Ideas
+
+### Example
+```
+
+```
+
+
+
+
+
+<!--\1  
 ## Objectives
-
-
 > This tutorial provides a guideline to embed a 
 Power Bi into HTML using R Markdown.
 
 <iframe title="nycflights13" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=922be8bf-a36f-40ec-8e45-424c1acec091&autoAuth=true&ctid=2910c8d0-a9d7-4737-800d-125cbd9916bc" frameborder="0" allowFullScreen="true"></iframe>
-
+\1-->
 
 
