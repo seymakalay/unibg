@@ -384,7 +384,7 @@ div.tocify {
 </li>
 <li>
   <a href="tableau.html">
-    <span class="fa fa-star"></span>
+    <span class="fa fa-tableau"></span>
      
     Tableau
   </a>
@@ -394,6 +394,13 @@ div.tocify {
     <span class="fa fa-chart-bar"></span>
      
     Power BI
+  </a>
+</li>
+<li>
+  <a href="powerbi.html">
+    <span class="fa fa-snowflake"></span>
+     
+    Snowflake
   </a>
 </li>
       </ul>
@@ -472,6 +479,11 @@ div.tocify {
 
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
+<blockquote>
+<p>This page is under construction<br />
+This tutorial provides a guideline to fundamental concepts in
+PowerBI</p>
+</blockquote>
 <div id="time-intelegence-in-dax" class="section level2">
 <h2>Time Intelegence in DAX</h2>
 <div id="current-year" class="section level3">
@@ -818,9 +830,49 @@ KEEPFILTERS(&#39;z-CG Time Intelegence&#39;[Time Intelligence Type] = &#39;QTD&#
 </div>
 <div id="time-since-last-refresh" class="section level2">
 <h2>Time Since Last Refresh</h2>
+<p>let`s create a blank query in power query editor and call it
+zz-ReportRefresh.</p>
 <div id="example-1" class="section level3">
 <h3>Example</h3>
-<pre><code></code></pre>
+<pre><code>let
+
+    Source = #table({&quot;Dataset Refresh DT - UTC&quot;},{{DateTimeZone.FixedUtcNow()}}),
+
+    #&quot;Changed Type&quot; = Table.TransformColumnTypes(Source,{{&quot;Dataset Refresh DT - UTC&quot;, type datetimezone}}),
+
+    #&quot;Inserted Local Time&quot; = Table.AddColumn(#&quot;Changed Type&quot;, &quot;Dataset Refresh DT - EST&quot;, each DateTimeZone.SwitchZone([#&quot;Dataset Refresh DT - UTC&quot;],-4), type datetimezone)
+
+in
+
+    #&quot;Inserted Local Time&quot;
+</code></pre>
+<p>let`s create a measure and call it Time Since Last Refresh.</p>
+<pre><code>Time Since Last Refresh =
+var _currTm = UTCNOW()
+
+var _refreshTm = MAX( &#39;zz-ReportRefresh&#39;[Dataset Refresh DT - UTC] )
+
+var _delta = ROUNDDOWN ( DATEDIFF(_refreshTm, _currTm, MINUTE ) / 60 , 0 )
+
+var _isMultiple = _delta &gt; 1
+
+var _is0 = _delta = 0
+
+return
+
+ 
+
+SWITCH(
+
+    TRUE(),
+
+    _isMultiple, FORMAT( _delta, &quot;0&quot; ) &amp; &quot; hours since last dataset refresh&quot;,
+
+    NOT _is0, FORMAT( _delta, &quot;0&quot;) &amp; &quot; hour since last dataset refresh&quot;,
+
+    _is0, &quot;Dataset refreshed in the past hour&quot;
+
+)</code></pre>
 </div>
 </div>
 <div id="the-last-date-by-each-group" class="section level2">
@@ -830,25 +882,31 @@ KEEPFILTERS(&#39;z-CG Time Intelegence&#39;[Time Intelligence Type] = &#39;QTD&#
 <pre><code></code></pre>
 </div>
 </div>
-<div id="book-marks" class="section level2">
-<h2>Book Marks</h2>
-<div id="example-3" class="section level3">
-<h3>Example</h3>
-<pre><code></code></pre>
-</div>
-</div>
-<div id="tool-tips" class="section level2">
-<h2>Tool Tips</h2>
-<div id="example-4" class="section level3">
-<h3>Example</h3>
-<pre><code></code></pre>
-</div>
-</div>
 <div id="viz-ideas" class="section level2">
 <h2>Viz Ideas</h2>
-<div id="example-5" class="section level3">
-<h3>Example</h3>
+<div id="book-marks-example" class="section level3">
+<h3>Book Marks Example</h3>
 <pre><code></code></pre>
+</div>
+<div id="tool-tips-example" class="section level3">
+<h3>Tool Tips Example</h3>
+<pre><code></code></pre>
+</div>
+</div>
+<div id="dimcalendar" class="section level2">
+<h2>DimCalendar</h2>
+</div>
+<div id="rls" class="section level2">
+<h2>RLS</h2>
+</div>
+<div id="rate-conversion" class="section level2">
+<h2>Rate Conversion</h2>
+</div>
+<div id="dimfx" class="section level2">
+<h2>dimFX</h2>
+</div>
+<div id="data-modeling" class="section level2">
+<h2>Data Modeling</h2>
 <!--\1  
 ## Objectives
 > This tutorial provides a guideline to embed a 
@@ -856,7 +914,6 @@ Power Bi into HTML using R Markdown.
 
 <iframe title="nycflights13" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=922be8bf-a36f-40ec-8e45-424c1acec091&autoAuth=true&ctid=2910c8d0-a9d7-4737-800d-125cbd9916bc" frameborder="0" allowFullScreen="true"></iframe>
 \1-->
-</div>
 </div>
 
 

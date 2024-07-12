@@ -46,6 +46,9 @@ navbar:
     - text: "Power BI" 
       href: powerbi.html 
       icon: fa-chart-bar
+    - text: "Snowflake" 
+      href: powerbi.html 
+      icon: fa-snowflake
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 

@@ -24,6 +24,9 @@ library(knitr)
 
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
+
+> This page is under construction. 
+> This tutorial provides a guideline to fundamental concepts in PowerBI.
   
 ## Time Intelegence in DAX
 
@@ -409,9 +412,52 @@ KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
 
 ## Time Since Last Refresh
 
+let`s create a blank query in power query editor and call it zz-ReportRefresh.
+
 ### Example
 ```
+let
 
+    Source = #table({"Dataset Refresh DT - UTC"},{{DateTimeZone.FixedUtcNow()}}),
+
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dataset Refresh DT - UTC", type datetimezone}}),
+
+    #"Inserted Local Time" = Table.AddColumn(#"Changed Type", "Dataset Refresh DT - EST", each DateTimeZone.SwitchZone([#"Dataset Refresh DT - UTC"],-4), type datetimezone)
+
+in
+
+    #"Inserted Local Time"
+
+```
+let`s create a measure and call it Time Since Last Refresh.
+
+```
+Time Since Last Refresh =
+var _currTm = UTCNOW()
+
+var _refreshTm = MAX( 'zz-ReportRefresh'[Dataset Refresh DT - UTC] )
+
+var _delta = ROUNDDOWN ( DATEDIFF(_refreshTm, _currTm, MINUTE ) / 60 , 0 )
+
+var _isMultiple = _delta > 1
+
+var _is0 = _delta = 0
+
+return
+
+ 
+
+SWITCH(
+
+    TRUE(),
+
+    _isMultiple, FORMAT( _delta, "0" ) & " hours since last dataset refresh",
+
+    NOT _is0, FORMAT( _delta, "0") & " hour since last dataset refresh",
+
+    _is0, "Dataset refreshed in the past hour"
+
+)
 ```
 
 
@@ -424,31 +470,28 @@ KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
 ```
 
 
-## Book Marks
+## Viz Ideas 
 
-### Example
-```
-
-```
-
-
-## Tool Tips
-
-### Example
+### Book Marks Example
 ```
 
 ```
 
 
 
-## Viz Ideas
-
-### Example
+### Tool Tips Example
 ```
 
 ```
 
 
+
+## DimCalendar
+## RLS
+## Rate Conversion
+## dimFX
+
+## Data Modeling
 
 
 
