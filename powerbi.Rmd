@@ -30,6 +30,8 @@ library(knitr)
   
 ## Time Intelegence in DAX
 
+lets add the group calculations below into tabular editor.
+
 ### Current Year
 
 ```
@@ -468,6 +470,105 @@ SWITCH(
 ```
 
 ```
+
+
+
+
+## The Last Two Weeks Change
+
+### Example
+
+lets set the data model first. If the dates would be `FY24 WK52` then we should have rank the given format and use the same methodology below.  
+
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+knitr::include_graphics('images/SampleData4Last2WeeksChange.jpg')
+```
+</div>
+
+
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+knitr::include_graphics('images/Last2WeeksChange.jpg')
+```
+</div>
+
+
+
+```
+CurrWeek = 
+VAR TAB =
+	TOPN(
+		2,
+		'Week Slice',
+		'Week Slice'[Week],
+		DESC
+	)
+VAR _MAX = MAXX(TAB, 'Week Slice'[Week])
+RETURN
+_MAX
+```
+
+```
+PrevWeek = 
+VAR TAB =
+	TOPN(
+		2,
+		'Week Slice',
+		'Week Slice'[Week],
+		DESC
+	)
+VAR _MIN = MINX(TAB, 'Week Slice'[Week])
+RETURN
+_MIN
+```
+
+```
+current Inventory = 
+VAR _MAX = VALUE([CurrWeek])
+VAR TotalCW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MAX
+)
+RETURN
+TotalCW
+```
+
+```
+Total = sum('Fact'[Amount])
+```
+
+```
+Change = 
+VAR _MAX = VALUE([CurrWeek])
+VAR _MIN = VALUE([PrevWeek])
+VAR TotalCW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MAX
+)
+VAR TotalPW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MIN
+)
+VAR Final =
+TotalCW - TotalPW
+RETURN
+Final
+```
+
+```
+Comparison = "Change from week "&[PrevWeek] &" to "&[CurrWeek]
+```
+
+
+
+
 
 
 ## Viz Ideas 

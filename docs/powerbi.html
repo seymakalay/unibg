@@ -470,20 +470,6 @@ div.tocify {
 </div>
 
 
-<!--\1   
----
-title: ""
-output:
-  html_document:
-    toc: TRUE
-    toc_float: TRUE
-    theme: flatly
-    highlight: tango
-#header-includes:
-#- \usepackage{caption}  
-   #  - \usepackage{placeins}
----
-\1-->
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
 <blockquote>
@@ -492,6 +478,7 @@ to fundamental concepts in PowerBI.</p>
 </blockquote>
 <div id="time-intelegence-in-dax" class="section level2">
 <h2>Time Intelegence in DAX</h2>
+<p>lets add the group calculations below into tabular editor.</p>
 <div id="current-year" class="section level3">
 <h3>Current Year</h3>
 <pre><code>CY = SELECTEDMEASURE()</code></pre>
@@ -888,6 +875,82 @@ SWITCH(
 <pre><code></code></pre>
 </div>
 </div>
+<div id="the-last-two-weeks-change" class="section level2">
+<h2>The Last Two Weeks Change</h2>
+<div id="example-3" class="section level3">
+<h3>Example</h3>
+<p>lets set the data model first. If the dates would be
+<code>FY24 WK52</code> then we should have rank the given format and use
+the same methodology below.</p>
+<div class="my-right-figure">
+<div class="figure" style="text-align: center">
+<img src="images/SampleData4Last2WeeksChange.jpg" alt=" " width="75%" />
+<p class="caption">
+</p>
+</div>
+</div>
+<div class="my-right-figure">
+<div class="figure" style="text-align: center">
+<img src="images/Last2WeeksChange.jpg" alt=" " width="75%" />
+<p class="caption">
+</p>
+</div>
+</div>
+<pre><code>CurrWeek = 
+VAR TAB =
+    TOPN(
+        2,
+        &#39;Week Slice&#39;,
+        &#39;Week Slice&#39;[Week],
+        DESC
+    )
+VAR _MAX = MAXX(TAB, &#39;Week Slice&#39;[Week])
+RETURN
+_MAX</code></pre>
+<pre><code>PrevWeek = 
+VAR TAB =
+    TOPN(
+        2,
+        &#39;Week Slice&#39;,
+        &#39;Week Slice&#39;[Week],
+        DESC
+    )
+VAR _MIN = MINX(TAB, &#39;Week Slice&#39;[Week])
+RETURN
+_MIN</code></pre>
+<pre><code>current Inventory = 
+VAR _MAX = VALUE([CurrWeek])
+VAR TotalCW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MAX
+)
+RETURN
+TotalCW</code></pre>
+<pre><code>Total = sum(&#39;Fact&#39;[Amount])</code></pre>
+<pre><code>Change = 
+VAR _MAX = VALUE([CurrWeek])
+VAR _MIN = VALUE([PrevWeek])
+VAR TotalCW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MAX
+)
+VAR TotalPW =
+CALCULATE(
+    [Total],
+    ALL(Week),
+    Week[Week] = _MIN
+)
+VAR Final =
+TotalCW - TotalPW
+RETURN
+Final</code></pre>
+<pre><code>Comparison = &quot;Change from week &quot;&amp;[PrevWeek] &amp;&quot; to &quot;&amp;[CurrWeek]</code></pre>
+</div>
+</div>
 <div id="viz-ideas" class="section level2">
 <h2>Viz Ideas</h2>
 <div id="book-marks-example" class="section level3">
@@ -971,7 +1034,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2,h3",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
