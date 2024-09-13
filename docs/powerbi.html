@@ -478,7 +478,7 @@ to fundamental concepts in PowerBI.</p>
 </blockquote>
 <div id="time-intelegence-in-dax" class="section level2">
 <h2>Time Intelegence in DAX</h2>
-<p>lets add the group calculations below into tabular editor.</p>
+<p>let's add the group calculations below into tabular editor.</p>
 <div id="current-year" class="section level3">
 <h3>Current Year</h3>
 <pre><code>CY = SELECTEDMEASURE()</code></pre>
@@ -868,11 +868,89 @@ SWITCH(
 )</code></pre>
 </div>
 </div>
-<div id="the-last-date-by-each-group" class="section level2">
-<h2>The Last Date by Each Group</h2>
+<div id="the-last-date-by-each-groups" class="section level2">
+<h2>The Last Date by Each Groups</h2>
+<p>let's create a blank query in power query editor and set the Source
+from existing query, in this case,
+<code>Source = Inventory_wo_rank</code>. As a second step, we should
+remove the all the unnecessary columns <code>#"Removed Columns"</code>
+and remove all the duplicates <code>#"Removed Duplicates"</code>.</p>
 <div id="example-2" class="section level3">
 <h3>Example</h3>
-<pre><code></code></pre>
+<pre><code>let
+    
+    Source = Inventory_wo_rank,
+    #&quot;Removed Columns&quot; = Table.RemoveColumns(Source ,{&quot;Fiscal Week Desc&quot;, &quot;Super Region&quot;, &quot;Region&quot;, &quot;Country Name&quot;, &quot;Plant &amp; Name&quot;, &quot;CFN&quot;, 
+    &quot;Material&quot;, &quot;Local ERP Item&quot;, //&quot;ABC Code&quot;, &quot;Material Category&quot;,&quot;external material group code_XA&quot;, &quot;external material group code_Pcode&quot;, &quot;external material group&quot;,      &quot;type&quot;, &quot;Inventory Amt LC&quot;, &quot;Inventory Qty (BUOM)&quot;,  &quot;Fiscal Year&quot;, &quot;Fiscal Week Num&quot;, 
+    &quot;Month&quot;, &quot;Day&quot;,  &quot;Curreny&quot;, &quot;FY24 AOP&quot;, &quot;FY25 AOP&quot;,
+     &quot;Inventory @AOP24&quot;, &quot;Inventory @AOP25&quot;, &quot;ERP&quot;, &quot;Date&quot;, “&quot;Fiscal Year - Copy&quot;}),
+     
+    #&quot;Removed Duplicates&quot; = Table.Distinct(#&quot;Removed Columns&quot;),
+    #&quot;Grouped Rows&quot; = Table.Group(#&quot;Removed Duplicates&quot;, {&quot;Source&quot;}, {{&quot;All&quot;, each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),
+    Custom1 = Table.TransformColumns( #&quot;Grouped Rows&quot;, {{&quot;All&quot;, each  Table.AddRankColumn( _, &quot;rank&quot;, {{&quot;FYandFW0num&quot;, Order.Descending}} )}}),
+    #&quot;Expanded All&quot; = Table.ExpandTableColumn(Custom1, &quot;All&quot;, {&quot;FYandFW0num&quot;, &quot;rank&quot;}, {&quot;FYandFW0num&quot;, &quot;rank&quot;}),
+    #&quot;Changed Type1&quot; = Table.TransformColumnTypes(#&quot;Expanded All&quot;,{ {&quot;Source&quot;, type text}, {&quot;FYandFW0num&quot;, Int64.Type}, {&quot;rank&quot;, Int64.Type}})
+in
+     #&quot;Changed Type1&quot;
+    
+</code></pre>
+<p>In Power Query we expect to see, at this point, similar to table
+below.</p>
+<span class="math display">\[\begin{array}{|l|c|}
+\hline
+\text{Source}   &amp; \text{FYandFW0num}    \\
+\hline
+Group A   &amp;  \text{202448}          \\
+Group A   &amp;  \text{202451}          \\
+Group B   &amp;  \text{202501}          \\
+Group B   &amp;  \text{202452}          \\
+Group B   &amp;  \text{202453}          \\
+Group C   &amp;  \text{202452}          \\
+\hline
+\end{array}\]</span>
+<pre><code>    #&quot;Grouped Rows&quot; = Table.Group(#&quot;Removed Duplicates&quot;, {&quot;Source&quot;}, {{&quot;All&quot;, each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),
+    Custom1 = Table.TransformColumns( #&quot;Grouped Rows&quot;, {{&quot;All&quot;, each  Table.AddRankColumn( _, &quot;Rank&quot;, {{&quot;FYandFW0num&quot;, Order.Descending}} )}}),
+    #&quot;Expanded All&quot; = Table.ExpandTableColumn(Custom1, &quot;All&quot;, {&quot;FYandFW0num&quot;, &quot;Rank&quot;}, {&quot;FYandFW0num&quot;, &quot;Rank&quot;}),
+    #&quot;Changed Type1&quot; = Table.TransformColumnTypes(#&quot;Expanded All&quot;,{ {&quot;Source&quot;, type text}, {&quot;FYandFW0num&quot;, Int64.Type}, {&quot;Rank&quot;, Int64.Type}})
+in
+     #&quot;Changed Type1&quot;
+</code></pre>
+<p>Finally, we get the ranking within each Group.</p>
+<span class="math display">\[\begin{array}{|l|c|c|}
+\hline
+\text{Source}   &amp; \text{FYandFW0num} &amp; \text{Rank}    \\
+\hline
+Group A   &amp;  \text{202448}   &amp;  \text{2}        \\
+Group A   &amp;  \text{202451}   &amp;  \text{1}        \\
+Group B   &amp;  \text{202501}   &amp;  \text{1}        \\
+Group B   &amp;  \text{202452}   &amp;  \text{2}        \\
+Group B   &amp;  \text{202453}   &amp;  \text{3}        \\
+Group C   &amp;  \text{202452}   &amp;  \text{1}        \\
+\hline
+\end{array}\]</span>
+<p>Current week</p>
+<span class="math display">\[\begin{array}{|l|c|}
+\hline
+\text{FYandFW0num}   &amp; \text{Rank}  \\
+\hline
+\text{202448}   &amp; \text{1}        \\
+\text{202451}   &amp; \text{2}        \\      
+\text{202452}   &amp; \text{3}        \\       
+\text{202453}   &amp; \text{4}        \\       
+\text{202501}   &amp; \text{5}        \\       
+\hline
+\end{array}\]</span>
+<pre><code>CW Amt = 
+VAR CurrentFiscalWeek = MAX( &#39;Inventory&#39;[FYandFW0num] )
+RETURN
+CALCULATE( [Inventory],
+           &#39;Inventory&#39;[FYandFW0num] = CurrentFiscalWeek )
+           
+PW Amt = 
+
+CALCULATE( [Inventory],
+           KEEPFILTERS( &#39;Inventory&#39;[toRank2.Rank] = MIN(&#39;Inventory&#39;[toRank2.Rank]) )           
+</code></pre>
 </div>
 </div>
 <div id="the-last-two-weeks-change" class="section level2">

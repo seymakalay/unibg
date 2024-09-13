@@ -6,9 +6,6 @@ output:
     toc_float: TRUE
     theme: flatly
     highlight: tango
-#header-includes:
-#- \usepackage{caption}  
-   #  - \usepackage{placeins}
 ---
 
 
@@ -20,6 +17,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
 library(fontawesome)
 library(knitr)
+library(kableExtra)
+library(dplyr)
+library(xtable)
 ```     
 
 <!--\1  <span style="color:red">pomodoro</span> \1-->
@@ -30,7 +30,7 @@ library(knitr)
   
 ## Time Intelegence in DAX
 
-lets add the group calculations below into tabular editor.
+let\'s  add the group calculations below into tabular editor.
 
 ### Current Year
 
@@ -464,12 +464,109 @@ SWITCH(
 
 
 
-## The Last Date by Each Group
+## The Last Date by Each Groups
+
+let\'s  create a blank query in power query editor and set the Source from existing query, in this case, `Source = Inventory_wo_rank`.
+As a second step, we should remove the all the unnecessary columns `#"Removed Columns"` and remove all the duplicates `#"Removed Duplicates"`.
+
+
 
 ### Example
 ```
+let
+    
+    Source = Inventory_wo_rank,
+    #"Removed Columns" = Table.RemoveColumns(Source ,{"Fiscal Week Desc", "Super Region", "Region", "Country Name", "Plant & Name", "CFN", 
+    "Material", "Local ERP Item", //"ABC Code", "Material Category","external material group code_XA", "external material group code_Pcode", "external material group",      "type", "Inventory Amt LC", "Inventory Qty (BUOM)",  "Fiscal Year", "Fiscal Week Num", 
+    "Month", "Day",  "Curreny", "FY24 AOP", "FY25 AOP",
+     "Inventory @AOP24", "Inventory @AOP25", "ERP", "Date", “"Fiscal Year - Copy"}),
+     
+    #"Removed Duplicates" = Table.Distinct(#"Removed Columns"),
+    #"Grouped Rows" = Table.Group(#"Removed Duplicates", {"Source"}, {{"All", each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),
+    Custom1 = Table.TransformColumns( #"Grouped Rows", {{"All", each  Table.AddRankColumn( _, "rank", {{"FYandFW0num", Order.Descending}} )}}),
+    #"Expanded All" = Table.ExpandTableColumn(Custom1, "All", {"FYandFW0num", "rank"}, {"FYandFW0num", "rank"}),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Expanded All",{ {"Source", type text}, {"FYandFW0num", Int64.Type}, {"rank", Int64.Type}})
+in
+     #"Changed Type1"
+    
 
 ```
+
+In Power Query we expect to see, at this point, similar to table below.
+
+
+\begin{array}{|l|c|}
+\hline
+\text{Source}   & \text{FYandFW0num}    \\
+\hline
+Group A   &  \text{202448}          \\
+Group A   &  \text{202451}          \\
+Group B   &  \text{202501}          \\
+Group B   &  \text{202452}          \\
+Group B   &  \text{202453}          \\
+Group C   &  \text{202452}          \\
+\hline
+\end{array}
+
+
+
+```
+    #"Grouped Rows" = Table.Group(#"Removed Duplicates", {"Source"}, {{"All", each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),
+    Custom1 = Table.TransformColumns( #"Grouped Rows", {{"All", each  Table.AddRankColumn( _, "Rank", {{"FYandFW0num", Order.Descending}} )}}),
+    #"Expanded All" = Table.ExpandTableColumn(Custom1, "All", {"FYandFW0num", "Rank"}, {"FYandFW0num", "Rank"}),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Expanded All",{ {"Source", type text}, {"FYandFW0num", Int64.Type}, {"Rank", Int64.Type}})
+in
+     #"Changed Type1"
+
+```
+
+Finally, we get the ranking within each Group.
+
+\begin{array}{|l|c|c|}
+\hline
+\text{Source}   & \text{FYandFW0num} & \text{Rank}    \\
+\hline
+Group A   &  \text{202448}   &  \text{2}        \\
+Group A   &  \text{202451}   &  \text{1}        \\
+Group B   &  \text{202501}   &  \text{1}        \\
+Group B   &  \text{202452}   &  \text{2}        \\
+Group B   &  \text{202453}   &  \text{3}        \\
+Group C   &  \text{202452}   &  \text{1}        \\
+\hline
+\end{array}
+
+
+Current week
+
+\begin{array}{|l|c|}
+\hline
+\text{FYandFW0num}   & \text{Rank}  \\
+\hline
+\text{202448}   & \text{1}        \\
+\text{202451}   & \text{2}        \\      
+\text{202452}   & \text{3}        \\       
+\text{202453}   & \text{4}        \\       
+\text{202501}   & \text{5}        \\       
+\hline
+\end{array}
+
+
+```
+CW Amt = 
+VAR CurrentFiscalWeek = MAX( 'Inventory'[FYandFW0num] )
+RETURN
+CALCULATE( [Inventory],
+           'Inventory'[FYandFW0num] = CurrentFiscalWeek )
+           
+PW Amt = 
+
+CALCULATE( [Inventory],
+           KEEPFILTERS( 'Inventory'[toRank2.Rank] = MIN('Inventory'[toRank2.Rank]) )           
+
+```
+
+
+
 
 
 
