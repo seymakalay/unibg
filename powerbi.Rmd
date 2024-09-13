@@ -477,9 +477,7 @@ let
     
     Source = Inventory_wo_rank,
     #"Removed Columns" = Table.RemoveColumns(Source ,{"Fiscal Week Desc", "Super Region", "Region", "Country Name", "Plant & Name", "CFN", 
-    "Material", "Local ERP Item", //"ABC Code", "Material Category","external material group code_XA", "external material group code_Pcode", "external material group",      "type", "Inventory Amt LC", "Inventory Qty (BUOM)",  "Fiscal Year", "Fiscal Week Num", 
-    "Month", "Day",  "Curreny", "FY24 AOP", "FY25 AOP",
-     "Inventory @AOP24", "Inventory @AOP25", "ERP", "Date", “"Fiscal Year - Copy"}),
+    "Material", "Fiscal Year", "Fiscal Week Num", "Month", "Day",  "Curreny", "FY24 AOP", "FY25 AOP"}),
      
     #"Removed Duplicates" = Table.Distinct(#"Removed Columns"),
     #"Grouped Rows" = Table.Group(#"Removed Duplicates", {"Source"}, {{"All", each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),

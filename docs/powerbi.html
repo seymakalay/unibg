@@ -881,9 +881,7 @@ and remove all the duplicates <code>#"Removed Duplicates"</code>.</p>
     
     Source = Inventory_wo_rank,
     #&quot;Removed Columns&quot; = Table.RemoveColumns(Source ,{&quot;Fiscal Week Desc&quot;, &quot;Super Region&quot;, &quot;Region&quot;, &quot;Country Name&quot;, &quot;Plant &amp; Name&quot;, &quot;CFN&quot;, 
-    &quot;Material&quot;, &quot;Local ERP Item&quot;, //&quot;ABC Code&quot;, &quot;Material Category&quot;,&quot;external material group code_XA&quot;, &quot;external material group code_Pcode&quot;, &quot;external material group&quot;,      &quot;type&quot;, &quot;Inventory Amt LC&quot;, &quot;Inventory Qty (BUOM)&quot;,  &quot;Fiscal Year&quot;, &quot;Fiscal Week Num&quot;, 
-    &quot;Month&quot;, &quot;Day&quot;,  &quot;Curreny&quot;, &quot;FY24 AOP&quot;, &quot;FY25 AOP&quot;,
-     &quot;Inventory @AOP24&quot;, &quot;Inventory @AOP25&quot;, &quot;ERP&quot;, &quot;Date&quot;, “&quot;Fiscal Year - Copy&quot;}),
+    &quot;Material&quot;, &quot;Fiscal Year&quot;, &quot;Fiscal Week Num&quot;, &quot;Month&quot;, &quot;Day&quot;,  &quot;Curreny&quot;, &quot;FY24 AOP&quot;, &quot;FY25 AOP&quot;}),
      
     #&quot;Removed Duplicates&quot; = Table.Distinct(#&quot;Removed Columns&quot;),
     #&quot;Grouped Rows&quot; = Table.Group(#&quot;Removed Duplicates&quot;, {&quot;Source&quot;}, {{&quot;All&quot;, each _, type table [Source=nullable text, FYandFW0num=nullable number]}}),
