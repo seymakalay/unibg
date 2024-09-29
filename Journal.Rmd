@@ -144,7 +144,7 @@ interactive user faces^[Please see at: <a href="https://github.com/seymakalay" t
 </body>
 
 
-**Intern** - Portfolio,\ 
+**Intern** - Portfolio,\
 <u>Invest-AZ (Turkey), Nov 2015 - Dec 2015.</u>\
 <!--\1  - To analyze the companies by looking at their income statements 
 and balance sheets to make sure it is beneficial to invest in those companies. \1--> 
@@ -181,8 +181,9 @@ and conducted research on customer needs and preferences.
 <ul class="list-inline">
    <li> <u>**Languages:**</u>  </li>
    <li>&bull; Native in Turkish </li>
-   <li>&bull; Advance in English</li>
-   <li>&bull; Intermediate in Italian</li>
+   <li>&bull; Fluent in English</li>
+   <li>&bull; Advance in Italian</li>
+   <li>&bull; Beginner in Spanish</li>
 </ul>
 <ul class="list-inline">
    <li> <u>**Computer Skills:** </u>  </li>
