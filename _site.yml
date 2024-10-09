@@ -63,15 +63,17 @@ navbar:
       - text: "Certificates"
       - text: "Auburn Business"  
         href: ./images/AU_Business.pdf 
-      - text: "Python"  
-        href: ./images/Python4_Data_Analysis.pdf
+      - text: "Azure"    
+        href: ./images/CourseraAzure.pdf  
       - text: "Power Bi"
         href: ./images/CourseraPowerBi.pdf
+      - text: "Python"  
+        href: ./images/Python4_Data_Analysis.pdf
+      - text: "Snow Flake"    
+        href: ./images/CourseraSnowFlake.pdf
       - text: "SQL"  
-        href: ./images/CourseraSQL.pdf
-      - text: "Azure"    
-        href: ./images/CourseraAzure.pdf
-    - href: https://www.linkedin.com/in/seyma-kalay-3315345b/
+        href: ./images/CourseraAdvanceSQL.pdf
+    - href: https://www.linkedin.com/in/seymakalay/
       icon: fab fa-linkedin fa-lg  
     - href: https://seymakalay.github.io/unibg.it/index.html
       icon: fa-globe  
