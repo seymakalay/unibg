@@ -39,7 +39,7 @@ li {
 
 # Personal Information 
 
-Address        : Via Caniana, Bergamo-Lombardia-Italy\
+Address        : Bergamo-Lombardia-Italy\
 Email & Skype  : seymakalay@hotmail.com\
 Driving Licence : B 
 
@@ -96,7 +96,7 @@ Mozarc Medical, Milan (Italy), Sep 2023 - Current.\
       <li>Help maintain data repositories.</li>
       <li>Implement data governance practices to ensure accuracy, consistency, and security.</li>
       <li>Collaborate effectively with team members across various departments.</li>
-      <li>Communicate analytical findings methodologies, and recommendations to stakeholders.</li>
+      <li>Communicate analytical findings, methodologies, and recommendations to stakeholders.</li>
     </ul>
 </body>
 
@@ -136,7 +136,7 @@ interactive user faces^[Please see at: <a href="https://github.com/seymakalay" t
 <!--\1  - Observed equity and bond market, familiar with the behavioral finance, created a statistical model to maximize the portfolio’s return and proved the model efficiency by tracing the data.\ \1--> 
 <body>
     <ul>
-      <li>Observe equity and bond market.</li>
+      <li>Observe equity.</li> 
       <li>Be familiar with behavioral finance.</li>
       <li>Create a statistical model to maximize the portfolio‘s return, using VBA.</li>
       <li>Prove the model efficiency by tracking the data.</li>
@@ -150,7 +150,7 @@ interactive user faces^[Please see at: <a href="https://github.com/seymakalay" t
 and balance sheets to make sure it is beneficial to invest in those companies. \1--> 
 <body>
     <ul>
-      <li>Analyze the companies by looking at their income statements and balance sheets.</li>
+      <li>Analyze listed companies by looking at their financial statements.</li>
       <li>Create reports to drive data-driven decision making for investors.</li>
     </ul>
 </body>
