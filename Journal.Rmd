@@ -205,7 +205,6 @@ and conducted research on customer needs and preferences.
   <li> <u>*Beginner:*</u>  </li>
     <li>&bull; Azure </li>
     <li>&bull; Java </li>
-
 </ul>
 <!--\1 Latex, Microsoft Office, R, Shiny Application. \1-->
 <!--\1   <u>*New in:* </u> Html, Python, SQL, Java.\1-->
