@@ -199,12 +199,13 @@ and conducted research on customer needs and preferences.
     <li>&bull; Python </li>
     <li>&bull; SQL </li>
     <li>&bull; Tableau </li>
-   <li> <u>*Beginner:*</u>  </li>
-   <li>&bull; Azure </li>
-   <li>&bull; VBA </li>
-   <li>&bull; Java </li>
-   <li>&bull; Json </li>
-   <li>&bull; Snowflake</li>
+    <li>&bull; VBA </li>
+    <li>&bull; Json </li>
+    <li>&bull; Snowflake</li>
+  <li> <u>*Beginner:*</u>  </li>
+    <li>&bull; Azure </li>
+    <li>&bull; Java </li>
+
 </ul>
 <!--\1 Latex, Microsoft Office, R, Shiny Application. \1-->
 <!--\1   <u>*New in:* </u> Html, Python, SQL, Java.\1-->
