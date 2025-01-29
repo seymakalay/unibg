@@ -432,21 +432,24 @@ div.tocify {
       <a href="./images/AU_Business.pdf">Auburn Business</a>
     </li>
     <li>
-      <a href="./images/Python4_Data_Analysis.pdf">Python</a>
+      <a href="./images/CourseraAzure.pdf">Azure</a>
     </li>
     <li>
       <a href="./images/CourseraPowerBi.pdf">Power Bi</a>
     </li>
     <li>
-      <a href="./images/CourseraSQL.pdf">SQL</a>
+      <a href="./images/Python4_Data_Analysis.pdf">Python</a>
     </li>
     <li>
-      <a href="./images/CourseraAzure.pdf">Azure</a>
+      <a href="./images/CourseraSnowFlake.pdf">Snow Flake</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAdvanceSQL.pdf">SQL</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="https://www.linkedin.com/in/seyma-kalay-3315345b/">
+  <a href="https://www.linkedin.com/in/seymakalay/">
     <span class="fab fa-linkedin fa-lg"></span>
      
   </a>
@@ -1043,6 +1046,84 @@ Final</code></pre>
 </div>
 <div id="rls" class="section level2">
 <h2>RLS</h2>
+<p>Following link may give an idea of how to set up
+<a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>.
+Yet, I will show you a better way.</p>
+<div id="fact_rls" class="section level3">
+<h3>Fact_RLS</h3>
+<p>Create a dataflow from Fact_RLS.xlsx</p>
+<span class="math display">\[\begin{array}{|l|c|c|}
+\hline
+\text{User}   &amp; \text{Email Address} &amp; \text{Access} &amp;
+\text{Region}&amp; \text{RPT ID}&amp; \text{Access Status}   \\
+\hline
+User1   &amp;  \text{user1@email.com}   &amp;\text{Admin}  &amp;\text{}               &amp;\text{}    &amp;\text{Access
+Assigned} \\
+User2   &amp;  \text{user2@email.com}   &amp;\text{Admin}  &amp;\text{}               &amp;\text{}    &amp;\text{Access
+Assigned} \\
+User3   &amp;  \text{user3@email.com}   &amp;\text{Region}
+&amp;\text{Americas}       &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User4   &amp;  \text{user4@email.com}   &amp;\text{Region}
+&amp;\text{Asia Pasific}   &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User5   &amp;  \text{user5@email.com}   &amp;\text{Region}
+&amp;\text{EMEA}           &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User6   &amp;  \text{user6@email.com}   &amp;\text{Region}
+&amp;\text{GOCS}           &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User7   &amp;  \text{user7@email.com}   &amp;\text{Region}
+&amp;\text{Greater China}  &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User8   &amp;  \text{user8@email.com}   &amp;\text{Region}
+&amp;\text{Greater China}  &amp;\text{}    &amp;\text{Access Assigned}
+\\
+User9   &amp;  \text{user9@email.com}   &amp;\text{RPT ID}
+&amp;\text{}               &amp;\text{USA} &amp;\text{Access Assigned}
+\\
+User10  &amp;  \text{user10@email.com}  &amp;\text{RPT ID}
+&amp;\text{}               &amp;\text{TUK} &amp;\text{Access Assigned}
+\\
+
+
+\hline
+\end{array}\]</span>
+<p>From the Modeling tab, select Manage Roles and add a new role as
+follow. For <code>ADMIN</code> role set up NO FILTER. For other Roles
+set up the filter as follows;</p>
+<p>Keep in mine, the Fact_RLS dataflow has no relationship with other
+tables in the data modelling. Yet <code>dimReporting</code> has
+relationship with other tables.</p>
+<p><code>BUSINESS PARTNER</code></p>
+<pre><code>[Finance Business Partner] #A column name in the Selected Table (let&#39;s assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( &#39;Fact_RLS&#39;[User] ),
+                 &#39;Fact_RLS&#39;[Email Address]
+        = USERNAME ()
+    )</code></pre>
+<p><code>FINANCIAL ANALYST</code></p>
+<pre><code>[Analyst] #A column name in the Selected Table (let&#39;s assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( &#39;Fact_RLS&#39;[User] ),
+                 &#39;Fact_RLS&#39;[Email Address]
+        = USERNAME ()
+    )</code></pre>
+<p><code>RPT ID</code></p>
+<pre><code>[Reporting Location ID] #A column name in the Selected Table (let&#39;s assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( &#39;Fact_RLS&#39;[RPT ID] ),
+                 &#39;Fact_RLS&#39;[Email Address]
+        = USERNAME ()
+    )</code></pre>
+<p><code>SENIOR LEADERSHIP</code></p>
+<pre><code>[Senior Leadership Team] #A column name in the Selected Table (let&#39;s assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( Fact_RLS[User] ),
+                 Fact_RLS[Email Address]
+        = USERNAME ()
+    )</code></pre>
+</div>
 </div>
 <div id="rate-conversion" class="section level2">
 <h2>Rate Conversion</h2>

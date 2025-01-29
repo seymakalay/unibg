@@ -684,6 +684,81 @@ Comparison = "Change from week "&[PrevWeek] &" to "&[CurrWeek]
 
 ## DimCalendar
 ## RLS
+
+Following link may give an idea of how to set up <a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>. Yet, I will show you a better way.
+
+### Fact_RLS
+
+Create a dataflow from Fact_RLS.xlsx
+
+
+\begin{array}{|l|c|c|}
+\hline
+\text{User}   & \text{Email Address} & \text{Access} & \text{Region}& \text{RPT ID}& \text{Access Status}   \\
+\hline
+User1   &  \text{user1@email.com}   &\text{Admin}  &\text{}               &\text{}    &\text{Access Assigned} \\
+User2   &  \text{user2@email.com}   &\text{Admin}  &\text{}               &\text{}    &\text{Access Assigned} \\
+User3   &  \text{user3@email.com}   &\text{Region} &\text{Americas}       &\text{}    &\text{Access Assigned} \\
+User4   &  \text{user4@email.com}   &\text{Region} &\text{Asia Pasific}   &\text{}    &\text{Access Assigned} \\
+User5   &  \text{user5@email.com}   &\text{Region} &\text{EMEA}           &\text{}    &\text{Access Assigned} \\
+User6   &  \text{user6@email.com}   &\text{Region} &\text{GOCS}           &\text{}    &\text{Access Assigned} \\
+User7   &  \text{user7@email.com}   &\text{Region} &\text{Greater China}  &\text{}    &\text{Access Assigned} \\
+User8   &  \text{user8@email.com}   &\text{Region} &\text{Greater China}  &\text{}    &\text{Access Assigned} \\
+User9   &  \text{user9@email.com}   &\text{RPT ID} &\text{}               &\text{USA} &\text{Access Assigned} \\
+User10  &  \text{user10@email.com}  &\text{RPT ID} &\text{}               &\text{TUK} &\text{Access Assigned} \\
+
+
+\hline
+\end{array}
+
+
+From the Modeling tab, select Manage Roles and add a new role as follow. For `ADMIN` role  set up NO FILTER.
+For other Roles set up the filter as follows;
+
+Keep in mine, the Fact_RLS dataflow has no relationship with other tables in the data modelling. 
+Yet `dimReporting` has relationship with other tables.
+
+
+`BUSINESS PARTNER`
+```
+[Finance Business Partner] #A column name in the Selected Table (let's assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( 'Fact_RLS'[User] ),
+                 'Fact_RLS'[Email Address]
+        = USERNAME ()
+    )
+```
+
+`FINANCIAL ANALYST`
+```
+[Analyst] #A column name in the Selected Table (let's assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( 'Fact_RLS'[User] ),
+                 'Fact_RLS'[Email Address]
+        = USERNAME ()
+    )
+```
+
+`RPT ID`
+```
+[Reporting Location ID] #A column name in the Selected Table (let's assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( 'Fact_RLS'[RPT ID] ),
+                 'Fact_RLS'[Email Address]
+        = USERNAME ()
+    )
+```
+    
+`SENIOR LEADERSHIP` 
+```
+[Senior Leadership Team] #A column name in the Selected Table (let's assume it is dimReporting table)
+    IN CALCULATETABLE (
+        VALUES ( Fact_RLS[User] ),
+                 Fact_RLS[Email Address]
+        = USERNAME ()
+    )
+```
+
 ## Rate Conversion
 ## dimFX
 
