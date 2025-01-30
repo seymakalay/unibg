@@ -689,7 +689,7 @@ Following link may give an idea of how to set up <a href="https://learn.microsof
 
 ### Fact_RLS
 
-Create a dataflow from Fact_RLS.xlsx
+Fact_RLS dataflow as:
 
 
 \begin{array}{|l|c|c|}
@@ -713,10 +713,9 @@ User10  &  \text{user10@email.com}  &\text{RPT ID} &\text{}               &\text
 
 
 From the Modeling tab, select Manage Roles and add a new role as follow. For `ADMIN` role  set up NO FILTER.
-For other Roles set up the filter as follows;
 
 Keep in mine, the Fact_RLS dataflow has no relationship with other tables in the data modelling. 
-Yet `dimReporting` has relationship with other tables.
+Yet `dimReporting` has relationship with other tables. For other Roles set up the filter as follows;
 
 
 `BUSINESS PARTNER`
@@ -759,8 +758,152 @@ Yet `dimReporting` has relationship with other tables.
     )
 ```
 
-## Rate Conversion
-## dimFX
+## Currency Rate Conversion
+
+### Fact_FX
+
+Fact_FX dataflow as:
+
+\begin{array}{|l|l|c|l|l|l|l|l|l|}
+\hline
+\text{Currency Code}   & \text{Country} & \text{Conversion Method} & \text{Attribute} & \text{FX Rate}& \text{FX Scenario}& \text{FX Type}& \text{Date} \\
+\hline
+\text{USD}	& \text{United States}  & \text{USD per LC}	& \text{FY25 AOP}	      & \text{1}	          & \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{USD}	& \text{United States}  & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{1}	          & \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\ 
+\text{USD}	& \text{United States}  & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{1}	          & \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{EUR}	& \text{Europe}         & \text{USD per LC}	& \text{FY25 AOP}	      & \text{1.05}	        & \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{EUR}	& \text{Europe}         & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{1.085198971}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{EUR}	& \text{Europe}         & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{1.070354394}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{JPY}	& \text{Japan}          & \text{USD per LC}	& \text{FY25 AOP}	      & \text{0.006896552}	& \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{JPY}	& \text{Japan}          & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{0.006401844}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{JPY}	& \text{Japan}          & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{0.006460157}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{GBP}	& \text{United Kingdom} & \text{USD per LC}	& \text{FY25 AOP}	      & \text{1.27}	        & \text{AOP}      & \text{AOP}	& \text{5/15/2024}\\
+\text{GBP}	& \text{United Kingdom} & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{1.271051795}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{GBP}	& \text{United Kingdom} & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{1.244895927}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{CHF}	& \text{Switzerland}    & \text{USD per LC}	& \text{FY25 AOP}	      & \text{1.111111111}	& \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{CHF}	& \text{Switzerland}    & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{1.09751413}	  & \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{CHF}	& \text{Switzerland}    & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{1.096791884}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{CAD}	& \text{Canada}         & \text{USD per LC}	& \text{FY25 AOP}	      & \text{0.735294118}	& \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{CAD}	& \text{Canada}         & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{0.732412934}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{CAD}	& \text{Canada}         & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{0.732010834}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\text{AUD}	& \text{Australia}      & \text{USD per LC}	& \text{FY25 AOP}	      & \text{0.675}    	  & \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{AUD}	& \text{Australia}      & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{0.666600007}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{AUD}	& \text{Australia}      & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{0.648701947}	& \text{Actual}	  & \text{PL} 	& \text{5/15/2024}\\
+\text{AED}	& \text{United Arab}    & \text{USD per LC}	& \text{FY25 AOP}	      & \text{0.272257011}	& \text{AOP}	    & \text{AOP}	& \text{5/15/2024}\\
+\text{AED}	& \text{United Arab}    & \text{USD per LC}	& \text{FY25 May M-BS}	& \text{0.272264423}	& \text{Actual}	  & \text{BS}	  & \text{5/15/2024}\\
+\text{AED}	& \text{United Arab}    & \text{USD per LC}	& \text{FY25 May M-PL}	& \text{0.272286663}	& \text{Actual}	  & \text{PL}	  & \text{5/15/2024}\\
+\hline
+\end{array}
+
+
+
+
+
+
+### dimCurrency
+
+dimCurrency dataflow as:
+
+\begin{array}{|l|c|}
+\hline
+\text{Currency Code}   & \text{Country}  \\
+\hline
+\text{USD}   & \text{United States}    \\
+\text{EUR}   & \text{Europe}           \\      
+\text{JPY}   & \text{Japan}            \\       
+\text{GBP}   & \text{United Kingdom}   \\       
+\text{CHF}   & \text{Switzerland}      \\   
+\text{CAD}   & \text{Canada}           \\  
+\text{AUD}   & \text{Australia}        \\  
+\text{AED}   & \text{United Arab}      \\  
+\text{CNY}   & \text{China}            \\  
+\hline
+\end{array}
+
+
+
+
+### Fact_AOP
+
+Fact_AOP dataflow as:
+
+\begin{array}{|l|l|}
+\hline
+\text{Data Source}   & \text{RPT ID} & \text{G/L Account}& \text{Amount}& \text{Date}& \text{Currency}& \text{Amount Type}& \text{Scenario}& \text{Product ID} \\
+\hline
+\text{filename.xlsx}   & \text{TMX}   & \text{5340900}   & \text{11538}    & \text{5/15/2024}   & \text{USD}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BEM}   & \text{5265000}   & \text{347659}   & \text{5/15/2024}   & \text{USD}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{BEM}   & \text{5280000}   & \text{106681}   & \text{5/15/2024}   & \text{USD}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BEM}   & \text{5210900}   & \text{682041}   & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P123}\\
+\text{filename.xlsx}   & \text{BEM}   & \text{5225000}   & \text{796059}   & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5265000}   & \text{17520}    & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5280000}   & \text{47083}	   & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5260003}   & \text{24504}    & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P127}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5210900}   & \text{86324}    & \text{5/15/2024}   & \text{EUR}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5225000}   & \text{152606}   & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P129}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5010900}   & \text{30000}    & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P130}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5110900}   & \text{60000}    & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BHP}   & \text{5004000}   & \text{70000}    & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{BLS}   & \text{5265000}   & \text{95389}    & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P123}\\
+\text{filename.xlsx}   & \text{BLS}   & \text{5260003}   & \text{27230}    & \text{5/15/2024}   & \text{JPY}   & \text{Currency}   & \text{AOP}   & \text{P134}\\
+\text{filename.xlsx}   & \text{BLS}   & \text{5210900}   & \text{51732}    & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{BLS}   & \text{5225000}   & \text{114307}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P136}\\
+\text{filename.xlsx}   & \text{BLS}   & \text{5110900}   & \text{22460}    & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5265000}   & \text{185465}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P123}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5280000}   & \text{114718}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P139}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5260003}   & \text{369725}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5210900}   & \text{339158}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P141}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5225000}   & \text{819388}   & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{CMG}   & \text{5110900}   & \text{10000}    & \text{5/15/2024}   & \text{GBP}   & \text{Currency}   & \text{AOP}   & \text{P143}\\
+\text{filename.xlsx}   & \text{EHW}   & \text{5350000}   & \text{94203}    & \text{5/15/2024}   & \text{CHF}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{EHW}   & \text{5340900}   & \text{28086}    & \text{5/15/2024}   & \text{CHF}   & \text{Currency}   & \text{AOP}   & \text{P121}\\
+\text{filename.xlsx}   & \text{TBE}   & \text{5340900}   & \text{11517}    & \text{5/15/2024}   & \text{CAD}   & \text{Currency}   & \text{AOP}   & \text{P123}\\
+\text{filename.xlsx}   & \text{TFR}   & \text{5340900}   & \text{40110}    & \text{5/15/2024}   & \text{CAD}   & \text{Currency}   & \text{AOP}   & \text{P120}\\
+\text{filename.xlsx}   & \text{TIL}   & \text{5340900}   & \text{244978}   & \text{5/15/2024}   & \text{CAD}   & \text{Currency}   & \text{AOP}   & \text{P123}\\
+\hline
+\end{array}
+
+
+### Data Modeling
+
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+knitr::include_graphics('images/datamodelling.png')
+```
+</div>
+
+### USD Currency Conversion
+
+```
+Base Measure = SUM('Fact_AOP'[Amount])
+
+
+
+Sum@AOP =
+VAR _AggregatedAmountInCurrency =
+    ADDCOLUMNS (
+        SUMMARIZE (
+            'Fact_AOP',
+            'Calendar'[Date],
+            'dimCurrency'[Currency Code]
+        ),
+        "@AmountInCurrency", [Base Measure],
+        "@Rate", CALCULATE(
+                    MAX( 'factFX'[FX Rate] ),
+                    KEEPFILTERS( 'factFX'[FX Type] = "AOP" ),
+                    ALLEXCEPT('Calendar', 'Calendar'[Date])
+                )
+    )
+VAR _Result =
+    SUMX (
+        _AggregatedAmountInCurrency,
+        [@AmountInCurrency] * COALESCE( [@Rate], IF( 'dimCurrency'[Currency Code] = "USD" , 1) )
+    )
+RETURN
+    _Result
+```
+
+
 
 ## Data Modeling
 
