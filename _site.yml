@@ -56,9 +56,9 @@ navbar:
       menu:
       - text: "CVs"
       - text: "English CV"
-        href: ./SK_CV_Eng.pdf
+        href: ./SK_CV_Eng2.pdf
       - text: "Italian CV"
-        href: ./SK_CV_Ita.pdf  
+        href: ./SK_CV_Ita2.pdf  
       - text: "------------" 
       - text: "Certificates"
       - text: "Auburn Business"  
