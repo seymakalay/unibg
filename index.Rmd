@@ -68,6 +68,7 @@ library(fontawesome)
 
 ## **Data Scientist**
 
+
 <div class="my-right-figure">
 ```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='right'}
 knitr::include_graphics('images/logo.jpg')
