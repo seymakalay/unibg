@@ -1,0 +1,432 @@
+---
+title: ""
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+<!--\1  <span style="color:red">pomodoro</span> \1-->
+<!--\1   \1-->
+
+> This page is under construction. 
+> This tutorial provides a guideline to fundamental concepts in SQL.
+
+
+  
+
+## Install Azure Data Studio and Connect to the Database
+
+Do a web search for "Download Azure Data Studio and download the latest version.
+Open Azure Data Studio, and connect to <a href="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works" target="_blank"> **AdventureWorks** </a> database.
+
+
+## SELECT
+
+Order of the comments are important. You can memorize them easily by locating the first letter in your keybord.
+
+S for SELECT
+
+F for FROM (and J for JOINS comes right after FROM)
+
+W for WHERE
+
+G for GROUP BY
+
+H for HAVING
+
+O for ORDER
+
+let\'s find the `SalesAmount`, `WHERE YEAR(OrderDate) > 2010`, and `ORDER` it.
+
+```
+SELECT
+CustomerKey,
+SalesAmount AS [Sales Amount]
+FROM FactInternetSales
+WHERE YEAR(OrderDate) > 2000
+ORDER BY SalesAmount DESC
+```
+
+
+## GROUP BY
+
+let\'s  GROUP BY `CustomerKey`. Make sure under the `SELECT` statement, you type the GROUP BY variable 
+and add all the functions should be aggregated (`SUM`,`AVG`,`MIN`,etc).
+
+```
+SELECT
+CustomerKey,
+SUM(SalesAmount) AS SalesAmount
+FROM FactInternetSales
+WHERE YEAR(OrderDate) > 2000
+GROUP BY CustomerKey
+HAVING SUM(SalesAmount) > 10000
+ORDER BY SalesAmount DESC
+```
+## HAVING
+
+let\'s apply filter to GROUP BY using `HAVING` statement.
+```
+SELECT
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber ='SO43697'
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) > 1000
+ORDER BY SalesAmount ASC
+```
+
+## TOP(10) PERCENT
+
+
+let\'s get the top 10% of the data using `TOP(10) PERCENT` and  `FETCH`.
+```
+SELECT   TOP(10) PERCENT
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber ='SO43697'
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) > 1000
+ORDER BY SalesAmount ASC
+```
+
+
+```
+SELECT  
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber ='SO43697'
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) > 1000
+ORDER BY SalesAmount ASC
+OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY -- TOP(10) PERCENT
+--OFFSET 2 ROWS FETCH NEXT 10 ROWS ONLY
+```
+
+
+## Date Functions
+
+```
+SELECT  
+DueDate, ShipDate,
+DATEDIFF(DAY,ShipDate,DueDate) AS DAYSINBETWEEN,
+DATEDIFF(hour,ShipDate,DueDate) AS HOURSINBETWEEN,
+DATEADD(day,10, DueDate)  AS DUEDAYPLUS10DAY,
+DATEADD(day,-10, DueDate) AS DUEDAYMINUS10DAY
+FROM FactInternetSales
+WHERE DATENAME(month, OrderDate) = N'December'AND SalesTerritoryKey =1
+```
+
+## Column Maniplation 
+```
+SELECT
+EnglishProductName,
+EnglishDescription,
+CONCAT(EnglishProductName, '-', EnglishDescription),
+LEN(EnglishDescription),
+UPPER(EnglishProductName),
+LOWER(EnglishProductName),
+REPLACE(EnglishProductName,'Front', 'bro'),
+ProductAlternateKey,
+LEFT(ProductAlternateKey,2) AS ProductShort,
+LEN(ProductAlternateKey)-3,
+RIGHT(ProductAlternateKey, 4),
+RIGHT(ProductAlternateKey, LEN(ProductAlternateKey)-3)AS EnglishProductNameReplaced
+FROM DimProduct
+--WHERE ProductKey = 555
+--WHERE Class <> 'H'
+--WHERE Class IS NOT NULL
+--WHERE(Class <> 'H' OR Class IS NULL) AND [Status] IS NOT NULL
+--WHERE(SafetyStockLevel BETWEEN 500 AND 1000) AND [Status] IS NOT NULL
+WHERE Color IN(N'Black', N'Silver', N'White')
+```
+
+```
+SELECT
+FirstName,
+EmailAddress
+FROM DimCustomer
+WHERE FirstName LIKE '_R%'
+```
+
+
+## `IF` and `CASE`
+
+Multiple `IF` statements and `CASE`.
+```
+SELECT
+    FirstName,
+    IIF(MiddleName IS NULL, 'UNKNOW', MiddleName ),
+    ISNULL(MiddleName, 'UNKNOW' ) AS MiddleName2,
+    COALESCE(MiddleName, 'UNKNOW' ) AS MiddleName3,
+    EmailAddress,
+    YearlyIncome,
+    IIF(YearlyIncome >50000, 'Above', 'Below') AS IncomeCategory,
+    CASE
+        WHEN NumberChildrenAtHome = 0 THEN '0'
+        WHEN NumberChildrenAtHome =1 THEN '1'
+        WHEN NumberChildrenAtHome BETWEEN 2 AND 4 THEN '2-4'
+        WHEN NumberChildrenAtHome >= 5 THEN '5+'
+        ELSE 'UNKNOWN'
+    END AS NumberofChildrenCategory,
+    NumberChildrenAtHome AS ActualChildren
+FROM DimCustomer
+WHERE IIF(YearlyIncome >50000, 'Above', 'Below') = 'Above' 
+AND HouseOwnerFlag = 1 AND NumberCarsOwned > 1
+```
+
+## `CAST`
+
+Changing the data type with `CAST`.
+```
+SELECT
+SalesAmount,
+CAST(SalesAmount AS INT) AS SalesAmountCAST,
+OrderDate,
+CAST(OrderDate AS DATE) AS OrderDateCAST
+FROM FactInternetSales
+```
+
+## `WHERE` and `HAVING`
+
+Filtering with `WHERE` and `HAVING`.
+```
+SELECT
+CONCAT(dc.FirstName, '', dc.LastName) AS CustomerName,
+dc.EmailAddress AS EmailAdress,
+--dcy.CurrencyName,
+SUM(fs.SalesAmount) AS AmountSpent
+
+FROM FactInternetSales AS fs
+INNER JOIN  DimCustomer AS dc
+ON fs.CustomerKey = dc.CustomerKey
+INNER JOIN DimCurrency AS dcy
+on fs.CurrencyKey = dcy.CurrencyKey
+
+WHERE dcy.CurrencyName = N'US Dollar' -- IS MUCH FASTER THAN USING HAVING
+
+GROUP BY CONCAT(dc.FirstName, '', dc.LastName), dc.EmailAddress--,dcy.CurrencyName
+--HAVING dcy.CurrencyName = N'US Dollar'
+ORDER BY AmountSpent DESC
+```
+
+## JOINS
+
+```
+SELECT
+
+    dpsc.EnglishProductSubcategoryName AS SubCategory,
+    SUM(fs.SalesAmount) AS SalesAmount
+
+FROM FactInternetSales AS fs
+        JOIN DimProduct AS dp
+        ON  fs.ProductKey = dp.ProductKey
+        JOIN DimProductSubcategory AS dpsc
+        ON dp.ProductSubcategoryKey = dpsc.ProductSubcategoryKey
+        JOIN DimCurrency AS dcy
+        ON fs.CurrencyKey = dcy.CurrencyKey
+        JOIN DimSalesTerritory AS dst
+        ON fs.SalesTerritoryKey = dst.SalesTerritoryKey
+
+WHERE dcy.CurrencyName = N'US Dollar' 
+AND dst.SalesTerritoryCountry = N'United States'
+
+GROUP BY dpsc.EnglishProductSubcategoryName
+ORDER BY SalesAmount DESC
+```
+
+```
+SELECT
+CONCAT(de.FirstName, ' ', de.LastName) AS EmployeeName,
+de.title AS EmployeeTitle, 
+dcy.CurrencyName AS Currency,
+SUM(fs.SalesAmount) AS TotalSalesAmount
+
+FROM FactResellerSales AS fs
+JOIN DimEmployee AS de
+ON fs.EmployeeKey = de.EmployeeKey
+JOIN DimSalesTerritory AS dst
+ON fs.SalesTerritoryKey = dst.SalesTerritoryKey
+JOIN DimCurrency AS dcy
+ON fs.CurrencyKey = dcy.CurrencyKey
+
+WHERE dst.SalesTerritoryGroup = N'Europe'
+AND de.[Status] = N'Current'
+
+GROUP BY CONCAT(de.FirstName, ' ', de.LastName), de.title, dcy.CurrencyName
+ORDER BY EmployeeName, TotalSalesAmount DESC
+```
+
+## VIEW
+
+```
+CREATE VIEW vwName
+AS  
+
+SQL STATEMENT
+
+GO
+```
+
+## `CUBE` and `ROOLUP`
+
+To find the Subtotals and Totals.
+```
+SELECT
+ProductCategory,
+ProductSubCategory,
+Sum(SalesAmount) AS SalesAmount
+
+FROM vwOrdersALL
+WHERE YEAR(OrderDate) = 2013
+AND Currency = N'US Dollar'
+
+GROUP BY CUBE(ProductCategory,ProductSubCategory)
+```
+```
+SELECT
+ProductCategory,
+ProductSubCategory,
+Sum(SalesAmount) AS SalesAmount
+
+FROM vwOrdersALL
+WHERE YEAR(OrderDate) = 2013
+AND Currency = N'US Dollar'
+
+GROUP BY ROLLUP(ProductCategory,ProductSubCategory)
+```
+
+## Percentage of Total
+
+```
+SELECT
+Source AS Reseller,
+SUM(SalesAmount) AS Sales,
+(SELECT SUM(SalesAmount) FROM vwOrdersALL WHERE Country = N'United States' AND Source <> N'Web') AS Total, 
+SUM(SalesAmount)/ (SELECT SUM(SalesAmount) FROM vwOrdersALL WHERE Country = N'United States' AND Source <> N'Web')
+AS PcrOfTotals
+
+FROM vwOrdersALL
+WHERE Country = N'United States' AND Source <> N'Web'
+
+GROUP BY Source
+ORDER BY Sales DESC
+```
+
+
+
+```
+SELECT
+o.OrganizationName AS OrganizationName,
+a.AccountType  AS AccountType,
+a.AccountDescription AS AccountDescription,
+SUM(f.Amount) AS Amt
+
+FROM FactFinance AS f
+JOIN DimScenario AS s
+ON f.ScenarioKey = s.ScenarioKey
+JOIN DimDate AS d
+ON f.DateKey = d.DateKey
+JOIN DimOrganization AS o
+ON f.OrganizationKey = o.OrganizationKey
+JOIN DimAccount AS a
+ON f.AccountKey = a.AccountKey
+
+WHERE  s.ScenarioName = N'Actual'
+AND d.CalendarYear = 2011
+AND d.EnglishMonthName = N'January'
+AND o.OrganizationName = N'Southwest Division'
+AND a.AccountType = N'Expenditures'
+
+GROUP BY o.OrganizationName, a.AccountType, a.AccountDescription
+```
+
+
+```
+SELECT
+
+a.AccountDescription AS AccountDescription,
+SUM(f.Amount) AS Amt,
+                (SELECT
+                SUM(f.Amount) AS Amt
+                FROM FactFinance AS f
+                JOIN DimScenario AS s
+                ON f.ScenarioKey = s.ScenarioKey
+                JOIN DimDate AS d
+                ON f.DateKey = d.DateKey
+                JOIN DimOrganization AS o
+                ON f.OrganizationKey = o.OrganizationKey
+                JOIN DimAccount AS a
+                ON f.AccountKey = a.AccountKey
+
+                WHERE  s.ScenarioName = N'Actual'
+                AND d.CalendarYear = 2011
+                AND d.EnglishMonthName = N'January'
+                AND o.OrganizationName = N'Southwest Division'
+                AND a.AccountType = N'Expenditures') AS Total,
+                
+SUM(f.Amount)/ (SELECT
+                SUM(f.Amount) AS Amt
+                FROM FactFinance AS f
+                JOIN DimScenario AS s
+                ON f.ScenarioKey = s.ScenarioKey
+                JOIN DimDate AS d
+                ON f.DateKey = d.DateKey
+                JOIN DimOrganization AS o
+                ON f.OrganizationKey = o.OrganizationKey
+                JOIN DimAccount AS a
+                ON f.AccountKey = a.AccountKey
+
+                WHERE  s.ScenarioName = N'Actual'
+                AND d.CalendarYear = 2011
+                AND d.EnglishMonthName = N'January'
+                AND o.OrganizationName = N'Southwest Division'
+                AND a.AccountType = N'Expenditures') AS Percantage               
+
+FROM FactFinance AS f
+JOIN DimScenario AS s
+ON f.ScenarioKey = s.ScenarioKey
+JOIN DimDate AS d
+ON f.DateKey = d.DateKey
+JOIN DimOrganization AS o
+ON f.OrganizationKey = o.OrganizationKey
+JOIN DimAccount AS a
+ON f.AccountKey = a.AccountKey
+
+WHERE  s.ScenarioName = N'Actual'
+AND d.CalendarYear = 2011
+AND d.EnglishMonthName = N'January'
+AND o.OrganizationName = N'Southwest Division'
+AND a.AccountType = N'Expenditures'
+
+GROUP BY a.AccountDescription
+ORDER BY Amt DESC
+```

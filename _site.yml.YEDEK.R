@@ -1,0 +1,85 @@
+name: "Seyma Kalay, Ph.D."
+navbar:
+  title: "Seyma Kalay, Ph.D."
+left:
+  - text: "Home"
+href: index.html
+icon: fa-home
+- text: "CV"
+href: Journal.html
+icon: fa-book
+- text: "Packages"
+icon: fa-box
+menu:
+  - text: "Machine Learning"
+- text: "pomodoro"
+#icon: fa-tomato
+href: https://github.com/seymakalay/pomodoro
+- text: "------------"  
+- text: "Data Visualization"  
+- text: "pepe" 
+#icon: <i class="fa-solid fa-pepper-hot"></i>
+href: https://github.com/seymakalay/pepe
+- text: "Tutorials"
+icon:  fa-rocket
+menu:
+  - text: "Machine Learning"
+- text: "pomodoro"
+href: pomodoro.tutorial.html
+- text: "------------"  
+- text: "Data Visualization"  
+- text: "pepe"
+href: pepe.tutorial.html
+- text: "Shiny"
+icon: fa-gem
+menu:
+  - text: "Mapping"
+- text: "Simple Map"
+href: MapApp.html
+- text: "------------" 
+- text: "Visualization"
+- text: "Plot"
+href: VisualApp.html  
+- text: "Tableau"
+href: tableau.html 
+icon: fa-star
+- text: "Power BI" 
+href: powerbi.html 
+icon: fa-chart-bar
+right:
+  - href: https://github.com/seymakalay
+icon: fa-github 
+- href: https://stackoverflow.com/users/9209203/seyma-kalay?tab=profile
+icon: fa-stack-overflow
+- text: ""
+icon: fa-download
+menu:
+  - text: "CVs"
+- text: "English CV"
+href: ./SK_CV_Eng.pdf
+- text: "Italian CV"
+href: ./SK_CV_Ita.pdf  
+- text: "------------" 
+- text: "Certificates"
+- text: "Auburn Business"  
+href: ./images/AU_Business.pdf 
+- text: "Azure"    
+href: ./images/CourseraAzure.pdf  
+- text: "Power Bi"
+href: ./images/CourseraPowerBi.pdf
+- text: "Python"  
+href: ./images/Python4_Data_Analysis.pdf
+- text: "Snow Flake"    
+href: ./images/CourseraSnowFlake.pdf
+- text: "SQL"  
+href: ./images/CourseraAdvanceSQL.pdf
+- href: https://www.linkedin.com/in/seymakalay/
+  icon: fab fa-linkedin fa-lg  
+- href: https://seymakalay.github.io/unibg.it/index.html
+icon: fa-globe  
+output_dir: "docs"
+
+
+
+
+

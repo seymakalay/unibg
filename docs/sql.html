@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>sql.knit</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Seyma Kalay, Ph.D.</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="Journal.html">
+    <span class="fa fa-book"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-box"></span>
+     
+    Packages
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Machine Learning</li>
+    <li>
+      <a href="https://github.com/seymakalay/pomodoro">pomodoro CRAN</a>
+    </li>
+    <li>
+      <a href="pomodoro.tutorial.html">pomodoro vignette</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Data Visualization</li>
+    <li>
+      <a href="https://github.com/seymakalay/pepe">pepe CRAN</a>
+    </li>
+    <li>
+      <a href="pepe.tutorial.html">pepe vignette</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-gem"></span>
+     
+    Shiny
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Mapping</li>
+    <li>
+      <a href="MapApp.html">Simple Map</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Visualization</li>
+    <li>
+      <a href="VisualApp.html">Plot</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="tableau.html">
+    <span class="fa fa-star"></span>
+     
+    Tableau
+  </a>
+</li>
+<li>
+  <a href="powerbi.html">
+    <span class="fa fa-chart-bar"></span>
+     
+    Power BI
+  </a>
+</li>
+<li>
+  <a href="sql.html">
+    <span class="fa fa-database"></span>
+     
+    SQL
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/seymakalay">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://stackoverflow.com/users/9209203/seyma-kalay?tab=profile">
+    <span class="fa fa-stack-overflow"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-download"></span>
+     
+    
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">CVs</li>
+    <li>
+      <a href="./SK_CV_Eng.pdf">English CV</a>
+    </li>
+    <li>
+      <a href="./SK_CV_Ita.pdf">Italian CV</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Certificates</li>
+    <li>
+      <a href="./images/AU_Business.pdf">Auburn Business</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAzure.pdf">Azure</a>
+    </li>
+    <li>
+      <a href="./images/CourseraPowerBi.pdf">Power Bi</a>
+    </li>
+    <li>
+      <a href="./images/Python4_Data_Analysis.pdf">Python</a>
+    </li>
+    <li>
+      <a href="./images/CourseraSnowFlake.pdf">Snow Flake</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAdvanceSQL.pdf">SQL</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/seymakalay/">
+    <span class="fab fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://seymakalay.github.io/unibg.it/index.html">
+    <span class="fa fa-globe"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<!--\1  <span style="color:red">pomodoro</span> \1-->
+<!--\1   \1-->
+<blockquote>
+<p>This page is under construction. This tutorial provides a guideline
+to fundamental concepts in SQL.</p>
+</blockquote>
+<div id="install-azure-data-studio-and-connect-to-the-database"
+class="section level2">
+<h2>Install Azure Data Studio and Connect to the Database</h2>
+<p>Do a web search for “Download Azure Data Studio and download the
+latest version. Open Azure Data Studio, and connect to
+<a href="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works" target="_blank">
+<strong>AdventureWorks</strong> </a> database.</p>
+</div>
+<div id="select" class="section level2">
+<h2>SELECT</h2>
+<p>Order of the comments are important. You can memorize them easily by
+locating the first letter in your keybord.</p>
+<p>S for SELECT</p>
+<p>F for FROM (and J for JOINS comes right after FROM)</p>
+<p>W for WHERE</p>
+<p>G for GROUP BY</p>
+<p>H for HAVING</p>
+<p>O for ORDER</p>
+<p>let's find the <code>SalesAmount</code>,
+<code>WHERE YEAR(OrderDate) &gt; 2010</code>, and <code>ORDER</code>
+it.</p>
+<pre><code>SELECT
+CustomerKey,
+SalesAmount AS [Sales Amount]
+FROM FactInternetSales
+WHERE YEAR(OrderDate) &gt; 2000
+ORDER BY SalesAmount DESC</code></pre>
+</div>
+<div id="group-by" class="section level2">
+<h2>GROUP BY</h2>
+<p>let's GROUP BY <code>CustomerKey</code>. Make sure under the
+<code>SELECT</code> statement, you type the GROUP BY variable and add
+all the functions should be aggregated
+(<code>SUM</code>,<code>AVG</code>,<code>MIN</code>,etc).</p>
+<pre><code>SELECT
+CustomerKey,
+SUM(SalesAmount) AS SalesAmount
+FROM FactInternetSales
+WHERE YEAR(OrderDate) &gt; 2000
+GROUP BY CustomerKey
+HAVING SUM(SalesAmount) &gt; 10000
+ORDER BY SalesAmount DESC</code></pre>
+</div>
+<div id="having" class="section level2">
+<h2>HAVING</h2>
+<p>let's apply filter to GROUP BY using <code>HAVING</code>
+statement.</p>
+<pre><code>SELECT
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber =&#39;SO43697&#39;
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) &gt; 1000
+ORDER BY SalesAmount ASC</code></pre>
+</div>
+<div id="top10-percent" class="section level2">
+<h2>TOP(10) PERCENT</h2>
+<p>let's get the top 10% of the data using <code>TOP(10) PERCENT</code>
+and <code>FETCH</code>.</p>
+<pre><code>SELECT   TOP(10) PERCENT
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber =&#39;SO43697&#39;
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) &gt; 1000
+ORDER BY SalesAmount ASC</code></pre>
+<pre><code>SELECT  
+SalesOrderNumber AS [InvoceNumber],
+OrderDate,
+SUM(SalesAmount) AS SalesAmount,
+SUM(TaxAmt) AS TaxAmt,
+SUM(OrderQuantity) AS OrderQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoceTotal
+FROM FactInternetSales
+WHERE SalesTerritoryKey = 6
+--WHERE SalesOrderNumber =&#39;SO43697&#39;
+GROUP BY SalesOrderNumber, OrderDate
+HAVING SUM(SalesAmount) &gt; 1000
+ORDER BY SalesAmount ASC
+OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY -- TOP(10) PERCENT
+--OFFSET 2 ROWS FETCH NEXT 10 ROWS ONLY</code></pre>
+</div>
+<div id="date-functions" class="section level2">
+<h2>Date Functions</h2>
+<pre><code>SELECT  
+DueDate, ShipDate,
+DATEDIFF(DAY,ShipDate,DueDate) AS DAYSINBETWEEN,
+DATEDIFF(hour,ShipDate,DueDate) AS HOURSINBETWEEN,
+DATEADD(day,10, DueDate)  AS DUEDAYPLUS10DAY,
+DATEADD(day,-10, DueDate) AS DUEDAYMINUS10DAY
+FROM FactInternetSales
+WHERE DATENAME(month, OrderDate) = N&#39;December&#39;AND SalesTerritoryKey =1</code></pre>
+</div>
+<div id="column-maniplation" class="section level2">
+<h2>Column Maniplation</h2>
+<pre><code>SELECT
+EnglishProductName,
+EnglishDescription,
+CONCAT(EnglishProductName, &#39;-&#39;, EnglishDescription),
+LEN(EnglishDescription),
+UPPER(EnglishProductName),
+LOWER(EnglishProductName),
+REPLACE(EnglishProductName,&#39;Front&#39;, &#39;bro&#39;),
+ProductAlternateKey,
+LEFT(ProductAlternateKey,2) AS ProductShort,
+LEN(ProductAlternateKey)-3,
+RIGHT(ProductAlternateKey, 4),
+RIGHT(ProductAlternateKey, LEN(ProductAlternateKey)-3)AS EnglishProductNameReplaced
+FROM DimProduct
+--WHERE ProductKey = 555
+--WHERE Class &lt;&gt; &#39;H&#39;
+--WHERE Class IS NOT NULL
+--WHERE(Class &lt;&gt; &#39;H&#39; OR Class IS NULL) AND [Status] IS NOT NULL
+--WHERE(SafetyStockLevel BETWEEN 500 AND 1000) AND [Status] IS NOT NULL
+WHERE Color IN(N&#39;Black&#39;, N&#39;Silver&#39;, N&#39;White&#39;)</code></pre>
+<pre><code>SELECT
+FirstName,
+EmailAddress
+FROM DimCustomer
+WHERE FirstName LIKE &#39;_R%&#39;</code></pre>
+</div>
+<div id="if-and-case" class="section level2">
+<h2><code>IF</code> and <code>CASE</code></h2>
+<p>Multiple <code>IF</code> statements and <code>CASE</code>.</p>
+<pre><code>SELECT
+    FirstName,
+    IIF(MiddleName IS NULL, &#39;UNKNOW&#39;, MiddleName ),
+    ISNULL(MiddleName, &#39;UNKNOW&#39; ) AS MiddleName2,
+    COALESCE(MiddleName, &#39;UNKNOW&#39; ) AS MiddleName3,
+    EmailAddress,
+    YearlyIncome,
+    IIF(YearlyIncome &gt;50000, &#39;Above&#39;, &#39;Below&#39;) AS IncomeCategory,
+    CASE
+        WHEN NumberChildrenAtHome = 0 THEN &#39;0&#39;
+        WHEN NumberChildrenAtHome =1 THEN &#39;1&#39;
+        WHEN NumberChildrenAtHome BETWEEN 2 AND 4 THEN &#39;2-4&#39;
+        WHEN NumberChildrenAtHome &gt;= 5 THEN &#39;5+&#39;
+        ELSE &#39;UNKNOWN&#39;
+    END AS NumberofChildrenCategory,
+    NumberChildrenAtHome AS ActualChildren
+FROM DimCustomer
+WHERE IIF(YearlyIncome &gt;50000, &#39;Above&#39;, &#39;Below&#39;) = &#39;Above&#39; 
+AND HouseOwnerFlag = 1 AND NumberCarsOwned &gt; 1</code></pre>
+</div>
+<div id="cast" class="section level2">
+<h2><code>CAST</code></h2>
+<p>Changing the data type with <code>CAST</code>.</p>
+<pre><code>SELECT
+SalesAmount,
+CAST(SalesAmount AS INT) AS SalesAmountCAST,
+OrderDate,
+CAST(OrderDate AS DATE) AS OrderDateCAST
+FROM FactInternetSales</code></pre>
+</div>
+<div id="where-and-having" class="section level2">
+<h2><code>WHERE</code> and <code>HAVING</code></h2>
+<p>Filtering with <code>WHERE</code> and <code>HAVING</code>.</p>
+<pre><code>SELECT
+CONCAT(dc.FirstName, &#39;&#39;, dc.LastName) AS CustomerName,
+dc.EmailAddress AS EmailAdress,
+--dcy.CurrencyName,
+SUM(fs.SalesAmount) AS AmountSpent
+
+FROM FactInternetSales AS fs
+INNER JOIN  DimCustomer AS dc
+ON fs.CustomerKey = dc.CustomerKey
+INNER JOIN DimCurrency AS dcy
+on fs.CurrencyKey = dcy.CurrencyKey
+
+WHERE dcy.CurrencyName = N&#39;US Dollar&#39; -- IS MUCH FASTER THAN USING HAVING
+
+GROUP BY CONCAT(dc.FirstName, &#39;&#39;, dc.LastName), dc.EmailAddress--,dcy.CurrencyName
+--HAVING dcy.CurrencyName = N&#39;US Dollar&#39;
+ORDER BY AmountSpent DESC</code></pre>
+</div>
+<div id="joins" class="section level2">
+<h2>JOINS</h2>
+<pre><code>SELECT
+
+    dpsc.EnglishProductSubcategoryName AS SubCategory,
+    SUM(fs.SalesAmount) AS SalesAmount
+
+FROM FactInternetSales AS fs
+        JOIN DimProduct AS dp
+        ON  fs.ProductKey = dp.ProductKey
+        JOIN DimProductSubcategory AS dpsc
+        ON dp.ProductSubcategoryKey = dpsc.ProductSubcategoryKey
+        JOIN DimCurrency AS dcy
+        ON fs.CurrencyKey = dcy.CurrencyKey
+        JOIN DimSalesTerritory AS dst
+        ON fs.SalesTerritoryKey = dst.SalesTerritoryKey
+
+WHERE dcy.CurrencyName = N&#39;US Dollar&#39; 
+AND dst.SalesTerritoryCountry = N&#39;United States&#39;
+
+GROUP BY dpsc.EnglishProductSubcategoryName
+ORDER BY SalesAmount DESC</code></pre>
+<pre><code>SELECT
+CONCAT(de.FirstName, &#39; &#39;, de.LastName) AS EmployeeName,
+de.title AS EmployeeTitle, 
+dcy.CurrencyName AS Currency,
+SUM(fs.SalesAmount) AS TotalSalesAmount
+
+FROM FactResellerSales AS fs
+JOIN DimEmployee AS de
+ON fs.EmployeeKey = de.EmployeeKey
+JOIN DimSalesTerritory AS dst
+ON fs.SalesTerritoryKey = dst.SalesTerritoryKey
+JOIN DimCurrency AS dcy
+ON fs.CurrencyKey = dcy.CurrencyKey
+
+WHERE dst.SalesTerritoryGroup = N&#39;Europe&#39;
+AND de.[Status] = N&#39;Current&#39;
+
+GROUP BY CONCAT(de.FirstName, &#39; &#39;, de.LastName), de.title, dcy.CurrencyName
+ORDER BY EmployeeName, TotalSalesAmount DESC</code></pre>
+</div>
+<div id="view" class="section level2">
+<h2>VIEW</h2>
+<pre><code>CREATE VIEW vwName
+AS  
+
+SQL STATEMENT
+
+GO</code></pre>
+</div>
+<div id="cube-and-roolup" class="section level2">
+<h2><code>CUBE</code> and <code>ROOLUP</code></h2>
+<p>To find the Subtotals and Totals.</p>
+<pre><code>SELECT
+ProductCategory,
+ProductSubCategory,
+Sum(SalesAmount) AS SalesAmount
+
+FROM vwOrdersALL
+WHERE YEAR(OrderDate) = 2013
+AND Currency = N&#39;US Dollar&#39;
+
+GROUP BY CUBE(ProductCategory,ProductSubCategory)</code></pre>
+<pre><code>SELECT
+ProductCategory,
+ProductSubCategory,
+Sum(SalesAmount) AS SalesAmount
+
+FROM vwOrdersALL
+WHERE YEAR(OrderDate) = 2013
+AND Currency = N&#39;US Dollar&#39;
+
+GROUP BY ROLLUP(ProductCategory,ProductSubCategory)</code></pre>
+</div>
+<div id="percentage-of-total" class="section level2">
+<h2>Percentage of Total</h2>
+<pre><code>SELECT
+Source AS Reseller,
+SUM(SalesAmount) AS Sales,
+(SELECT SUM(SalesAmount) FROM vwOrdersALL WHERE Country = N&#39;United States&#39; AND Source &lt;&gt; N&#39;Web&#39;) AS Total, 
+SUM(SalesAmount)/ (SELECT SUM(SalesAmount) FROM vwOrdersALL WHERE Country = N&#39;United States&#39; AND Source &lt;&gt; N&#39;Web&#39;)
+AS PcrOfTotals
+
+FROM vwOrdersALL
+WHERE Country = N&#39;United States&#39; AND Source &lt;&gt; N&#39;Web&#39;
+
+GROUP BY Source
+ORDER BY Sales DESC</code></pre>
+<pre><code>SELECT
+o.OrganizationName AS OrganizationName,
+a.AccountType  AS AccountType,
+a.AccountDescription AS AccountDescription,
+SUM(f.Amount) AS Amt
+
+FROM FactFinance AS f
+JOIN DimScenario AS s
+ON f.ScenarioKey = s.ScenarioKey
+JOIN DimDate AS d
+ON f.DateKey = d.DateKey
+JOIN DimOrganization AS o
+ON f.OrganizationKey = o.OrganizationKey
+JOIN DimAccount AS a
+ON f.AccountKey = a.AccountKey
+
+WHERE  s.ScenarioName = N&#39;Actual&#39;
+AND d.CalendarYear = 2011
+AND d.EnglishMonthName = N&#39;January&#39;
+AND o.OrganizationName = N&#39;Southwest Division&#39;
+AND a.AccountType = N&#39;Expenditures&#39;
+
+GROUP BY o.OrganizationName, a.AccountType, a.AccountDescription</code></pre>
+<pre><code>SELECT
+
+a.AccountDescription AS AccountDescription,
+SUM(f.Amount) AS Amt,
+                (SELECT
+                SUM(f.Amount) AS Amt
+                FROM FactFinance AS f
+                JOIN DimScenario AS s
+                ON f.ScenarioKey = s.ScenarioKey
+                JOIN DimDate AS d
+                ON f.DateKey = d.DateKey
+                JOIN DimOrganization AS o
+                ON f.OrganizationKey = o.OrganizationKey
+                JOIN DimAccount AS a
+                ON f.AccountKey = a.AccountKey
+
+                WHERE  s.ScenarioName = N&#39;Actual&#39;
+                AND d.CalendarYear = 2011
+                AND d.EnglishMonthName = N&#39;January&#39;
+                AND o.OrganizationName = N&#39;Southwest Division&#39;
+                AND a.AccountType = N&#39;Expenditures&#39;) AS Total,
+                
+SUM(f.Amount)/ (SELECT
+                SUM(f.Amount) AS Amt
+                FROM FactFinance AS f
+                JOIN DimScenario AS s
+                ON f.ScenarioKey = s.ScenarioKey
+                JOIN DimDate AS d
+                ON f.DateKey = d.DateKey
+                JOIN DimOrganization AS o
+                ON f.OrganizationKey = o.OrganizationKey
+                JOIN DimAccount AS a
+                ON f.AccountKey = a.AccountKey
+
+                WHERE  s.ScenarioName = N&#39;Actual&#39;
+                AND d.CalendarYear = 2011
+                AND d.EnglishMonthName = N&#39;January&#39;
+                AND o.OrganizationName = N&#39;Southwest Division&#39;
+                AND a.AccountType = N&#39;Expenditures&#39;) AS Percantage               
+
+FROM FactFinance AS f
+JOIN DimScenario AS s
+ON f.ScenarioKey = s.ScenarioKey
+JOIN DimDate AS d
+ON f.DateKey = d.DateKey
+JOIN DimOrganization AS o
+ON f.OrganizationKey = o.OrganizationKey
+JOIN DimAccount AS a
+ON f.AccountKey = a.AccountKey
+
+WHERE  s.ScenarioName = N&#39;Actual&#39;
+AND d.CalendarYear = 2011
+AND d.EnglishMonthName = N&#39;January&#39;
+AND o.OrganizationName = N&#39;Southwest Division&#39;
+AND a.AccountType = N&#39;Expenditures&#39;
+
+GROUP BY a.AccountDescription
+ORDER BY Amt DESC</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

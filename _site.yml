@@ -12,24 +12,28 @@ navbar:
       icon: fa-box
       menu:
       - text: "Machine Learning"
-      - text: "pomodoro"
+      - text: "pomodoro CRAN"
         #icon: fa-tomato
         href: https://github.com/seymakalay/pomodoro
-      - text: "------------"  
-      - text: "Data Visualization"  
-      - text: "pepe" 
-        #icon: <i class="fa-solid fa-pepper-hot"></i>
-        href: https://github.com/seymakalay/pepe
-    - text: "Tutorials"
-      icon:  fa-rocket
-      menu:
-      - text: "Machine Learning"
-      - text: "pomodoro"
+      - text: "pomodoro vignette"
         href: pomodoro.tutorial.html
       - text: "------------"  
       - text: "Data Visualization"  
-      - text: "pepe"
+      - text: "pepe CRAN" 
+        #icon: <i class="fa-solid fa-pepper-hot"></i>
+        href: https://github.com/seymakalay/pepe
+      - text: "pepe vignette"
         href: pepe.tutorial.html
+#    - text: "Tutorials"
+#      icon:  fa-rocket
+#      menu:
+#      - text: "Machine Learning"
+#      - text: "pomodoro"
+#        href: pomodoro.tutorial.html
+#      - text: "------------"  
+#      - text: "Data Visualization"  
+#      - text: "pepe"
+#        href: pepe.tutorial.html
     - text: "Shiny"
       icon: fa-gem
       menu:
@@ -46,6 +50,9 @@ navbar:
     - text: "Power BI" 
       href: powerbi.html 
       icon: fa-chart-bar
+    - text: "SQL" 
+      href: sql.html 
+      icon: fa-database   
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 

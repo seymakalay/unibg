@@ -13,7 +13,7 @@
 
 <title>VisualApp.knit</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,12 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -171,8 +171,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -180,16 +180,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -340,32 +333,18 @@ div.tocify {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Machine Learning</li>
     <li>
-      <a href="https://github.com/seymakalay/pomodoro">pomodoro</a>
+      <a href="https://github.com/seymakalay/pomodoro">pomodoro CRAN</a>
+    </li>
+    <li>
+      <a href="pomodoro.tutorial.html">pomodoro vignette</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Data Visualization</li>
     <li>
-      <a href="https://github.com/seymakalay/pepe">pepe</a>
+      <a href="https://github.com/seymakalay/pepe">pepe CRAN</a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="fa fa-rocket"></span>
-     
-    Tutorials
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Machine Learning</li>
     <li>
-      <a href="pomodoro.tutorial.html">pomodoro</a>
-    </li>
-    <li class="divider"></li>
-    <li class="dropdown-header">Data Visualization</li>
-    <li>
-      <a href="pepe.tutorial.html">pepe</a>
+      <a href="pepe.tutorial.html">pepe vignette</a>
     </li>
   </ul>
 </li>
@@ -403,6 +382,13 @@ div.tocify {
     Power BI
   </a>
 </li>
+<li>
+  <a href="sql.html">
+    <span class="fa fa-database"></span>
+     
+    SQL
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -428,20 +414,35 @@ div.tocify {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">CVs</li>
     <li>
-      <a href="./SK_Cover.pdf">English CV</a>
+      <a href="./SK_CV_Eng.pdf">English CV</a>
     </li>
     <li>
-      <a href="./SK_Cover_it.pdf">Italian CV</a>
+      <a href="./SK_CV_Ita.pdf">Italian CV</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Docs</li>
+    <li class="dropdown-header">Certificates</li>
     <li>
-      <a href="./images/Certificates.pdf">Certificates</a>
+      <a href="./images/AU_Business.pdf">Auburn Business</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAzure.pdf">Azure</a>
+    </li>
+    <li>
+      <a href="./images/CourseraPowerBi.pdf">Power Bi</a>
+    </li>
+    <li>
+      <a href="./images/Python4_Data_Analysis.pdf">Python</a>
+    </li>
+    <li>
+      <a href="./images/CourseraSnowFlake.pdf">Snow Flake</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAdvanceSQL.pdf">SQL</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="https://www.linkedin.com/in/seyma-kalay-3315345b/">
+  <a href="https://www.linkedin.com/in/seymakalay/">
     <span class="fab fa-linkedin fa-lg"></span>
      
   </a>
