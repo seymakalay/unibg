@@ -32,7 +32,7 @@ Open Azure Data Studio, and connect to <a href="https://github.com/microsoft/sql
 
 ## SELECT
 
-Order of the comments are important. You can memorize them easily by locating the first letter in your keybord.
+The order of the comments is important. You can memorize them easily by locating the first letter on your keyboard.
 
 S for SELECT
 
