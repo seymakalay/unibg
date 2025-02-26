@@ -52,7 +52,7 @@ navbar:
       icon: fa-chart-bar
     - text: "SQL" 
       href: sql.html 
-      icon: fa-database   
+      icon: fa-database  
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 
