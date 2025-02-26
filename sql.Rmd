@@ -61,7 +61,7 @@ ORDER BY SalesAmount DESC
 ## GROUP BY
 
 let\'s  GROUP BY `CustomerKey`. Make sure under the `SELECT` statement, you type the GROUP BY variable 
-and add all the functions should be aggregated (`SUM`,`AVG`,`MIN`,etc).
+and add all the functions that  should be aggregated (`SUM`,`AVG`,`MIN`,etc).
 
 ```
 SELECT
@@ -75,7 +75,8 @@ ORDER BY SalesAmount DESC
 ```
 ## HAVING
 
-let\'s apply filter to GROUP BY using `HAVING` statement.
+let's apply a filter to GROUP BY using the `HAVING` statement.
+
 ```
 SELECT
 SalesOrderNumber AS [InvoceNumber],
@@ -96,6 +97,7 @@ ORDER BY SalesAmount ASC
 
 
 let\'s get the top 10% of the data using `TOP(10) PERCENT` and  `FETCH`.
+
 ```
 SELECT   TOP(10) PERCENT
 SalesOrderNumber AS [InvoceNumber],
@@ -146,6 +148,7 @@ WHERE DATENAME(month, OrderDate) = N'December'AND SalesTerritoryKey =1
 ```
 
 ## Column Maniplation 
+
 ```
 SELECT
 EnglishProductName,
@@ -181,6 +184,7 @@ WHERE FirstName LIKE '_R%'
 ## `IF` and `CASE`
 
 Multiple `IF` statements and `CASE`.
+
 ```
 SELECT
     FirstName,
@@ -206,6 +210,7 @@ AND HouseOwnerFlag = 1 AND NumberCarsOwned > 1
 ## `CAST`
 
 Changing the data type with `CAST`.
+
 ```
 SELECT
 SalesAmount,
@@ -218,6 +223,7 @@ FROM FactInternetSales
 ## `WHERE` and `HAVING`
 
 Filtering with `WHERE` and `HAVING`.
+
 ```
 SELECT
 CONCAT(dc.FirstName, '', dc.LastName) AS CustomerName,
@@ -299,6 +305,7 @@ GO
 ## `CUBE` and `ROOLUP`
 
 To find the Subtotals and Totals.
+
 ```
 SELECT
 ProductCategory,
