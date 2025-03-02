@@ -27,7 +27,7 @@ library(xtable)
 
 > This page is under construction. 
 
-> This tutorial provides a guideline for fundamental concepts in PowerBI.
+> This tutorial provides a guideline for fundamental concepts in PowerBI. 
 
 <!--\1  > In this page, I will show the Must Have for a Power BI report.1-->
 
