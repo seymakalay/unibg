@@ -1028,8 +1028,8 @@ Final</code></pre>
 <div id="new-parameter" class="section level3">
 <h3>New Parameter</h3>
 <p>let's create new parameters for <code>Hierarch</code>,
-<code>Measure</code>, and <code>Time</code> to have multiple dropdown
-options in our viz.</p>
+<code>Measure</code>, and <code>Time</code> to have multiple drop down
+options into the viz.</p>
 <pre><code>Table Hierarch = {
     (&quot;Business Unit&quot;, NAMEOF(&#39;dimProduct&#39;[BusinessUnit]), 0),
     (&quot;Business Sub Unit&quot;, NAMEOF(&#39;dimProduc&#39;[BusinessSubUnit]), 1),
@@ -1051,9 +1051,11 @@ options in our viz.</p>
     (&quot;Month&quot;, NAMEOF(&#39;Calendar&#39;[FY Month]), 2),
     (&quot;Week&quot;, NAMEOF(&#39;Calendar&#39;[Fiscal Week]), 3)
 }</code></pre>
+<p>The new parameters helps to create the data table with ease and gives
+more filtering options.</p>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
-<img src="images/revenue.png" alt=" " width="75%" />
+<img src="images/revenuetab.png" alt=" " width="90%" />
 <p class="caption">
 </p>
 </div>
@@ -1069,7 +1071,8 @@ options in our viz.</p>
 </div>
 <div id="dimcalendar" class="section level2">
 <h2>DimCalendar</h2>
-<p>let's create the <code>dimCalendar</code> dataflow.</p>
+<p>let's create the <code>dimCalendar</code> data flow where the Fiscal
+year starts in May.</p>
 <pre><code>let
   YearStart = 2020,
   Source = List.Dates(#date(YearStart,1,1),365*8,#duration(1, 0, 0, 0)),
@@ -1569,6 +1572,120 @@ RETURN
 </div>
 <div id="data-modeling-1" class="section level2">
 <h2>Data Modeling</h2>
+<div id="bridge-table" class="section level3">
+<h3>Bridge Table</h3>
+</div>
+<div id="data-source" class="section level3">
+<h3>Data Source</h3>
+<p>This calculated table appends the multiple fact tables.</p>
+<pre><code>Data Sources = 
+var _base =
+SUMMARIZE(
+    UNION(
+        SUMMARIZE( 
+            SELECTCOLUMNS( &#39;Fact_Financials&#39;, &quot;Data Source&quot;, &#39;Fact_Financials&#39;[Data Source] ),
+            [Data Source]
+        )
+        , // copy paste this pattern when adding new fact tables as they appear
+        SUMMARIZE( // SNOWFLAKE GL_DTL carries transactional data from Snowflake 
+            SELECTCOLUMNS( &#39;Fact_AOP&#39;, &quot;Data Source&quot;, &#39;Fact_AOP&#39;[Data Source] ),
+            [Data Source]
+        )
+
+    )
+    , [Data Source]//, [Scenarios]
+)
+var _addCategories =
+    ADDCOLUMNS(
+        _base
+        , &quot;Input or Backend&quot;
+        , SWITCH( 
+            TRUE(),
+            CONTAINSSTRING( [Data Source], &quot;Input&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;.xlsx&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;CMR&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;BW_Inventory&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Corporate S4 Reconciliation Input&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Greater China S4 Revenue Adj&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Americas S4 Revenue Adj&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;EMEA S4 Revenue Adj&quot; ), &quot;Input&quot;,
+            CONTAINSSTRING( [Data Source], &quot;SNOWFLAKE&quot; ), &quot;Snowflake&quot;,
+            CONTAINSSTRING( [Data Source], &quot;SAP&quot; ), &quot;SAP S4&quot;,
+            CONTAINSSTRING( [Data Source], &quot;S4&quot; ), &quot;SAP S4&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Freight Review&quot; ), &quot;Freight&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Market Model&quot; ), &quot;SAP S4&quot;,
+            &quot;Input&quot;
+        )
+        , &quot;Data Source Category&quot;
+        , SWITCH(
+            TRUE(),
+            CONTAINSSTRING( [Data Source], &quot;SGM&quot; ), &quot;SGM&quot;,
+            CONTAINSSTRING( [Data Source], &quot;GL_DTL&quot; ), &quot;Weekly Sales&quot;, // may modify this
+            CONTAINSSTRING( [Data Source], &quot;GL_PCA&quot; ), &quot;Balance Sheet&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Corporate S4 Reconciliation Input&quot; ), &quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Greater China S4 Revenue Adj&quot; ), &quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Americas S4 Revenue Adj&quot; ),&quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;EMEA S4 Revenue Adj&quot; ), &quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;SAP&quot; ), &quot;SAP&quot;, 
+            CONTAINSSTRING( [Data Source], &quot;S4&quot; ), &quot;SAP&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Freight Review&quot; ), &quot;Freight&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Market Model&quot; ), &quot;Market Model&quot;,
+            CONTAINSSTRING( [Data Source], &quot;P-CODE&quot; ), &quot;P-Code&quot;,
+            CONTAINSSTRING( [Data Source], &quot;CMR&quot; ), &quot;CMR&quot;, 
+            CONTAINSSTRING( [Data Source], &quot;SPEND BY COST CENTER&quot; ), &quot;CMR&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Target&quot; ), &quot;Targets&quot;,
+            CONTAINSSTRING( [Data Source], &quot;CAPEX&quot; ), &quot;CAPEX&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Weekly Sales&quot; ), &quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;WORKFORCE&quot; ), &quot;Workforce&quot;,
+            CONTAINSSTRING( [Data Source], &quot;OPC&quot; ), &quot;OPC&quot;,
+            CONTAINSSTRING( [Data Source], &quot;OTHER EXPENSE&quot; ), &quot;Other Expense&quot;,
+            CONTAINSSTRING( [Data Source], &quot;Input&quot; ), &quot;Input - Other&quot;,
+            CONTAINSSTRING( [Data Source], &quot;BW_Inventory&quot; ), &quot;BW Inventory&quot;,
+            CONTAINSSTRING( [Data Source], &quot;.xlsx&quot; ), &quot;Input - Other&quot;,
+
+            &quot;Other&quot;
+        )
+    )
+var _addSourceFacts =
+    ADDCOLUMNS(
+        _addCategories
+        , &quot;Data Source Fact&quot;
+        , SWITCH(
+            TRUE(),
+            // Snowflake and SAP S4
+            CONTAINSSTRING( [Data Source], &quot;GL_DTL&quot; ), &quot;Weekly Sales&quot;,
+            CONTAINSSTRING( [Data Source], &quot;GL_PCA&quot; ), &quot;Balance Sheet&quot;,
+            CONTAINSSTRING( [Data Source], &quot;SAP&quot; ), &quot;Weekly Sales&quot;,
+            // INPUT SHEETS
+            CONTAINSSTRING( [Data Source], &quot;CMR BS&quot; ), &quot;Balance Sheet&quot;, 
+            CONTAINSSTRING( [Data Source], &quot;CMR IS&quot; ), &quot;Income Statement&quot;,
+            CONTAINSSTRING( [Data Source], &quot;CMR PL&quot; ), &quot;Profit &amp; Loss&quot;,
+            CONTAINSSTRING( [Data Source], &quot;CMR COGS&quot; ), &quot;COGS&quot;, 
+
+            [Data Source Category]
+        )
+    )
+RETURN _addSourceFacts
+
+</code></pre>
+</div>
+</div>
+<div id="greeting-the-user" class="section level2">
+<h2>Greeting the User</h2>
+<p>let's create a measure to greet the Power BI user.</p>
+<pre><code>Logged In User Name = 
+VAR _user_name =
+        LOOKUPVALUE (
+            &#39;Fact_RLS&#39;[User],
+            Fact_RLS[Email Address], USERPRINCIPALNAME ()
+        )
+RETURN
+    &quot;Hi!, &quot; &amp; IF (
+        LEN ( _user_name ) &gt; 20,
+        LEFT (_user_name, 17) &amp; &quot;...&quot;,
+        _user_name
+    )
+</code></pre>
 <!--\1  
 ## Objectives
 > This tutorial provides a guideline to embed a 

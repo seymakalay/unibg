@@ -670,7 +670,7 @@ Comparison = "Change from week "&[PrevWeek] &" to "&[CurrWeek]
 
 ### New Parameter
 
-let\'s create new parameters for  `Hierarch`, `Measure`, and `Time` to have multiple dropdown options in our viz.
+let\'s create new parameters for  `Hierarch`, `Measure`, and `Time` to have multiple drop down options into the viz.
 
 
 ```
@@ -704,9 +704,11 @@ Fiscal Timeline = {
 }
 ```
 
+The new parameters helps to create the data table with ease and gives more filtering options.
+
 <div class="my-right-figure">
-```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
-knitr::include_graphics('images/revenue.png')
+```{r echo=FALSE, fig.cap = " ", out.width='90%', fig.align='center'}
+knitr::include_graphics('images/revenuetab.png')
 ```
 </div>
 
@@ -722,7 +724,7 @@ knitr::include_graphics('images/revenue.png')
 
 ## DimCalendar
 
-let\'s create the `dimCalendar` dataflow.
+let\'s create the `dimCalendar` data flow where the Fiscal year starts in May.
 ```
 let
   YearStart = 2020,
@@ -1120,6 +1122,127 @@ RETURN
 
 
 ## Data Modeling
+
+### Bridge Table
+
+### Data Source
+
+This calculated table appends the multiple fact tables.
+
+```
+Data Sources = 
+var _base =
+SUMMARIZE(
+    UNION(
+        SUMMARIZE( 
+            SELECTCOLUMNS( 'Fact_Financials', "Data Source", 'Fact_Financials'[Data Source] ),
+            [Data Source]
+        )
+        , // copy paste this pattern when adding new fact tables as they appear
+        SUMMARIZE( // SNOWFLAKE GL_DTL carries transactional data from Snowflake 
+            SELECTCOLUMNS( 'Fact_AOP', "Data Source", 'Fact_AOP'[Data Source] ),
+            [Data Source]
+        )
+
+    )
+    , [Data Source]//, [Scenarios]
+)
+var _addCategories =
+    ADDCOLUMNS(
+        _base
+        , "Input or Backend"
+        , SWITCH( 
+            TRUE(),
+            CONTAINSSTRING( [Data Source], "Input" ), "Input",
+            CONTAINSSTRING( [Data Source], ".xlsx" ), "Input",
+            CONTAINSSTRING( [Data Source], "CMR" ), "Input",
+            CONTAINSSTRING( [Data Source], "BW_Inventory" ), "Input",
+            CONTAINSSTRING( [Data Source], "Corporate S4 Reconciliation Input" ), "Input",
+            CONTAINSSTRING( [Data Source], "Greater China S4 Revenue Adj" ), "Input",
+            CONTAINSSTRING( [Data Source], "Americas S4 Revenue Adj" ), "Input",
+            CONTAINSSTRING( [Data Source], "EMEA S4 Revenue Adj" ), "Input",
+            CONTAINSSTRING( [Data Source], "SNOWFLAKE" ), "Snowflake",
+            CONTAINSSTRING( [Data Source], "SAP" ), "SAP S4",
+            CONTAINSSTRING( [Data Source], "S4" ), "SAP S4",
+            CONTAINSSTRING( [Data Source], "Freight Review" ), "Freight",
+            CONTAINSSTRING( [Data Source], "Market Model" ), "SAP S4",
+            "Input"
+        )
+        , "Data Source Category"
+        , SWITCH(
+            TRUE(),
+            CONTAINSSTRING( [Data Source], "SGM" ), "SGM",
+            CONTAINSSTRING( [Data Source], "GL_DTL" ), "Weekly Sales", // may modify this
+            CONTAINSSTRING( [Data Source], "GL_PCA" ), "Balance Sheet",
+            CONTAINSSTRING( [Data Source], "Corporate S4 Reconciliation Input" ), "Weekly Sales",
+            CONTAINSSTRING( [Data Source], "Greater China S4 Revenue Adj" ), "Weekly Sales",
+            CONTAINSSTRING( [Data Source], "Americas S4 Revenue Adj" ),"Weekly Sales",
+            CONTAINSSTRING( [Data Source], "EMEA S4 Revenue Adj" ), "Weekly Sales",
+            CONTAINSSTRING( [Data Source], "SAP" ), "SAP", 
+            CONTAINSSTRING( [Data Source], "S4" ), "SAP",
+            CONTAINSSTRING( [Data Source], "Freight Review" ), "Freight",
+            CONTAINSSTRING( [Data Source], "Market Model" ), "Market Model",
+            CONTAINSSTRING( [Data Source], "P-CODE" ), "P-Code",
+            CONTAINSSTRING( [Data Source], "CMR" ), "CMR", 
+            CONTAINSSTRING( [Data Source], "SPEND BY COST CENTER" ), "CMR",
+            CONTAINSSTRING( [Data Source], "Target" ), "Targets",
+            CONTAINSSTRING( [Data Source], "CAPEX" ), "CAPEX",
+            CONTAINSSTRING( [Data Source], "Weekly Sales" ), "Weekly Sales",
+            CONTAINSSTRING( [Data Source], "WORKFORCE" ), "Workforce",
+            CONTAINSSTRING( [Data Source], "OPC" ), "OPC",
+            CONTAINSSTRING( [Data Source], "OTHER EXPENSE" ), "Other Expense",
+            CONTAINSSTRING( [Data Source], "Input" ), "Input - Other",
+            CONTAINSSTRING( [Data Source], "BW_Inventory" ), "BW Inventory",
+            CONTAINSSTRING( [Data Source], ".xlsx" ), "Input - Other",
+
+            "Other"
+        )
+    )
+var _addSourceFacts =
+    ADDCOLUMNS(
+        _addCategories
+        , "Data Source Fact"
+        , SWITCH(
+            TRUE(),
+            // Snowflake and SAP S4
+            CONTAINSSTRING( [Data Source], "GL_DTL" ), "Weekly Sales",
+            CONTAINSSTRING( [Data Source], "GL_PCA" ), "Balance Sheet",
+            CONTAINSSTRING( [Data Source], "SAP" ), "Weekly Sales",
+            // INPUT SHEETS
+            CONTAINSSTRING( [Data Source], "CMR BS" ), "Balance Sheet", 
+            CONTAINSSTRING( [Data Source], "CMR IS" ), "Income Statement",
+            CONTAINSSTRING( [Data Source], "CMR PL" ), "Profit & Loss",
+            CONTAINSSTRING( [Data Source], "CMR COGS" ), "COGS", 
+
+            [Data Source Category]
+        )
+    )
+RETURN _addSourceFacts
+
+
+```
+
+
+
+## Greeting the User 
+
+let\'s create a measure to greet the Power BI user. 
+
+```
+Logged In User Name = 
+VAR _user_name =
+        LOOKUPVALUE (
+            'Fact_RLS'[User],
+            Fact_RLS[Email Address], USERPRINCIPALNAME ()
+        )
+RETURN
+    "Hi!, " & IF (
+        LEN ( _user_name ) > 20,
+        LEFT (_user_name, 17) & "...",
+        _user_name
+    )
+
+```
 
 
 
