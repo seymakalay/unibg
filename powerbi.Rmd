@@ -1244,6 +1244,9 @@ RETURN
 
 ```
 
+<!--\1   <a href="#top">Back to top</a> \1-->
+ <a href="#top" style="color:steelblue;" >Back to top</a> [`r fa("arrow-up", height = "2em", width = "1em", fill = "steelblue")`](#) 
+
 
 
 <!--\1  
