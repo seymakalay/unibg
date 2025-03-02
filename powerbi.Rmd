@@ -671,9 +671,9 @@ SWITCH(
 
 
 
-## The Last Date by Each Groups
+## The Last Date by Each Group
 
-let\'s  create a blank query in power query editor and set the Source from existing query, in this case, `Source = Inventory_wo_rank`.
+Let\'s  create a blank query in power query editor and set the 'Source' from existing query, in this case, `Source = Inventory_wo_rank`.
 As a second step, we should remove the all the unnecessary columns `#"Removed Columns"` and remove all the duplicates `#"Removed Duplicates"`.
 
 
