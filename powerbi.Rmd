@@ -33,7 +33,6 @@ library(xtable)
 
 
 ## DimCalendar
-
 Date Dimension is useful for scenarios mentioned below;
 
 <body>
@@ -224,26 +223,22 @@ in
 
   
   
+  
 ## Time Intelegence in DAX
-
 'Time Intelligence' functions help to compare the data, based on the time periods (days, months, quarters, and years). 
 These functions, mostly used for financial and supply chain reports, compare the earnings, gains,...etc. over time (MTD, QTD, and YTD).
-
 
 Let\'s  create a  'z-Time Intelligence ' calculation group in Power BI model view. After setting up 
 the group measures, mentioned bellow, we can set the ordinal of the measures by moving them up or down.
 Lastly, let\'s check the originality of 'z-Time Intelligence' calculation group on the table view.
-
 <!--\1 [link](#dimcalendar) -->
 
 ### Current Year
-
 ```
 CY = SELECTEDMEASURE()
 ```
 
 ### Last Year
-
 ```
 LY = 
 var _currOffset = MAX( 'Calendar'[Fiscal Month Offset] )
@@ -272,7 +267,6 @@ DIVIDE(
 
 
 ### Current vs Last Year
-
 ```
 CY vs LY = 
 var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
@@ -302,7 +296,6 @@ DIVIDE(
 
 
 ### Current vs Last Year %
-
 ```
 CY vs LY% = 
 var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
@@ -330,7 +323,6 @@ DIVIDE(
 ```
 
 ### Year to Day
-
 ```
 YTD = 
 var _currFiscYr = MAX( 'Calendar'[FY] )
@@ -346,7 +338,6 @@ CALCULATE(
 ```
 
 ### Quarter to Day
-
 ```
 QTD = 
 var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
@@ -363,7 +354,6 @@ CALCULATE(
 
 
 ### Month to Day
-
 ```
 MTD = 
 var _currFiscMth = MAX( 'Calendar'[Sequential Fiscal Month] )
@@ -380,7 +370,6 @@ CALCULATE(
 
 
 ### Previous Quarter to Day
-
 ```
 PQTD = 
 var _currFiscQtr = MAX( 'Calendar'[Sequential Fiscal Quarter] )
@@ -433,7 +422,6 @@ RETURN
 ```
 
 ### Quarter Over Quarter to Day %
-
 ```
 QOQTD % = 
 var _cQTD =
@@ -468,7 +456,6 @@ RETURN
 ```
 
 ### Last Month
-
 ```
 LM = var _currOffset = MAX('Calendar'[Fiscal Month Offset])
 var _offsetBegin = MIN('Calendar'[Fiscal Month Offset]) - 1
@@ -496,7 +483,6 @@ DIVIDE(
 
 
 ### Previous Period
-
 ```
 PP = 
 // dynamic to fiscal month, quarter, year
@@ -532,7 +518,6 @@ DIVIDE(
 ```
 
 ### Current vs Previous Period
-
 ```
 CP vs PP = 
 // dynamic to fiscal month, quarter, year
@@ -568,7 +553,6 @@ DIVIDE(
 ```
 
 ### Current vs Previous Period %
-
 ```
 CP vs PP % = 
 // dynamic to fiscal month, quarter, year
@@ -606,7 +590,6 @@ DIVIDE(
 
 
 ### Example
-
 ```
 Amount QTD = 
 Calculate( [measure],
@@ -615,10 +598,8 @@ KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
 ```
 
 
-
 ## Time Since Last Refresh
-
-let`s create a blank query in power query editor and call it zz-ReportRefresh.
+Let`s create a blank query in power query editor and call it 'zz-ReportRefresh'.
 
 ### Example
 ```
@@ -773,11 +754,11 @@ CALCULATE( [Inventory],
 
 
 
+
 ## The Last Two Weeks Change
 
 ### Example
-
-lets set the data model first. If the dates would be `FY24 WK52` then we should have rank the given format and use the same methodology below.  
+Let\'s set the data model first. If the dates would be `FY24 WK52` then we should have rank the given format and use the same methodology below.  
 
 <div class="my-right-figure">
 ```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
@@ -873,7 +854,6 @@ Comparison = "Change from week "&[PrevWeek] &" to "&[CurrWeek]
 ## Viz Ideas 
 
 ### New Parameter
-
 Let\'s create new parameters for  `Hierarch`, `Measure`, and `Time` to have multiple drop down options into the viz.
 
 
@@ -1106,7 +1086,6 @@ in
 
 
 ## RLS
-
 Following link may give an idea of how to set up <a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>. Yet, I will show you a better way.
 
 ### Fact_RLS
@@ -1183,7 +1162,6 @@ Yet `dimReporting` has relationship with other tables. For other Roles set up th
 ## Currency Rate Conversion
 
 ### Fact_FX
-
 Fact_FX dataflow as:
 
 \begin{array}{|l|l|c|l|l|l|l|l|l|}
@@ -1223,7 +1201,6 @@ Fact_FX dataflow as:
 
 
 ### dimCurrency
-
 dimCurrency dataflow as:
 
 \begin{array}{|l|c|}
@@ -1246,7 +1223,6 @@ dimCurrency dataflow as:
 
 
 ### Fact_AOP
-
 Fact_AOP dataflow as:
 
 \begin{array}{|l|l|}
@@ -1287,7 +1263,6 @@ Fact_AOP dataflow as:
 
 
 ### Data Modeling
-
 <div class="my-right-figure">
 ```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
 knitr::include_graphics('images/datamodelling.png')
@@ -1295,7 +1270,6 @@ knitr::include_graphics('images/datamodelling.png')
 </div>
 
 ### USD Currency Conversion
-
 ```
 Base Measure = SUM('Fact_AOP'[Amount])
 
@@ -1332,7 +1306,6 @@ RETURN
 ### Bridge Table
 
 ### Data Source
-
 This calculated table appends the multiple fact tables.
 
 ```
@@ -1431,8 +1404,7 @@ RETURN _addSourceFacts
 
 
 ## Greeting the User 
-
-let\'s create a measure to greet the Power BI user. 
+Let\'s create a measure to greet the Power BI user. 
 
 ```
 Logged In User Name = 
