@@ -6,8 +6,28 @@ output:
     toc_float: TRUE
     theme: flatly
     highlight: tango
+    collapsed: no
+    number_sections: no
 ---
 
+
+<!--\1 
+---
+title: ""
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: yes
+    toc_float: yes
+    collapsed: no
+    number_sections: no
+    toc_depth: 1
+  pdf_document:
+    toc: yes
+    toc_depth: '1'
+---
+\1-->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
