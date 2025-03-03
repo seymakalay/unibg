@@ -13,10 +13,10 @@
 
 <title>Links.knit</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -29,11 +29,12 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -44,16 +45,6 @@
   ul.task-list{list-style: none;}
     </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
 
 
 
@@ -180,8 +171,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -189,16 +180,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -228,6 +212,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -235,6 +282,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -276,32 +333,18 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Machine Learning</li>
     <li>
-      <a href="https://github.com/seymakalay/pomodoro">pomodoro</a>
+      <a href="https://github.com/seymakalay/pomodoro">pomodoro CRAN</a>
+    </li>
+    <li>
+      <a href="pomodoro.tutorial.html">pomodoro vignette</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Data Visualization</li>
     <li>
-      <a href="https://github.com/seymakalay/pepe">pepe</a>
+      <a href="https://github.com/seymakalay/pepe">pepe CRAN</a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="fa fa-rocket"></span>
-     
-    Tutorials
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Machine Learning</li>
     <li>
-      <a href="pomodoro.tutorial.html">pomodoro</a>
-    </li>
-    <li class="divider"></li>
-    <li class="dropdown-header">Data Visualization</li>
-    <li>
-      <a href="pepe.tutorial.html">pepe</a>
+      <a href="pepe.tutorial.html">pepe vignette</a>
     </li>
   </ul>
 </li>
@@ -339,6 +382,13 @@ $(document).ready(function () {
     Power BI
   </a>
 </li>
+<li>
+  <a href="sql.html">
+    <span class="fa fa-database"></span>
+     
+    SQL
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -364,20 +414,35 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">CVs</li>
     <li>
-      <a href="./SK_Cover.pdf">English CV</a>
+      <a href="./SK_CV_Eng.pdf">English CV</a>
     </li>
     <li>
-      <a href="./SK_Cover_it.pdf">Italian CV</a>
+      <a href="./SK_CV_Ita.pdf">Italian CV</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Docs</li>
+    <li class="dropdown-header">Certificates</li>
     <li>
-      <a href="./images/Certificates.pdf">Certificates</a>
+      <a href="./images/AU_Business.pdf">Auburn Business</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAzure.pdf">Azure</a>
+    </li>
+    <li>
+      <a href="./images/CourseraPowerBi.pdf">Power Bi</a>
+    </li>
+    <li>
+      <a href="./images/Python4_Data_Analysis.pdf">Python</a>
+    </li>
+    <li>
+      <a href="./images/CourseraSnowFlake.pdf">Snow Flake</a>
+    </li>
+    <li>
+      <a href="./images/CourseraAdvanceSQL.pdf">SQL</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="https://www.linkedin.com/in/seyma-kalay-3315345b/">
+  <a href="https://www.linkedin.com/in/seymakalay/">
     <span class="fab fa-linkedin fa-lg"></span>
      
   </a>
@@ -401,53 +466,47 @@ $(document).ready(function () {
 </div>
 
 
-<!--\1  
+<div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting
+industry. Lorem Ipsum has been the industry’s standard dummy text ever
+since the 1500s, when an unknown printer took a galley of type and
+scrambled it to make a type specimen book. It has survived not only five
+centuries, but also the leap into electronic typesetting, remaining
+essentially unchanged. It was popularised in the 1960s with the release
+of Letraset sheets containing Lorem Ipsum passages, and more recently
+with desktop publishing software like Aldus PageMaker including versions
+of Lorem Ipsum.</p>
+<div id="r-markdown-sub-title" class="section level2">
+<h2>R Markdown Sub title</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting
+industry. Lorem Ipsum has been the industry’s standard dummy text ever
+since the 1500s, when an unknown printer took a galley of type and
+scrambled it to make a type specimen book. It has survived not only five
+centuries, but also the leap into electronic typesetting, remaining
+essentially unchanged. It was popularised in the 1960s with the release
+of Letraset sheets containing Lorem Ipsum passages, and more recently
+with desktop publishing software like Aldus PageMaker including versions
+of Lorem Ipsum.</p>
+<div id="r-markdown-sub-sub-title" class="section level3">
+<h3>R Markdown Sub Sub title</h3>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting
+industry. Lorem Ipsum has been the industry’s standard dummy text ever
+since the 1500s, when an unknown printer took a galley of type and
+scrambled it to make a type specimen book. It has survived not only five
+centuries, but also the leap into electronic typesetting, remaining
+essentially unchanged. It was popularised in the 1960s with the release
+of Letraset sheets containing Lorem Ipsum passages, and more recently
+with desktop publishing software like Aldus PageMaker including versions
+of Lorem Ipsum.</p>
+</div>
+</div>
+</div>
 
 
 
-
-
-### R-Studio
-[R-studio](http://www.rstudio.com) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, application and lots of other fun stuff.
-
-<a href="C:/Users/seyma/resume/SK.pdf" download> Download the Curriculum Vitae </a>
-\1-->
-<!--\1  
-
-Follow me on [linkedin](https://www.linkedin.com/in/%C5%9Feyma-kalay-3315345b/) and see my other [github repositories](https://github.com/seymakalay).
-
-<a href="./SK&Cover.pdf" download>Download the Curriculum Vitae </a>
-[Contact Us](mailto:admin@cloudhadoop.com)
-Reference letters will be provided based on a request.\
-<a href = "https://crumplab.github.io">
-
-\1-->
-<!--\1   
-### My Packages
-
-[Pomodoro CRAN](https://cran.r-project.org/web/packages/pomodoro/pomodoro.pdf){target="_blank"}
-
-\1-->
-<!--\1  \1-->
-<!--\1   
-
-### R and R-Studio
-
-[R](http://www.r-project.org) is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, and lots of other stuff. Another free program is [R-studio](http://www.rstudio.com), that provides a nice graphic interface for R. Download R first, then download R-studio. Both can run on PCs, Macs or Linux. Students will be learning R in the stats labs using the lab manual []().
-
-### Additional R resources
-
-1. Google is great, Google your problem
-2. [Stackoverflow](https://stackoverflow.com) is great, google will often take you there because someone has already asked your question, and someone else has answered, usually many people have answered your question many ways.
-3. Danielle Navarro wrote a [free Psych Stats textbook using R](https://compcogscisydney.org/learning-statistics-with-r/), it's worth checking out (some of our textbook are based on Danielle's)
-4. I am currently writing another stats textbook (incorporating some of the above). You can read it while it's being made right here [https://crumplab.github.io/statistics/](https://crumplab.github.io/statistics/), also check out the lab manual for more specific things about doing various stats in R (also in draft right now) [https://crumplab.github.io/statisticsLab/](https://crumplab.github.io/statisticsLab/)
-5. Daniell Navarro recently made this website for introducing R, it's great, check it out (also made using this R markdown process): [http://compcogscisydney.org/psyr/](http://compcogscisydney.org/psyr/)
-6. Check out my slightly older programming book that also introduces R [https://crumplab.github.io/programmingforpsych/](https://crumplab.github.io/programmingforpsych/)
-7. This is the definitive guide for all things R Markdown (you will find this very useful as you get better at this skill): [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
-\1-->
-
-
-
+</div>
+</div>
 
 </div>
 
@@ -480,6 +539,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
