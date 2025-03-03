@@ -284,8 +284,9 @@ in
 These functions, mostly used for financial and supply chain reports, compare the earnings, gains,...etc. over time (MTD, QTD, and YTD).
 
 Let\'s  create a  'z-Time Intelligence ' calculation group in Power BI model view. After setting up 
-the group measures, mentioned bellow, we can set the ordinal of the measures by moving them up or down.
-Lastly, let\'s check the originality of 'z-Time Intelligence' calculation group on the table view.
+the group measures, mentioned bellow, we can  assign the 'Time Intelligence' column name as 'Time Intelligence Type' and
+set the ordinal of the measures by moving them up or down.
+Lastly, let\'s check the ordinality of 'z-Time Intelligence' calculation group on the table view.
 <!--\1 [link](#dimcalendar) -->
 
 ## Current Year
@@ -632,6 +633,40 @@ DIVIDE(
     _cy <= 0
 )
 
+```
+
+## Same Period Last Year
+```
+SPLY =     CALCULATE (
+        SELECTEDMEASURE (),
+        SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
+    )
+```
+
+## Last Year Week
+```
+LYWeek = var _currOffset = MAX( Calendar[Fiscal Week Offset] )
+VAR _weeksofyear = MAX(Calendar[Fiscal Weeks])
+var _offsetBegin = MIN( Calendar[Fiscal Week Offset] ) - _weeksofyear
+var _offsetEnd = _currOffset - _weeksofyear 
+var _currYr = MAX( 'Calendar'[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( 'Calendar'[Date] )
+    , ALL( 'Calendar' )
+    , 'Calendar'[Fiscal Week Offset] >= _offsetBegin &&
+        'Calendar'[Fiscal Week Offset] <= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    'Calendar'[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    _rslt,
+    _currOffset <= 0 || _currYr <= 0
+)
 ```
 
 ## Example
@@ -1138,6 +1173,30 @@ knitr::include_graphics('images/datamodelling.png')
 
 
 ## Bridge Table
+Bridge tables are used to remove multi-multi relationship. 
+Before creating our 'Fact FX' data flow we need to create a few dataflow.
+
+Let\'s start producing our data flows.
+
+'Fiscal Date' data flow.
+```
+```
+
+
+##'Fiscal Month End' data flow.
+```
+```
+
+
+##'Fiscal Month Start' data flow.
+```
+```
+
+##'FACT FX' data flow.
+```
+```
+
+
 
 ## Data Source
 This calculated table appends the multiple fact tables.

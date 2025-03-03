@@ -729,9 +729,10 @@ mostly used for financial and supply chain reports, compare the
 earnings, gains,…etc. over time (MTD, QTD, and YTD).</p>
 <p>Let's create a ‘z-Time Intelligence’ calculation group in Power BI
 model view. After setting up the group measures, mentioned bellow, we
-can set the ordinal of the measures by moving them up or down. Lastly,
-let's check the originality of ‘z-Time Intelligence’ calculation group
-on the table view. <!--\1 [link](#dimcalendar) --></p>
+can assign the ‘Time Intelligence’ column name as ‘Time Intelligence
+Type’ and set the ordinal of the measures by moving them up or down.
+Lastly, let's check the ordinality of ‘z-Time Intelligence’ calculation
+group on the table view. <!--\1 [link](#dimcalendar) --></p>
 <div id="current-year" class="section level2">
 <h2>Current Year</h2>
 <pre><code>CY = SELECTEDMEASURE()</code></pre>
@@ -1063,6 +1064,38 @@ DIVIDE(
     _cy &lt;= 0
 )
 </code></pre>
+</div>
+<div id="same-period-last-year" class="section level2">
+<h2>Same Period Last Year</h2>
+<pre><code>SPLY =     CALCULATE (
+        SELECTEDMEASURE (),
+        SAMEPERIODLASTYEAR ( &#39;Calendar&#39;[Date] )
+    )</code></pre>
+</div>
+<div id="last-year-week" class="section level2">
+<h2>Last Year Week</h2>
+<pre><code>LYWeek = var _currOffset = MAX( Calendar[Fiscal Week Offset] )
+VAR _weeksofyear = MAX(Calendar[Fiscal Weeks])
+var _offsetBegin = MIN( Calendar[Fiscal Week Offset] ) - _weeksofyear
+var _offsetEnd = _currOffset - _weeksofyear 
+var _currYr = MAX( &#39;Calendar&#39;[Fiscal Year Offset] )
+var _datesOffsetPd = 
+CALCULATETABLE(
+    VALUES( &#39;Calendar&#39;[Date] )
+    , ALL( &#39;Calendar&#39; )
+    , &#39;Calendar&#39;[Fiscal Week Offset] &gt;= _offsetBegin &amp;&amp;
+        &#39;Calendar&#39;[Fiscal Week Offset] &lt;= _offsetEnd
+)
+var _rslt = 
+CALCULATE ( 
+    SELECTEDMEASURE(), 
+    &#39;Calendar&#39;[Date] IN _datesOffsetPd
+)
+RETURN
+DIVIDE(
+    _rslt,
+    _currOffset &lt;= 0 || _currYr &lt;= 0
+)</code></pre>
 </div>
 <div id="example" class="section level2">
 <h2>Example</h2>
@@ -1646,6 +1679,17 @@ RETURN
 </div>
 <div id="bridge-table" class="section level2">
 <h2>Bridge Table</h2>
+<p>Bridge tables are used to remove multi-multi relationship. Before
+creating our ‘Fact FX’ data flow we need to create a few dataflow.</p>
+<p>Let's start producing our data flows.</p>
+<p>‘Fiscal Date’ data flow.</p>
+<pre><code></code></pre>
+<p>##‘Fiscal Month End’ data flow.</p>
+<pre><code></code></pre>
+<p>##‘Fiscal Month Start’ data flow.</p>
+<pre><code></code></pre>
+<p>##‘FACT FX’ data flow.</p>
+<pre><code></code></pre>
 </div>
 <div id="data-source" class="section level2">
 <h2>Data Source</h2>
