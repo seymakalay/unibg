@@ -53,6 +53,9 @@ navbar:
     - text: "SQL" 
       href: sql.html 
       icon: fa-database
+    - text: "SnowFlake" 
+      href: snowflake.html 
+      icon: fa-snowflake  
   right:
     - href: https://github.com/seymakalay
       icon: fa-github 

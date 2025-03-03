@@ -389,6 +389,13 @@ div.tocify {
     SQL
   </a>
 </li>
+<li>
+  <a href="snowflake.html">
+    <span class="fa fa-snowflake"></span>
+     
+    SnowFlake
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -471,6 +478,17 @@ div.tocify {
 title: ""
 output:
   html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+---
+
+
+---
+title: ""
+output:
+  html_document:
     theme: flatly
     highlight: tango
     toc: yes
@@ -494,6 +512,13 @@ output:
     highlight: tango
 ---
 \1-->
+<style type="text/css">
+li {
+    content:attr(aria-label);
+    font-size:100%;
+    margin-right:-10px;
+}
+</style>
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
 <blockquote>

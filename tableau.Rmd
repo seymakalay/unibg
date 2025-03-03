@@ -54,6 +54,16 @@ library(fontawesome)
 library(knitr)
 ```     
 
+
+```{css bullet-margin, echo = FALSE}
+li {
+    content:attr(aria-label);
+    font-size:100%;
+    margin-right:-10px;
+}
+``` 
+
+
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
   

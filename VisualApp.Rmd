@@ -44,6 +44,14 @@ output:
 ---
 \1-->
 
+```{css bullet-margin, echo = FALSE}
+li {
+    content:attr(aria-label);
+    font-size:100%;
+    margin-right:-10px;
+}
+``` 
+
 # this page is under construction
 
 

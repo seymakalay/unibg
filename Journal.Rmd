@@ -14,14 +14,14 @@ output:
     toc_depth: '1'
 ---
 
-
+<!--\1   \1-->
 
 ```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
 library(fontawesome)
 ```     
 
 
-<!--\1   
+<!--\1  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, cache=TRUE)
 ```

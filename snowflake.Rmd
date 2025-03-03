@@ -1,0 +1,42 @@
+---
+title: ""
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+#header-includes:
+#- \usepackage{caption}  
+   #  - \usepackage{placeins}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(xtable)
+```     
+
+
+```{css bullet-margin, echo = FALSE}
+li {
+    content:attr(aria-label);
+    font-size:100%;
+    margin-right:-10px;
+}
+``` 
+
+
+
+
+
+> This page is under construction. 
+
+> This tutorial provides a guideline for fundamental concepts in SnowFlake.
