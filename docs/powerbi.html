@@ -466,35 +466,6 @@ div.tocify {
 </div>
 
 
-<!--\1 
----
-title: ""
-output:
-  html_document:
-    toc: TRUE
-    toc_float: TRUE
-    theme: flatly
-    highlight: tango
----
-
-
-
----
-title: ""
-output:
-  html_document:
-    theme: flatly
-    highlight: tango
-    toc: yes
-    toc_float: yes
-    collapsed: no
-    number_sections: no
-    toc_depth: 1
-  pdf_document:
-    toc: yes
-    toc_depth: '1'
----
-\1-->
 <!--\1  <span style="color:red">pomodoro</span> \1-->
 <!--\1   \1-->
 <blockquote>
@@ -505,8 +476,8 @@ output:
 PowerBI.</p>
 </blockquote>
 <!--\1  > In this page, I will show the Must Have for a Power BI report.1-->
-<div id="dimcalendar" class="section level1">
-<h1>DimCalendar</h1>
+<div id="dimcalendar" class="section level2">
+<h2>DimCalendar</h2>
 <p>Date Dimension is useful for scenarios mentioned below;</p>
 <body>
 <ul>
@@ -696,8 +667,8 @@ in
 
 </code></pre>
 </div>
-<div id="time-intelegence-in-dax" class="section level1">
-<h1>Time Intelegence in DAX</h1>
+<div id="time-intelegence-in-dax" class="section level2">
+<h2>Time Intelegence in DAX</h2>
 <p>‘Time Intelligence’ functions help to compare the data, based on the
 time periods (days, months, quarters, and years). These functions,
 mostly used for financial and supply chain reports, compare the
@@ -1050,8 +1021,8 @@ KEEPFILTERS(&#39;z-CG Time Intelegence&#39;[Time Intelligence Type] = &#39;QTD&#
 //Where Time Intelligence Type is a calculated group in Model View</code></pre>
 </div>
 </div>
-<div id="time-since-last-refresh" class="section level1">
-<h1>Time Since Last Refresh</h1>
+<div id="time-since-last-refresh" class="section level2">
+<h2>Time Since Last Refresh</h2>
 <p>let`s create a blank query in power query editor and call it
 zz-ReportRefresh.</p>
 <div id="example-1" class="section level3">
@@ -1097,15 +1068,15 @@ SWITCH(
 )</code></pre>
 </div>
 </div>
-<div id="the-last-date-by-each-group" class="section level1">
-<h1>The Last Date by Each Group</h1>
-<p>Let's create a blank query in power query editor and set the ‘Source’
+<div id="the-last-date-by-each-group" class="section level2">
+<h2>The Last Date by Each Group</h2>
+<p>Let's create a blank query in power query editor and set the Source
 from existing query, in this case,
 <code>Source = Inventory_wo_rank</code>. As a second step, we should
 remove the all the unnecessary columns <code>#"Removed Columns"</code>
 and remove all the duplicates <code>#"Removed Duplicates"</code>.</p>
-<div id="example-2" class="section level2">
-<h2>Example</h2>
+<div id="example-2" class="section level3">
+<h3>Example</h3>
 <pre><code>let
     
     Source = Inventory_wo_rank,
@@ -1180,10 +1151,10 @@ CALCULATE( [Inventory],
 </code></pre>
 </div>
 </div>
-<div id="the-last-two-weeks-change" class="section level1">
-<h1>The Last Two Weeks Change</h1>
-<div id="example-3" class="section level2">
-<h2>Example</h2>
+<div id="the-last-two-weeks-change" class="section level2">
+<h2>The Last Two Weeks Change</h2>
+<div id="example-3" class="section level3">
+<h3>Example</h3>
 <p>lets set the data model first. If the dates would be
 <code>FY24 WK52</code> then we should have rank the given format and use
 the same methodology below.</p>
@@ -1256,11 +1227,10 @@ Final</code></pre>
 <pre><code>Comparison = &quot;Change from week &quot;&amp;[PrevWeek] &amp;&quot; to &quot;&amp;[CurrWeek]</code></pre>
 </div>
 </div>
-<div id="viz-ideas" class="section level1">
-<h1>Viz Ideas</h1>
-</div>
-<div id="new-parameter" class="section level1">
-<h1>New Parameter</h1>
+<div id="viz-ideas" class="section level2">
+<h2>Viz Ideas</h2>
+<div id="new-parameter" class="section level3">
+<h3>New Parameter</h3>
 <p>Let's create new parameters for <code>Hierarch</code>,
 <code>Measure</code>, and <code>Time</code> to have multiple drop down
 options into the viz.</p>
@@ -1295,11 +1265,11 @@ more filtering option.</p>
 </div>
 </div>
 </div>
-<div id="book-marks-example" class="section level1">
-<h1>Book Marks Example</h1>
+<div id="book-marks-example" class="section level3">
+<h3>Book Marks Example</h3>
 </div>
-<div id="tool-tips-example" class="section level1">
-<h1>Tool Tips Example</h1>
+<div id="tool-tips-example" class="section level3">
+<h3>Tool Tips Example</h3>
 <pre><code></code></pre>
 <!--\1 [link](#dimcalendar)
 ## DimCalendar
@@ -1480,8 +1450,9 @@ in
 ```
   -->
 </div>
-<div id="rls" class="section level1">
-<h1>RLS</h1>
+</div>
+<div id="rls" class="section level2">
+<h2>RLS</h2>
 <p>Following link may give an idea of how to set up
 <a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>.
 Yet, I will show you a better way.</p>
@@ -1561,11 +1532,10 @@ follows;</p>
     )</code></pre>
 </div>
 </div>
-<div id="currency-rate-conversion" class="section level1">
-<h1>Currency Rate Conversion</h1>
-</div>
-<div id="fact_fx" class="section level1">
-<h1>Fact_FX</h1>
+<div id="currency-rate-conversion" class="section level2">
+<h2>Currency Rate Conversion</h2>
+<div id="fact_fx" class="section level3">
+<h3>Fact_FX</h3>
 <p>Fact_FX dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|l|c|l|l|l|l|l|l|}
 \hline
@@ -1648,8 +1618,8 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 \hline
 \end{array}\]</span>
 </div>
-<div id="dimcurrency" class="section level1">
-<h1>dimCurrency</h1>
+<div id="dimcurrency" class="section level3">
+<h3>dimCurrency</h3>
 <p>dimCurrency dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|c|}
 \hline
@@ -1667,8 +1637,8 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 \hline
 \end{array}\]</span>
 </div>
-<div id="fact_aop" class="section level1">
-<h1>Fact_AOP</h1>
+<div id="fact_aop" class="section level3">
+<h3>Fact_AOP</h3>
 <p>Fact_AOP dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|l|}
 \hline
@@ -1766,8 +1736,8 @@ Type}&amp; \text{Scenario}&amp; \text{Product ID} \\
 \hline
 \end{array}\]</span>
 </div>
-<div id="data-modeling" class="section level1">
-<h1>Data Modeling</h1>
+<div id="data-modeling" class="section level3">
+<h3>Data Modeling</h3>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
 <img src="images/datamodelling.png" alt=" " width="75%" />
@@ -1776,8 +1746,8 @@ Type}&amp; \text{Scenario}&amp; \text{Product ID} \\
 </div>
 </div>
 </div>
-<div id="usd-currency-conversion" class="section level1">
-<h1>USD Currency Conversion</h1>
+<div id="usd-currency-conversion" class="section level3">
+<h3>USD Currency Conversion</h3>
 <pre><code>Base Measure = SUM(&#39;Fact_AOP&#39;[Amount])
 
 
@@ -1805,13 +1775,14 @@ VAR _Result =
 RETURN
     _Result</code></pre>
 </div>
-<div id="data-modeling-1" class="section level1">
-<h1>Data Modeling</h1>
-<div id="bridge-table" class="section level2">
-<h2>Bridge Table</h2>
 </div>
-<div id="data-source" class="section level2">
-<h2>Data Source</h2>
+<div id="data-modeling-1" class="section level2">
+<h2>Data Modeling</h2>
+<div id="bridge-table" class="section level3">
+<h3>Bridge Table</h3>
+</div>
+<div id="data-source" class="section level3">
+<h3>Data Source</h3>
 <p>This calculated table appends the multiple fact tables.</p>
 <pre><code>Data Sources = 
 var _base =
@@ -1905,9 +1876,9 @@ RETURN _addSourceFacts
 </code></pre>
 </div>
 </div>
-<div id="greeting-the-user" class="section level1">
-<h1>Greeting the User</h1>
-<p>Let's create a measure to greet the Power BI user.</p>
+<div id="greeting-the-user" class="section level2">
+<h2>Greeting the User</h2>
+<p>let's create a measure to greet the Power BI user.</p>
 <pre><code>Logged In User Name = 
 VAR _user_name =
         LOOKUPVALUE (
@@ -1982,7 +1953,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1",
+      selectors: "h1,h2,h3",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
