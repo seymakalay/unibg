@@ -1435,11 +1435,110 @@ follows;</p>
     )</code></pre>
 </div>
 </div>
+<div id="fact-fx" class="section level1">
+<h1>Fact FX</h1>
+<p>To be able to produce before ‘Fact FX’ data flow we need to create a
+few data flows.</p>
+<pre><code>let
+   
+    Source = let
+      Source = Excel.Workbook(File.Contents(&quot;.\dimFX.xlsx&quot;), null, true),
+    dimFX_Table = Source{[Item=&quot;dimFX&quot;,Kind=&quot;Table&quot;]}[Data],
+    #&quot;Changed Type&quot; = Table.TransformColumnTypes(dimFX_Table,{{&quot;Currency Code&quot;, type text}, {&quot;Country&quot;, type text}, {&quot;Currency Conversion Method&quot;, type text}, {&quot;FY23 AOP&quot;, type number}, {&quot;FY24 AOP&quot;, type number}, {&quot;FY25 AOP&quot;, type number}, 
+    {&quot;FY23 May M-BS&quot;, type number}, {&quot;FY23 Jun M-BS&quot;, type number}, {&quot;FY23 Jul M-BS&quot;, type number}, {&quot;FY23 Aug M-BS&quot;, type number}, {&quot;FY23 Sep M-BS&quot;, type number}, {&quot;FY23 Oct M-BS&quot;, type number}, {&quot;FY23 Nov M-BS&quot;, type number}, 
+    {&quot;FY23 Dec M-BS&quot;, type number}, {&quot;FY23 Jan M-BS&quot;, type number}, {&quot;FY23 Feb M-BS&quot;, type number}, {&quot;FY23 Mar M-BS&quot;, type number}, {&quot;FY23 Apr M-BS&quot;, type number}, {&quot;FY23 May M-PL&quot;, type number}, {&quot;FY23 Jun M-PL&quot;, type number},
+     {&quot;FY23 Jul M-PL&quot;, type number}, {&quot;FY23 Aug M-PL&quot;, type number}, {&quot;FY23 Sep M-PL&quot;, type number}, {&quot;FY23 Oct M-PL&quot;, type number}, {&quot;FY23 Nov M-PL&quot;, type number}, {&quot;FY23 Dec M-PL&quot;, type number}, {&quot;FY23 Jan M-PL&quot;, type number}, 
+     {&quot;FY23 Feb M-PL&quot;, type number}, {&quot;FY23 Mar M-PL&quot;, type number}, {&quot;FY23 Apr M-PL&quot;, type number}, {&quot;FY24 May M-BS&quot;, type number}, {&quot;FY24 Jun M-BS&quot;, type number}, {&quot;FY24 Jul M-BS&quot;, type number}, {&quot;FY24 Aug M-BS&quot;, type number},
+      {&quot;FY24 Sep M-BS&quot;, type number}, {&quot;FY24 Oct M-BS&quot;, type number}, {&quot;FY24 Nov M-BS&quot;, type number}, {&quot;FY24 Dec M-BS&quot;, type number}, {&quot;FY24 Jan M-BS&quot;, type number}, {&quot;FY24 Feb M-BS&quot;, type number}, {&quot;FY24 Mar M-BS&quot;, type number}, 
+      {&quot;FY24 Apr M-BS&quot;, type number}, {&quot;FY25 May M-BS&quot;, type number}, {&quot;FY25 Jun M-BS&quot;, type number}, {&quot;FY25 Jul M-BS&quot;, type number}, {&quot;FY25 Aug M-BS&quot;, type number}, {&quot;FY25 Sep M-BS&quot;, type number}, {&quot;FY25 Oct M-BS&quot;, type number}, 
+      {&quot;FY25 Nov M-BS&quot;, type number}, {&quot;FY25 Dec M-BS&quot;, type number}, {&quot;FY25 Jan M-BS&quot;, type number}, {&quot;FY25 Feb M-BS&quot;, type number}, {&quot;FY25 Mar M-BS&quot;, type number}, {&quot;FY25 Apr M-BS&quot;, type any}, {&quot;FY24 May M-PL&quot;, type number},
+       {&quot;FY24 Jun M-PL&quot;, type number}, {&quot;FY24 Jul M-PL&quot;, type number}, {&quot;FY24 Aug M-PL&quot;, type number}, {&quot;FY24 Sep M-PL&quot;, type number}, {&quot;FY24 Oct M-PL&quot;, type number}, {&quot;FY24 Nov M-PL&quot;, type number}, {&quot;FY24 Dec M-PL&quot;, type number}, 
+       {&quot;FY24 Jan M-PL&quot;, type number}, {&quot;FY24 Feb M-PL&quot;, type number}, {&quot;FY24 Mar M-PL&quot;, type number}, {&quot;FY24 Apr M-PL&quot;, type number}, {&quot;FY25 May M-PL&quot;, type number}, {&quot;FY25 Jun M-PL&quot;, type number}, {&quot;FY25 Jul M-PL&quot;, type number}, 
+       {&quot;FY25 Aug M-PL&quot;, type number}, {&quot;FY25 Sep M-PL&quot;, type number}, {&quot;FY25 Oct M-PL&quot;, type number}, {&quot;FY25 Nov M-PL&quot;, type number}, {&quot;FY25 Dec M-PL&quot;, type number}, {&quot;FY25 Jan M-PL&quot;, type number}, {&quot;FY25 Feb M-PL&quot;, type number}, 
+       {&quot;FY25 Mar M-PL&quot;, type number}, {&quot;FY25 Apr M-PL&quot;, type number}})
+
+in    
+    #&quot;Changed Type&quot;,
+    #&quot;Removed Duplicates&quot; = Table.Distinct(Source, {&quot;Currency Code&quot;, &quot;Country&quot;, &quot;Currency Conversion Method&quot;}),
+  #&quot;Removed columns&quot; = Table.RemoveColumns(#&quot;Removed Duplicates&quot;, {&quot;FY23 AOP&quot;, &quot;FY24 AOP&quot;}),
+  #&quot;Duplicated column 3&quot; = Table.DuplicateColumn(#&quot;Removed columns&quot;, &quot;FY25 AOP&quot;, &quot;FY24 AOP&quot;),
+  #&quot;Duplicated column&quot; = Table.DuplicateColumn(#&quot;Duplicated column 3&quot;, &quot;FY25 AOP&quot;, &quot;FY23 AOP&quot;),
+  #&quot;Duplicated column 1&quot; = Table.DuplicateColumn(#&quot;Duplicated column&quot;, &quot;FY25 AOP&quot;, &quot;FY22 AOP&quot;),
+  #&quot;Duplicated column 2&quot; = Table.DuplicateColumn(#&quot;Duplicated column 1&quot;, &quot;FY22 AOP&quot;, &quot;FY21 AOP&quot;),
+    UnpivotFXRate = Table.UnpivotOtherColumns(#&quot;Duplicated column 2&quot;, {&quot;Currency Conversion Method&quot;, &quot;Country&quot;, &quot;Currency Code&quot;}, &quot;Attribute&quot;, &quot;FX Rate&quot;),
+    AddFXScenario = Table.AddColumn(UnpivotFXRate, &quot;FX Scenario&quot;, each if Text.Contains([Attribute], &quot;AOP&quot;) then &quot;AOP&quot; else &quot;Actual&quot;, type text),
+    #&quot;Inserted Text After Delimiter&quot; = Table.AddColumn(AddFXScenario, &quot;FX Type&quot;, each if Text.Contains([Attribute],&quot;AOP&quot;) then &quot;AOP&quot; else Text.AfterDelimiter([Attribute], &quot;-&quot;), type text),
+    #&quot;Inserted Text Before Delimiter&quot; = Table.AddColumn(#&quot;Inserted Text After Delimiter&quot;, &quot;Date_Stg&quot;, each if Text.Contains([Attribute],&quot;AOP&quot;) then Text.BeforeDelimiter([Attribute], &quot;AOP&quot;) &amp; &quot;May&quot; else Text.BeforeDelimiter([Attribute], &quot; M-&quot;), type text),
+    #&quot;Extracted Text After Delimiter&quot; = Table.TransformColumns(#&quot;Inserted Text Before Delimiter&quot;, {{&quot;Date_Stg&quot;, each Text.AfterDelimiter(_, &quot;FY&quot;), type text}}),
+    #&quot;Added Custom1&quot; = Table.AddColumn(#&quot;Extracted Text After Delimiter&quot;, &quot;Date_Stg2&quot;, each &quot;15-&quot; &amp; Text.End([Date_Stg],3) &amp; &quot;-&quot; &amp; Text.Start([Date_Stg],2)),
+    #&quot;Changed Type&quot; = Table.TransformColumnTypes(#&quot;Added Custom1&quot;,{{&quot;Date_Stg2&quot;, type date}}),
+    #&quot;Added Custom2&quot; = Table.AddColumn(#&quot;Changed Type&quot;, &quot;Date&quot;, each if Text.Contains([Attribute], &quot;AOP&quot;) 
+then List.Generate(()=&gt;[x=Date.AddYears( [Date_Stg2], -1 ),i=0], each [i]&lt;12, each [i=[i]+1,x=Date.AddMonths([x],1)], each [x]) // creates 12 months of AOP data
+else if Date.Month([Date_Stg2]) &gt; 4 
+then List.Dates(Date.AddYears( [Date_Stg2], -1 ),1,#duration(1,0,0,0)) // one item list, transposing year back by 1
+else List.Dates([Date_Stg2],1,#duration(1,0,0,0))) // one item list
+,
+    #&quot;Expanded Date&quot; = Table.ExpandListColumn(#&quot;Added Custom2&quot;, &quot;Date&quot;),
+    #&quot;Changed Type1&quot; = Table.TransformColumnTypes(#&quot;Expanded Date&quot;,{{&quot;Date&quot;, type date}}),
+    #&quot;Merged Queries&quot; = Table.NestedJoin(#&quot;Changed Type1&quot;, {&quot;Date&quot;}, #&quot;Fiscal Date&quot;, {&quot;Date&quot;}, &quot;Fiscal Date&quot;, JoinKind.LeftOuter),
+    #&quot;Expanded Fiscal Date&quot; = Table.ExpandTableColumn(#&quot;Merged Queries&quot;, &quot;Fiscal Date&quot;, {&quot;Fiscal Month Start&quot;, &quot;Fiscal Month End&quot;}, {&quot;Fiscal Month Start&quot;, &quot;Fiscal Month End&quot;}),
+    #&quot;Added Custom&quot; = Table.AddColumn(#&quot;Expanded Fiscal Date&quot;, &quot;Fiscal Date&quot;, each {Number.From([Fiscal Month Start])..Number.From([Fiscal Month End])}),
+    #&quot;Expanded Custom&quot; = Table.ExpandListColumn(#&quot;Added Custom&quot;, &quot;Fiscal Date&quot;),
+    #&quot;Changed Type2&quot; = Table.TransformColumnTypes(#&quot;Expanded Custom&quot;,{{&quot;FX Rate&quot;, type number}, {&quot;Fiscal Date&quot;, type date}}),
+    #&quot;Removed Columns1&quot; = Table.RemoveColumns(#&quot;Changed Type2&quot;,{&quot;Date&quot;, &quot;Fiscal Month Start&quot;, &quot;Fiscal Month End&quot;, &quot;Date_Stg&quot;, &quot;Date_Stg2&quot;}),
+    #&quot;Renamed Columns&quot; = Table.RenameColumns(#&quot;Removed Columns1&quot;,{{&quot;Fiscal Date&quot;, &quot;Date&quot;}})
+in
+    #&quot;Renamed Columns&quot;</code></pre>
+<div id="fiscal-month-end" class="section level2">
+<h2>Fiscal Month End</h2>
+<pre><code>let
+  Source = dimCalendar,
+  #&quot;Removed Duplicates&quot; = Table.Distinct(Source, {&quot;Fiscal Year&quot;}),
+  #&quot;Choose columns&quot; = Table.SelectColumns(#&quot;Removed Duplicates&quot;, {&quot;Fiscal Year&quot;, &quot;Fiscal Month 01 End&quot;, &quot;Fiscal Month 02 End&quot;, &quot;Fiscal Month 03 End&quot;, &quot;Fiscal Month 04 End&quot;, &quot;Fiscal Month 05 End&quot;, &quot;Fiscal Month 06 End&quot;, &quot;Fiscal Month 07 End&quot;, &quot;Fiscal Month 08 End&quot;, &quot;Fiscal Month 09 End&quot;, &quot;Fiscal Month 10 End&quot;, &quot;Fiscal Month 11 End&quot;, &quot;Fiscal Month 12 End&quot;}),
+  #&quot;Unpivoted Columns3&quot; = Table.UnpivotOtherColumns(#&quot;Choose columns&quot;, {&quot;Fiscal Year&quot;}, &quot;Attribute&quot;, &quot;Value&quot;),
+  #&quot;Renamed Columns&quot; = Table.RenameColumns(#&quot;Unpivoted Columns3&quot;, {{&quot;Value&quot;, &quot;Fiscal Month End&quot;}}),
+  #&quot;Added Conditional Column&quot; = Table.AddColumn(#&quot;Renamed Columns&quot;, &quot;Fiscal Month&quot;, each if [Attribute] = &quot;Fiscal Month 01 End&quot; then &quot;May&quot; else if [Attribute] = &quot;Fiscal Month 02 End&quot; then &quot;Jun&quot; else if [Attribute] = &quot;Fiscal Month 03 End&quot; then &quot;Jul&quot; else if [Attribute] = &quot;Fiscal Month 04 End&quot; then &quot;Aug&quot; else if [Attribute] = &quot;Fiscal Month 05 End&quot; then &quot;Sep&quot; else if [Attribute] = &quot;Fiscal Month 06 End&quot; then &quot;Oct&quot; else if [Attribute] = &quot;Fiscal Month 07 End&quot; then &quot;Nov&quot; else if [Attribute] = &quot;Fiscal Month 08 End&quot; then &quot;Dec&quot; else if [Attribute] = &quot;Fiscal Month 09 End&quot; then &quot;Jan&quot; else if [Attribute] = &quot;Fiscal Month 10 End&quot; then &quot;Feb&quot; else if [Attribute] = &quot;Fiscal Month 11 End&quot; then &quot;Mar&quot; else if [Attribute] = &quot;Fiscal Month 12 End&quot; then &quot;Apr&quot; else null),
+  #&quot;Inserted Merged Column&quot; = Table.AddColumn(#&quot;Added Conditional Column&quot;, &quot;Fiscal Month Year&quot;, each Text.Combine({[Fiscal Month], [Fiscal Year]}, &quot;-&quot;), type text),
+  #&quot;Removed Columns&quot; = Table.RemoveColumns(#&quot;Inserted Merged Column&quot;, {&quot;Attribute&quot;}),
+  #&quot;Transform columns&quot; = Table.TransformColumnTypes(#&quot;Removed Columns&quot;, {{&quot;Fiscal Month&quot;, type text}}),
+  #&quot;Replace errors&quot; = Table.ReplaceErrorValues(#&quot;Transform columns&quot;, {{&quot;Fiscal Month&quot;, null}})
+in
+  #&quot;Replace errors&quot;</code></pre>
+</div>
+<div id="fiscal-month-start" class="section level2">
+<h2>Fiscal Month Start</h2>
+<pre><code>let
+  Source = dimCalendar,
+  #&quot;Removed Duplicates&quot; = Table.Distinct(Source, {&quot;Fiscal Year&quot;}),
+    #&quot;Choose columns&quot; = Table.SelectColumns(#&quot;Removed Duplicates&quot;,{&quot;Fiscal Year Start&quot;, &quot;Fiscal Year&quot;, &quot;Fiscal Month 01 End&quot;, &quot;Fiscal Month 02 End&quot;, &quot;Fiscal Month 03 End&quot;, &quot;Fiscal Month 04 End&quot;, &quot;Fiscal Month 05 End&quot;, &quot;Fiscal Month 06 End&quot;, &quot;Fiscal Month 07 End&quot;, &quot;Fiscal Month 08 End&quot;, &quot;Fiscal Month 09 End&quot;, &quot;Fiscal Month 10 End&quot;, &quot;Fiscal Month 11 End&quot;}),
+    #&quot;Unpivoted Columns3&quot; = Table.UnpivotOtherColumns(#&quot;Choose columns&quot;, {&quot;Fiscal Year&quot;}, &quot;Attribute&quot;, &quot;Value&quot;),
+    #&quot;Changed Type&quot; = Table.TransformColumnTypes(#&quot;Unpivoted Columns3&quot;,{{&quot;Value&quot;, Int64.Type}}),
+    #&quot;Added Conditional Column1&quot; = Table.AddColumn(#&quot;Changed Type&quot;, &quot;Fiscal Month Start&quot;, each if [Attribute] = &quot;Fiscal Year Start&quot; then [Value] else [Value]+1),
+    #&quot;Added Conditional Column&quot; = Table.AddColumn(#&quot;Added Conditional Column1&quot;, &quot;Fiscal Month&quot;, each if [Attribute] = &quot;Fiscal Month 01 End&quot; then &quot;Jun&quot; else if [Attribute] = &quot;Fiscal Month 02 End&quot; then &quot;Jul&quot; else if [Attribute] = &quot;Fiscal Month 03 End&quot; then &quot;Aug&quot; else if [Attribute] = &quot;Fiscal Month 04 End&quot; then &quot;Sep&quot; else if [Attribute] = &quot;Fiscal Month 05 End&quot; then &quot;Oct&quot; else if [Attribute] = &quot;Fiscal Month 06 End&quot; then &quot;Nov&quot; else if [Attribute] = &quot;Fiscal Month 07 End&quot; then &quot;Dec&quot; else if [Attribute] = &quot;Fiscal Month 08 End&quot; then &quot;Jan&quot; else if [Attribute] = &quot;Fiscal Month 09 End&quot; then &quot;Feb&quot; else if [Attribute] = &quot;Fiscal Month 10 End&quot; then &quot;Mar&quot; else if [Attribute] = &quot;Fiscal Month 11 End&quot; then &quot;Apr&quot; else if [Attribute] = &quot;Fiscal Year Start&quot; then &quot;May&quot; else null),
+    #&quot;Inserted Merged Column&quot; = Table.AddColumn(#&quot;Added Conditional Column&quot;, &quot;Fiscal Month Year&quot;, each Text.Combine({[#&quot;Fiscal Month&quot;], [Fiscal Year]}, &quot;-&quot;), type text),
+    #&quot;Removed Columns1&quot; = Table.RemoveColumns(#&quot;Inserted Merged Column&quot;,{&quot;Attribute&quot;, &quot;Value&quot;}),
+    #&quot;Changed Type1&quot; = Table.TransformColumnTypes(#&quot;Removed Columns1&quot;,{{&quot;Fiscal Month Start&quot;, type date}, {&quot;Fiscal Month&quot;, type text}})
+in
+    #&quot;Changed Type1&quot;</code></pre>
+</div>
+<div id="fiscal-date" class="section level2">
+<h2>Fiscal Date</h2>
+<pre><code>let
+  Source = Table.NestedJoin(#&quot;Fiscal Month End&quot;, {&quot;Fiscal Month Year&quot;}, #&quot;Fiscal Month Start&quot;, {&quot;Fiscal Month Year&quot;}, &quot;Fiscal Month Start&quot;, JoinKind.LeftOuter),
+  #&quot;Expanded Fiscal Month Start&quot; = Table.ExpandTableColumn(Source, &quot;Fiscal Month Start&quot;, {&quot;Fiscal Month Start&quot;}, {&quot;Fiscal Month Start&quot;}),
+  #&quot;Merged Queries&quot; = Table.NestedJoin(#&quot;Expanded Fiscal Month Start&quot;, {&quot;Fiscal Month Year&quot;}, Calendar, {&quot;Fiscal Month-Year&quot;}, &quot;Calendar&quot;, JoinKind.LeftOuter),
+  #&quot;Expanded Calendar&quot; = Table.ExpandTableColumn(#&quot;Merged Queries&quot;, &quot;Calendar&quot;, {&quot;Date&quot;}, {&quot;Date&quot;}),
+  #&quot;Transform columns&quot; = Table.TransformColumnTypes(#&quot;Expanded Calendar&quot;, {{&quot;Fiscal Month&quot;, type text}}),
+  #&quot;Replace errors&quot; = Table.ReplaceErrorValues(#&quot;Transform columns&quot;, {{&quot;Fiscal Month&quot;, null}})
+in
+  #&quot;Replace errors&quot;</code></pre>
+</div>
+</div>
 <div id="currency-rate-conversion" class="section level1">
 <h1>Currency Rate Conversion</h1>
-<div id="fact_fx" class="section level2">
-<h2>Fact_FX</h2>
-<p>Fact_FX dataflow as:</p>
+<div id="fact-fx-1" class="section level2">
+<h2>Fact FX</h2>
+<p>‘Fact FX’ dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|l|c|l|l|l|l|l|l|}
 \hline
 \text{Currency Code}   &amp; \text{Country} &amp; \text{Conversion
@@ -1523,7 +1622,7 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 </div>
 <div id="dimcurrency" class="section level2">
 <h2>dimCurrency</h2>
-<p>dimCurrency dataflow as:</p>
+<p>‘dimCurrency’ data flow as:</p>
 <span class="math display">\[\begin{array}{|l|c|}
 \hline
 \text{Currency Code}   &amp; \text{Country}  \\
@@ -1542,7 +1641,7 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 </div>
 <div id="fact_aop" class="section level2">
 <h2>Fact_AOP</h2>
-<p>Fact_AOP dataflow as:</p>
+<p>‘Fact_AOP’ data flow as:</p>
 <span class="math display">\[\begin{array}{|l|l|}
 \hline
 \text{Data Source}   &amp; \text{RPT ID} &amp; \text{G/L Account}&amp;
@@ -1639,9 +1738,8 @@ Type}&amp; \text{Scenario}&amp; \text{Product ID} \\
 \hline
 \end{array}\]</span>
 </div>
-</div>
-<div id="usd-currency-conversion" class="section level1">
-<h1>USD Currency Conversion</h1>
+<div id="usd-currency-conversion" class="section level2">
+<h2>USD Currency Conversion</h2>
 <pre><code>Base Measure = SUM(&#39;Fact_AOP&#39;[Amount])
 
 
@@ -1668,8 +1766,12 @@ VAR _Result =
 RETURN
     _Result</code></pre>
 </div>
+</div>
 <div id="data-modeling" class="section level1">
 <h1>Data Modeling</h1>
+<div id="bridge-table" class="section level2">
+<h2>Bridge Table</h2>
+<p>Bridge tables are used to remove multi-multi relationship.</p>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
 <img src="images/datamodelling.png" alt=" " width="75%" />
@@ -1677,19 +1779,6 @@ RETURN
 </p>
 </div>
 </div>
-<div id="bridge-table" class="section level2">
-<h2>Bridge Table</h2>
-<p>Bridge tables are used to remove multi-multi relationship. Before
-creating our ‘Fact FX’ data flow we need to create a few dataflow.</p>
-<p>Let's start producing our data flows.</p>
-<p>‘Fiscal Date’ data flow.</p>
-<pre><code></code></pre>
-<p>##‘Fiscal Month End’ data flow.</p>
-<pre><code></code></pre>
-<p>##‘Fiscal Month Start’ data flow.</p>
-<pre><code></code></pre>
-<p>##‘FACT FX’ data flow.</p>
-<pre><code></code></pre>
 </div>
 <div id="data-source" class="section level2">
 <h2>Data Source</h2>
