@@ -2,16 +2,31 @@
 title: ""
 output:
   html_document:
+    theme: flatly
+    highlight: tango
+    toc: yes
+    toc_float: yes
+    collapsed: no
+    number_sections: no
+    toc_depth: 1
+  pdf_document:
+    toc: yes
+    toc_depth: '1'
+---
+
+<!--\1 
+---
+title: ""
+output:
+  html_document:
     toc: TRUE
     toc_float: TRUE
     theme: flatly
     highlight: tango
-    collapsed: no
-    number_sections: no
 ---
 
 
-<!--\1 
+
 ---
 title: ""
 output:
@@ -55,7 +70,7 @@ library(xtable)
 
 
 
-## DimCalendar
+# DimCalendar
 
 Date Dimension is useful for scenarios mentioned below;
 
@@ -247,7 +262,7 @@ in
 
   
   
-## Time Intelegence in DAX
+# Time Intelegence in DAX
 
 'Time Intelligence' functions help to compare the data, based on the time periods (days, months, quarters, and years). 
 These functions, mostly used for financial and supply chain reports, compare the earnings, gains,...etc. over time (MTD, QTD, and YTD).
@@ -639,7 +654,7 @@ KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
 
 
 
-## Time Since Last Refresh
+# Time Since Last Refresh
 
 let`s create a blank query in power query editor and call it zz-ReportRefresh.
 
@@ -691,14 +706,14 @@ SWITCH(
 
 
 
-## The Last Date by Each Group
+# The Last Date by Each Group
 
 Let\'s  create a blank query in power query editor and set the 'Source' from existing query, in this case, `Source = Inventory_wo_rank`.
 As a second step, we should remove the all the unnecessary columns `#"Removed Columns"` and remove all the duplicates `#"Removed Duplicates"`.
 
 
 
-### Example
+## Example
 ```
 let
     
@@ -796,9 +811,9 @@ CALCULATE( [Inventory],
 
 
 
-## The Last Two Weeks Change
+# The Last Two Weeks Change
 
-### Example
+## Example
 
 lets set the data model first. If the dates would be `FY24 WK52` then we should have rank the given format and use the same methodology below.  
 
@@ -893,9 +908,9 @@ Comparison = "Change from week "&[PrevWeek] &" to "&[CurrWeek]
 
 
 
-## Viz Ideas 
+# Viz Ideas 
 
-### New Parameter
+# New Parameter
 
 Let\'s create new parameters for  `Hierarch`, `Measure`, and `Time` to have multiple drop down options into the viz.
 
@@ -940,9 +955,9 @@ knitr::include_graphics('images/revenuetab.png')
 </div>
 
 
-### Book Marks Example
+# Book Marks Example
 
-### Tool Tips Example
+# Tool Tips Example
 ```
 
 ```
@@ -1128,7 +1143,7 @@ in
   -->
 
 
-## RLS
+# RLS
 
 Following link may give an idea of how to set up <a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>. Yet, I will show you a better way.
 
@@ -1203,9 +1218,9 @@ Yet `dimReporting` has relationship with other tables. For other Roles set up th
     )
 ```
 
-## Currency Rate Conversion
+# Currency Rate Conversion
 
-### Fact_FX
+# Fact_FX
 
 Fact_FX dataflow as:
 
@@ -1245,7 +1260,7 @@ Fact_FX dataflow as:
 
 
 
-### dimCurrency
+# dimCurrency
 
 dimCurrency dataflow as:
 
@@ -1268,7 +1283,7 @@ dimCurrency dataflow as:
 
 
 
-### Fact_AOP
+# Fact_AOP
 
 Fact_AOP dataflow as:
 
@@ -1309,7 +1324,7 @@ Fact_AOP dataflow as:
 \end{array}
 
 
-### Data Modeling
+# Data Modeling
 
 <div class="my-right-figure">
 ```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
@@ -1317,7 +1332,7 @@ knitr::include_graphics('images/datamodelling.png')
 ```
 </div>
 
-### USD Currency Conversion
+# USD Currency Conversion
 
 ```
 Base Measure = SUM('Fact_AOP'[Amount])
@@ -1350,11 +1365,11 @@ RETURN
 
 
 
-## Data Modeling
+# Data Modeling
 
-### Bridge Table
+## Bridge Table
 
-### Data Source
+## Data Source
 
 This calculated table appends the multiple fact tables.
 
@@ -1453,9 +1468,9 @@ RETURN _addSourceFacts
 
 
 
-## Greeting the User 
+# Greeting the User 
 
-let\'s create a measure to greet the Power BI user. 
+Let\'s create a measure to greet the Power BI user. 
 
 ```
 Logged In User Name = 
