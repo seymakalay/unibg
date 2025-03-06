@@ -1,4 +1,25 @@
 ---
+title: ""
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: yes
+    toc_float: yes
+    collapsed: no
+    number_sections: no
+    toc_depth: 2
+  pdf_document:
+    fig_caption: true
+    toc: yes
+    toc_depth: '2'
+---
+
+
+
+
+<!--\1 
+---
     title: ""
     output:
       html_document:
@@ -14,7 +35,6 @@
         toc_depth: '2'
 ---
 
-<!--\1 
 ---
 title: ""
 output:
@@ -295,13 +315,13 @@ in
 ```
 
 # Time Intelegence in DAX
-'Time Intelligence' functions help to compare the data, based on the time periods (days, months, quarters, and years). 
+`Time Intelligence` functions help to compare the data, based on the time periods (days, months, quarters, and years). 
 These functions, mostly used for financial and supply chain reports, compare the earnings, gains,...etc. over time (MTD, QTD, and YTD).
 
-Let\'s  create a  'z-Time Intelligence ' calculation group in Power BI model view. After setting up 
-the group measures, mentioned bellow, we can  assign the 'Time Intelligence' column name as 'Time Intelligence Type' and
+Let\'s  create a  `z-Time Intelligence` calculation group in Power BI model view. After setting up 
+the group measures, mentioned bellow, we can  assign the 'Time Intelligence' column name as `Time Intelligence Type` and
 set the ordinal of the measures by moving them up or down.
-Lastly, let\'s check the ordinality of 'z-Time Intelligence' calculation group on the table view.
+Lastly, let\'s check the ordinality of `z-Time Intelligence` calculation group on the table view.
 <!--\1 [link](#dimcalendar) -->
 
 ## Current Year
@@ -693,7 +713,7 @@ KEEPFILTERS('z-CG Time Intelegence'[Time Intelligence Type] = 'QTD' ))
 ```
 
 # Time Since Last Refresh
-Let\'s create a blank query in power query editor and call it 'zz-ReportRefresh'.
+Let\'s create a blank query in power query editor and call it `zz-ReportRefresh`.
 
 ## Example
 ```
@@ -710,7 +730,7 @@ in
     #"Inserted Local Time"
 
 ```
-Let\'s create a measure and call it Time Since Last Refresh to inform the Power BI user as in [Figure 1](#New_Parameter). 
+Let\'s create a measure and call it Time Since Last Refresh to inform the Power BI user as in Figure 1. 
 
 ```
 Time Since Last Refresh =
@@ -982,13 +1002,13 @@ knitr::include_graphics('images/revenue.png')
 
 ## Book Marks Example
 
-## Tool Tips Example
+## Tool Tips Example 
 
 # RLS
 Following link may give an idea of how to set up <a href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank">RLS</a>. Yet, I will show you a better way.
 
 ## Fact_RLS
-Fact_RLS dataflow as:
+`Fact_RLS` dataflow as:
 
 
 \begin{array}{|l|c|c|}
@@ -1013,7 +1033,7 @@ User10  &  \text{user10@email.com}  &\text{RPT ID} &\text{}               &\text
 
 From the Modeling tab, select Manage Roles and add a new role as follow. For `ADMIN` role  set up NO FILTER.
 
-Keep in mine, the Fact_RLS dataflow has no relationship with other tables in the data modelling. 
+Keep in mine, the `Fact_RLS` dataflow has no relationship with other tables in the data modelling. 
 Yet `dimReporting` has relationship with other tables. For other Roles set up the filter as follows;
 
 
@@ -1061,7 +1081,7 @@ Yet `dimReporting` has relationship with other tables. For other Roles set up th
 
 
 # Fact FX
-To be able to produce before 'Fact FX' data flow we need to create a few data flows.
+To be able to produce before `Fact FX` data flow we need to create a few data flows.
 ```
 let
    
@@ -1173,7 +1193,7 @@ in
 # Currency Rate Conversion
 
 ## Fact FX
-'Fact FX' dataflow as:
+`Fact FX` dataflow as:
 
 \begin{array}{|l|l|c|l|l|l|l|l|l|}
 \hline
@@ -1208,7 +1228,7 @@ in
 
 
 ## dimCurrency
-'dimCurrency' data flow as:
+`dimCurrency` data flow as:
 
 \begin{array}{|l|c|}
 \hline
@@ -1227,7 +1247,7 @@ in
 \end{array}
 
 ## Fact_AOP
-'Fact_AOP' data flow as:
+`Fact_AOP` data flow as:
 
 \begin{array}{|l|l|}
 \hline
@@ -1445,7 +1465,10 @@ RETURN _addSourceFacts
 
 
 # Greeting the User 
-Let\'s create a measure to greet the Power BI user as in [Figure 1](#Viz-Ideas). 
+Let\'s create a measure to greet the Power BI user as in Figure 1. 
+
+
+<!--\1 [Some text](#markdown-header-my-paragraph-title) \1-->
 
 ```
 Logged In User Name = 

@@ -475,6 +475,22 @@ div.tocify {
 
 <!--\1 
 ---
+    title: ""
+    output:
+      html_document:
+        theme: flatly
+        highlight: tango
+        toc: yes
+        toc_float: yes
+        collapsed: no
+        number_sections: no
+        toc_depth: 2
+      pdf_document:
+        toc: yes
+        toc_depth: '2'
+---
+
+---
 title: ""
 output:
   html_document:
@@ -736,16 +752,17 @@ in
 </div>
 <div id="time-intelegence-in-dax" class="section level1">
 <h1>Time Intelegence in DAX</h1>
-<p>‘Time Intelligence’ functions help to compare the data, based on the
-time periods (days, months, quarters, and years). These functions,
-mostly used for financial and supply chain reports, compare the
-earnings, gains,…etc. over time (MTD, QTD, and YTD).</p>
-<p>Let's create a ‘z-Time Intelligence’ calculation group in Power BI
-model view. After setting up the group measures, mentioned bellow, we
-can assign the ‘Time Intelligence’ column name as ‘Time Intelligence
-Type’ and set the ordinal of the measures by moving them up or down.
-Lastly, let's check the ordinality of ‘z-Time Intelligence’ calculation
-group on the table view. <!--\1 [link](#dimcalendar) --></p>
+<p><code>Time Intelligence</code> functions help to compare the data,
+based on the time periods (days, months, quarters, and years). These
+functions, mostly used for financial and supply chain reports, compare
+the earnings, gains,…etc. over time (MTD, QTD, and YTD).</p>
+<p>Let's create a <code>z-Time Intelligence</code> calculation group in
+Power BI model view. After setting up the group measures, mentioned
+bellow, we can assign the ‘Time Intelligence’ column name as
+<code>Time Intelligence Type</code> and set the ordinal of the measures
+by moving them up or down. Lastly, let's check the ordinality of
+<code>z-Time Intelligence</code> calculation group on the table view.
+<!--\1 [link](#dimcalendar) --></p>
 <div id="current-year" class="section level2">
 <h2>Current Year</h2>
 <pre><code>CY = SELECTEDMEASURE()</code></pre>
@@ -1121,7 +1138,7 @@ KEEPFILTERS(&#39;z-CG Time Intelegence&#39;[Time Intelligence Type] = &#39;QTD&#
 <div id="time-since-last-refresh" class="section level1">
 <h1>Time Since Last Refresh</h1>
 <p>Let's create a blank query in power query editor and call it
-‘zz-ReportRefresh’.</p>
+<code>zz-ReportRefresh</code>.</p>
 <div id="example-1" class="section level2">
 <h2>Example</h2>
 <pre><code>let
@@ -1137,7 +1154,7 @@ in
     #&quot;Inserted Local Time&quot;
 </code></pre>
 <p>Let's create a measure and call it Time Since Last Refresh to inform
-the Power BI user as in <a href="#New_Parameter">Figure 1</a>.</p>
+the Power BI user as in Figure 1.</p>
 <pre><code>Time Since Last Refresh =
 var _currTm = UTCNOW()
 
@@ -1376,7 +1393,7 @@ Figure 1
 Yet, I will show you a better way.</p>
 <div id="fact_rls" class="section level2">
 <h2>Fact_RLS</h2>
-<p>Fact_RLS dataflow as:</p>
+<p><code>Fact_RLS</code> dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|c|c|}
 \hline
 \text{User}   &amp; \text{Email Address} &amp; \text{Access} &amp;
@@ -1416,9 +1433,9 @@ User10  &amp;  \text{user10@email.com}  &amp;\text{RPT ID}
 \end{array}\]</span>
 <p>From the Modeling tab, select Manage Roles and add a new role as
 follow. For <code>ADMIN</code> role set up NO FILTER.</p>
-<p>Keep in mine, the Fact_RLS dataflow has no relationship with other
-tables in the data modelling. Yet <code>dimReporting</code> has
-relationship with other tables. For other Roles set up the filter as
+<p>Keep in mine, the <code>Fact_RLS</code> dataflow has no relationship
+with other tables in the data modelling. Yet <code>dimReporting</code>
+has relationship with other tables. For other Roles set up the filter as
 follows;</p>
 <p><code>BUSINESS PARTNER</code></p>
 <pre><code>[Finance Business Partner] #A column name in the Selected Table (let&#39;s assume it is dimReporting table)
@@ -1452,8 +1469,8 @@ follows;</p>
 </div>
 <div id="fact-fx" class="section level1">
 <h1>Fact FX</h1>
-<p>To be able to produce before ‘Fact FX’ data flow we need to create a
-few data flows.</p>
+<p>To be able to produce before <code>Fact FX</code> data flow we need
+to create a few data flows.</p>
 <pre><code>let
    
     Source = let
@@ -1553,7 +1570,7 @@ in
 <h1>Currency Rate Conversion</h1>
 <div id="fact-fx-1" class="section level2">
 <h2>Fact FX</h2>
-<p>‘Fact FX’ dataflow as:</p>
+<p><code>Fact FX</code> dataflow as:</p>
 <span class="math display">\[\begin{array}{|l|l|c|l|l|l|l|l|l|}
 \hline
 \text{Currency Code}   &amp; \text{Country} &amp; \text{Conversion
@@ -1637,7 +1654,7 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 </div>
 <div id="dimcurrency" class="section level2">
 <h2>dimCurrency</h2>
-<p>‘dimCurrency’ data flow as:</p>
+<p><code>dimCurrency</code> data flow as:</p>
 <span class="math display">\[\begin{array}{|l|c|}
 \hline
 \text{Currency Code}   &amp; \text{Country}  \\
@@ -1656,7 +1673,7 @@ Scenario}&amp; \text{FX Type}&amp; \text{Date} \\
 </div>
 <div id="fact_aop" class="section level2">
 <h2>Fact_AOP</h2>
-<p>‘Fact_AOP’ data flow as:</p>
+<p><code>Fact_AOP</code> data flow as:</p>
 <span class="math display">\[\begin{array}{|l|l|}
 \hline
 \text{Data Source}   &amp; \text{RPT ID} &amp; \text{G/L Account}&amp;
@@ -1939,8 +1956,8 @@ RETURN _addSourceFacts</code></pre>
 </div>
 <div id="greeting-the-user" class="section level1">
 <h1>Greeting the User</h1>
-<p>Let's create a measure to greet the Power BI user as in <a
-href="#Viz-Ideas">Figure 1</a>.</p>
+<p>Let's create a measure to greet the Power BI user as in Figure 1.</p>
+<!--\1 [Some text](#markdown-header-my-paragraph-title) \1-->
 <pre><code>Logged In User Name = 
 VAR _user_name =
         LOOKUPVALUE (
