@@ -1,4 +1,21 @@
 ---
+    title: ""
+    output:
+      html_document:
+        theme: flatly
+        highlight: tango
+        toc: yes
+        toc_float: yes
+        collapsed: no
+        number_sections: no
+        toc_depth: 2
+      pdf_document:
+        toc: yes
+        toc_depth: '2'
+---
+
+<!--\1 
+---
 title: ""
 output:
   html_document:
@@ -11,8 +28,6 @@ output:
    #  - \usepackage{placeins}
 ---
 
-
-<!--\1 
 ---
 title: ""
 output:
@@ -695,7 +710,7 @@ in
     #"Inserted Local Time"
 
 ```
-Let\'s create a measure and call it Time Since Last Refresh.
+Let\'s create a measure and call it Time Since Last Refresh to inform the Power BI user as in [Figure 1](#New_Parameter). 
 
 ```
 Time Since Last Refresh =
@@ -826,14 +841,14 @@ CALCULATE( [Inventory],
 Let\'s set the data model first. If the dates would be `FY24 WK52` then we should have rank the given format and use the same methodology below.  
 
 <div class="my-right-figure">
-```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='center'}
 knitr::include_graphics('images/SampleData4Last2WeeksChange.jpg')
 ```
 </div>
 
 
 <div class="my-right-figure">
-```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='center'}
 knitr::include_graphics('images/Last2WeeksChange.jpg')
 ```
 </div>
@@ -954,10 +969,15 @@ Fiscal Timeline = {
 The new parameters help to create the table with ease and provides more filtering option.
 
 <div class="my-right-figure">
-```{r echo=FALSE, fig.cap = " ", out.width='90%', fig.align='center'}
-knitr::include_graphics('images/revenuetab.png')
+```{r echo=FALSE, fig.cap = "Figure 1", out.width='100%', fig.align='left'}
+knitr::include_graphics('images/revenue.png')
 ```
 </div>
+
+
+
+
+
 
 
 ## Book Marks Example
@@ -1280,12 +1300,50 @@ RETURN
 
 
 # Data Modeling
+First, let\'s learn what not to do! 
+
+<body>
+    <ul>
+      <li>Don\'t overload your model.</li>
+      <li>Don\'t use the same semantic model.</li>
+      <li>Don\'t keep in the report unused DAX and tables.</li>
+    </ul>
+</body>
+
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='center'}
+knitr::include_graphics('images/DataModeling.png')
+```
+</div>
+
+
+Let\'s learn what to do! 
+
+<body>
+    <ul>
+      <li>Create a Power BI template where you can have the min necessary tables (dimCalander, dimCurrency, FactFX, etc.) 
+      and DAX measures (Last time to Refresh, Personal Greetings Login Name, Time Intelligence, etc.).</li>
+      <li>Build smaller Power BI reports.</li>
+      <li>Create each time a new semantic model.</li>
+      <li>Avoid using Direct Query or Lived Connection.</li>
+    </ul>
+</body>
+
+
+A desirable Power BI report probably won\'t take more than 5 pages and the data model will look as simple as below.
+<div class="my-right-figure">
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='center'}
+knitr::include_graphics('images/DataModelingSimple.png')
+```
+</div>
+
+
 
 ## Bridge Table
 Bridge tables are used to remove multi-multi relationship. 
 
 <div class="my-right-figure">
-```{r echo=FALSE, fig.cap = " ", out.width='75%', fig.align='center'}
+```{r echo=FALSE, fig.cap = " ", out.width='100%', fig.align='center'}
 knitr::include_graphics('images/datamodelling.png')
 ```
 </div>
@@ -1387,7 +1445,7 @@ RETURN _addSourceFacts
 
 
 # Greeting the User 
-Let\'s create a measure to greet the Power BI user. 
+Let\'s create a measure to greet the Power BI user as in [Figure 1](#Viz-Ideas). 
 
 ```
 Logged In User Name = 

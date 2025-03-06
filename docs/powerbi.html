@@ -487,6 +487,19 @@ output:
    #  - \usepackage{placeins}
 ---
 
+---
+title: ""
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: flatly
+    highlight: tango
+#header-includes:
+#- \usepackage{caption}  
+   #  - \usepackage{placeins}
+---
+
  
 ---
 title: ""
@@ -1123,7 +1136,8 @@ in
 
     #&quot;Inserted Local Time&quot;
 </code></pre>
-<p>Let's create a measure and call it Time Since Last Refresh.</p>
+<p>Let's create a measure and call it Time Since Last Refresh to inform
+the Power BI user as in <a href="#New_Parameter">Figure 1</a>.</p>
 <pre><code>Time Since Last Refresh =
 var _currTm = UTCNOW()
 
@@ -1242,14 +1256,14 @@ CALCULATE( [Inventory],
 the same methodology below.</p>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
-<img src="images/SampleData4Last2WeeksChange.jpg" alt=" " width="75%" />
+<img src="images/SampleData4Last2WeeksChange.jpg" alt=" " width="100%" />
 <p class="caption">
 </p>
 </div>
 </div>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
-<img src="images/Last2WeeksChange.jpg" alt=" " width="75%" />
+<img src="images/Last2WeeksChange.jpg" alt=" " width="100%" />
 <p class="caption">
 </p>
 </div>
@@ -1340,9 +1354,10 @@ options into the viz.</p>
 <p>The new parameters help to create the table with ease and provides
 more filtering option.</p>
 <div class="my-right-figure">
-<div class="figure" style="text-align: center">
-<img src="images/revenuetab.png" alt=" " width="90%" />
+<div class="figure" style="text-align: left">
+<img src="images/revenue.png" alt="Figure 1" width="100%" />
 <p class="caption">
+Figure 1
 </p>
 </div>
 </div>
@@ -1769,12 +1784,61 @@ RETURN
 </div>
 <div id="data-modeling" class="section level1">
 <h1>Data Modeling</h1>
+<p>First, let's learn what not to do!</p>
+<body>
+<ul>
+<li>
+Don't overload your model.
+</li>
+<li>
+Don't use the same semantic model.
+</li>
+<li>
+Don't keep in the report unused DAX and tables.
+</li>
+</ul>
+</body>
+<div class="my-right-figure">
+<div class="figure" style="text-align: center">
+<img src="images/DataModeling.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
+</div>
+<p>Let's learn what to do!</p>
+<body>
+<ul>
+<li>
+Create a Power BI template where you can have the min necessary tables
+(dimCalander, dimCurrency, FactFX, etc.) and DAX measures (Last time to
+Refresh, Personal Greetings Login Name, Time Intelligence, etc.).
+</li>
+<li>
+Build smaller Power BI reports.
+</li>
+<li>
+Create each time a new semantic model.
+</li>
+<li>
+Avoid using Direct Query or Lived Connection.
+</li>
+</ul>
+</body>
+A desirable Power BI report probably won't take more than 5 pages and
+the data model will look as simple as below.
+<div class="my-right-figure">
+<div class="figure" style="text-align: center">
+<img src="images/DataModelingSimple.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
+</div>
 <div id="bridge-table" class="section level2">
 <h2>Bridge Table</h2>
 <p>Bridge tables are used to remove multi-multi relationship.</p>
 <div class="my-right-figure">
 <div class="figure" style="text-align: center">
-<img src="images/datamodelling.png" alt=" " width="75%" />
+<img src="images/datamodelling.png" alt=" " width="100%" />
 <p class="caption">
 </p>
 </div>
@@ -1875,7 +1939,8 @@ RETURN _addSourceFacts</code></pre>
 </div>
 <div id="greeting-the-user" class="section level1">
 <h1>Greeting the User</h1>
-<p>Let's create a measure to greet the Power BI user.</p>
+<p>Let's create a measure to greet the Power BI user as in <a
+href="#Viz-Ideas">Figure 1</a>.</p>
 <pre><code>Logged In User Name = 
 VAR _user_name =
         LOOKUPVALUE (
@@ -1950,7 +2015,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
