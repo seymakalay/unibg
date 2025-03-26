@@ -329,7 +329,8 @@ Lastly, let\'s check the ordinality of `z-Time Intelligence` calculation group o
 CY = SELECTEDMEASURE()
 ```
 
-## Last Year
+## Last Year 
+<!--\1 DIVIDE(_rslt, _currOffset <= 0 || _currYr <= 0) -->
 ```
 LY = 
 var _currOffset = MAX( 'Calendar'[Fiscal Month Offset] )
@@ -349,14 +350,11 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset <= 0 || _currYr <= 0
-)
-
+_rslt
 ```
 
-## Current vs Last Year
+## Current vs Last Year 
+<!--\1 DIVIDE( SELECTEDMEASURE() - _rslt,_cy <= 0 && _rslt) -->
 ```
 CY vs LY = 
 var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
@@ -376,14 +374,11 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    SELECTEDMEASURE() - _rslt,
-    _cy <= 0 && _rslt
-)
-
+SELECTEDMEASURE() - _rslt
 ```
 
 ## Current vs Last Year %
+<!--\1 DIVIDE( DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) , _cy <= 0) -->
 ```
 CY vs LY% = 
 var _currOffset = MAX( 'Calendar'[Sequential Fiscal Month] )
@@ -403,14 +398,11 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
-    _cy <= 0
-)
-
+DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) )
 ```
 
 ## Year to Day
+<!--\1  -->
 ```
 YTD = 
 var _currFiscYr = MAX( 'Calendar'[FY] )
@@ -541,6 +533,7 @@ RETURN
 ```
 
 ## Last Month
+<!--\1 DIVIDE(_rslt,_currOffset <= 0) -->
 ```
 LM = var _currOffset = MAX('Calendar'[Fiscal Month Offset])
 var _offsetBegin = MIN('Calendar'[Fiscal Month Offset]) - 1
@@ -559,14 +552,12 @@ CALCULATE(
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset <= 0
-)
+_rslt
 
 ```
 
 ## Previous Period
+<!--\1  DIVIDE(_rslt,_currOffset <= 0 || _currYr <= 0) -->
 ```
 PP = 
 // dynamic to fiscal month, quarter, year
@@ -594,14 +585,12 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset <= 0 || _currYr <= 0
-)
+_rslt
 
 ```
 
 ## Current vs Previous Period
+<!--\1 DIVIDE(SELECTEDMEASURE() - _rslt,_cy <= 0 && _rslt) -->
 ```
 CP vs PP = 
 // dynamic to fiscal month, quarter, year
@@ -629,13 +618,11 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    SELECTEDMEASURE() - _rslt,
-    _cy <= 0 && _rslt
-)
+SELECTEDMEASURE() - _rslt
 ```
 
 ## Current vs Previous Period %
+<!--\1  DIVIDE( DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) , _cy <= 0) --> 
 ```
 CP vs PP % = 
 // dynamic to fiscal month, quarter, year
@@ -663,22 +650,21 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
-    _cy <= 0
-)
+DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) )
 
 ```
 
 ## Same Period Last Year
 ```
-SPLY =     CALCULATE (
+SPLY =     
+CALCULATE (
         SELECTEDMEASURE (),
         SAMEPERIODLASTYEAR ( 'Calendar'[Date] )
     )
 ```
 
 ## Last Year Week
+<!--\1  DIVIDE( _rslt, _currOffset <= 0 || _currYr <= 0)--> 
 ```
 LYWeek = var _currOffset = MAX( Calendar[Fiscal Week Offset] )
 VAR _weeksofyear = MAX(Calendar[Fiscal Weeks])
@@ -698,10 +684,7 @@ CALCULATE (
     'Calendar'[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset <= 0 || _currYr <= 0
-)
+_rslt
 ```
 
 ## Example

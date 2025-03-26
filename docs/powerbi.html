@@ -769,6 +769,7 @@ by moving them up or down. Lastly, let's check the ordinality of
 </div>
 <div id="last-year" class="section level2">
 <h2>Last Year</h2>
+<!--\1 DIVIDE(_rslt, _currOffset <= 0 || _currYr <= 0) -->
 <pre><code>LY = 
 var _currOffset = MAX( &#39;Calendar&#39;[Fiscal Month Offset] )
 var _offsetBegin = MIN( &#39;Calendar&#39;[Fiscal Month Offset] ) - 12
@@ -787,14 +788,11 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset &lt;= 0 || _currYr &lt;= 0
-)
-</code></pre>
+_rslt</code></pre>
 </div>
 <div id="current-vs-last-year" class="section level2">
 <h2>Current vs Last Year</h2>
+<!--\1 DIVIDE( SELECTEDMEASURE() - _rslt,_cy <= 0 && _rslt) -->
 <pre><code>CY vs LY = 
 var _currOffset = MAX( &#39;Calendar&#39;[Sequential Fiscal Month] )
 var _offsetBegin = MIN( &#39;Calendar&#39;[Sequential Fiscal Month] ) - 12
@@ -813,14 +811,11 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    SELECTEDMEASURE() - _rslt,
-    _cy &lt;= 0 &amp;&amp; _rslt
-)
-</code></pre>
+SELECTEDMEASURE() - _rslt</code></pre>
 </div>
 <div id="current-vs-last-year-1" class="section level2">
 <h2>Current vs Last Year %</h2>
+<!--\1 DIVIDE( DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) , _cy <= 0) -->
 <pre><code>CY vs LY% = 
 var _currOffset = MAX( &#39;Calendar&#39;[Sequential Fiscal Month] )
 var _offsetBegin = MIN( &#39;Calendar&#39;[Sequential Fiscal Month] ) - 12
@@ -839,14 +834,11 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
-    _cy &lt;= 0
-)
-</code></pre>
+DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) )</code></pre>
 </div>
 <div id="year-to-day" class="section level2">
 <h2>Year to Day</h2>
+<!--\1  -->
 <pre><code>YTD = 
 var _currFiscYr = MAX( &#39;Calendar&#39;[FY] )
 var _currDay = MAX( &#39;Calendar&#39;[Day of Fiscal Year] )
@@ -971,6 +963,7 @@ RETURN
 </div>
 <div id="last-month" class="section level2">
 <h2>Last Month</h2>
+<!--\1 DIVIDE(_rslt,_currOffset <= 0) -->
 <pre><code>LM = var _currOffset = MAX(&#39;Calendar&#39;[Fiscal Month Offset])
 var _offsetBegin = MIN(&#39;Calendar&#39;[Fiscal Month Offset]) - 1
 var _offsetEnd = _currOffset - 1 
@@ -988,14 +981,12 @@ CALCULATE(
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset &lt;= 0
-)
+_rslt
 </code></pre>
 </div>
 <div id="previous-period" class="section level2">
 <h2>Previous Period</h2>
+<!--\1  DIVIDE(_rslt,_currOffset <= 0 || _currYr <= 0) -->
 <pre><code>PP = 
 // dynamic to fiscal month, quarter, year
 var _monthsBack =
@@ -1022,14 +1013,12 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset &lt;= 0 || _currYr &lt;= 0
-)
+_rslt
 </code></pre>
 </div>
 <div id="current-vs-previous-period" class="section level2">
 <h2>Current vs Previous Period</h2>
+<!--\1 DIVIDE(SELECTEDMEASURE() - _rslt,_cy <= 0 && _rslt) -->
 <pre><code>CP vs PP = 
 // dynamic to fiscal month, quarter, year
 var _monthsBack =
@@ -1056,13 +1045,11 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    SELECTEDMEASURE() - _rslt,
-    _cy &lt;= 0 &amp;&amp; _rslt
-)</code></pre>
+SELECTEDMEASURE() - _rslt</code></pre>
 </div>
 <div id="current-vs-previous-period-1" class="section level2">
 <h2>Current vs Previous Period %</h2>
+<!--\1  DIVIDE( DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) , _cy <= 0) -->
 <pre><code>CP vs PP % = 
 // dynamic to fiscal month, quarter, year
 var _monthsBack =
@@ -1089,21 +1076,20 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) ) ,
-    _cy &lt;= 0
-)
+DIVIDE( SELECTEDMEASURE() - _rslt, ABS(_rslt) )
 </code></pre>
 </div>
 <div id="same-period-last-year" class="section level2">
 <h2>Same Period Last Year</h2>
-<pre><code>SPLY =     CALCULATE (
+<pre><code>SPLY =     
+CALCULATE (
         SELECTEDMEASURE (),
         SAMEPERIODLASTYEAR ( &#39;Calendar&#39;[Date] )
     )</code></pre>
 </div>
 <div id="last-year-week" class="section level2">
 <h2>Last Year Week</h2>
+<!--\1  DIVIDE( _rslt, _currOffset <= 0 || _currYr <= 0)-->
 <pre><code>LYWeek = var _currOffset = MAX( Calendar[Fiscal Week Offset] )
 VAR _weeksofyear = MAX(Calendar[Fiscal Weeks])
 var _offsetBegin = MIN( Calendar[Fiscal Week Offset] ) - _weeksofyear
@@ -1122,10 +1108,7 @@ CALCULATE (
     &#39;Calendar&#39;[Date] IN _datesOffsetPd
 )
 RETURN
-DIVIDE(
-    _rslt,
-    _currOffset &lt;= 0 || _currYr &lt;= 0
-)</code></pre>
+_rslt</code></pre>
 </div>
 <div id="example" class="section level2">
 <h2>Example</h2>
