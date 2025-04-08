@@ -78,7 +78,7 @@ University of Istanbul (Turkey), Fall 2006 - Spring 2010
 # Experiences
 
 **Associate Advanced Analytics Analyst** - Power BI Developer,\
-<u>Mozarc Medical, Milan (Italy), Sep 2023 - Current.</u>\
+<u>Mozarc Medical, Milan (Italy), Sep 2023 - March 2025 </u>\
 <!--\1
 Mozarc Medical, Milan (Italy), Sep 2023 - Current.\
 - Data Analysis and Visualization: Assist in collecting, cleaning, and analyzing large datasets to identify trends, patterns, and insights. Develop visually appealing dashboards and reports using Power BI to effectively communicate findings to stakeholders.
