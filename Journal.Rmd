@@ -87,7 +87,7 @@ Mozarc Medical, Milan (Italy), Sep 2023 - Current.\
  <!--\1 <h3>Today's shopping list:</h3>\1-->
     <ul>
       <li>Assist in collecting, cleaning, and analyzing large datasets to identify trends, patterns, and insights.</li>
-      <li>Develop visually appealing dashboards and reports using Power BI, Power Pivot, and DAX.</li>
+      <li>Develop visually appealing dashboards and reports using Power BI, Power Pivot, Power Automate, SQL, and DAX.</li>
       <li>Work closely with cross-functional teams to understand their analytical needs and provide insights.</li>
       <li>Develop data-driven strategies and recommendations to support business growth and efficiency.</li>
       <li>Ensure data quality and integrity by conducting data validation and cleansing.</li>
